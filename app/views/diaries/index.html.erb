@@ -1,0 +1,21 @@
+<%= link_to '＜マイページ', mypages_top_path %>
+<p id="notice"><%= notice %></p>
+
+<div style="display: flex; justify-content: space-between; align-items: center;">
+  <h1>自分の日記</h1>
+  <%= link_to '日記をかく', new_diary_path, class: "link-class" %>
+</div>
+
+<table>
+  
+</table>
+
+<%= month_calendar events: @diaries do |date, diaries| %>
+  <%= date.day %>
+
+  <% diaries.each do |diary| %>
+    <div>
+      <%= link_to diary.title, diary %>
+    </div>
+  <% end %>
+<% end %>

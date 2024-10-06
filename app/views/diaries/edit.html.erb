@@ -1,0 +1,33 @@
+<%= link_to '＜日記詳細', diary_path(@diary) %>
+<%= form_with(model: @diary, local: true) do |form| %>
+
+  <div class="title">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="time">
+    <%= form.label :start_time %>
+    <%= form.text_field :start_time, value: @diary.start_time.strftime("%Y-%m-%d %H:%M"), readonly: true %>
+  </div>
+
+  <div class="edit_time">
+    <%= form.label :edited_at%>
+    <%= form.text_field :updated_at, value: Time.current.strftime("%Y-%m-%d %H:%M"), readonly: true %>
+  </div>
+
+  <div class="content_japanese">
+    <%= form.label :content_japanese, '日本語' %>
+    <%= form.text_area :content_japanese, rows: 5, cols: 50, style: "width: 100%;" %>
+  </div>
+
+  <div class="content_english">
+    <%= form.label :content_english, 'English' %>
+    <%= form.text_area :content_english, rows: 5, cols: 50, style: "width: 100%;" %>
+  </div>
+
+  <div class="submit">
+    <%= form.submit %>
+  </div>
+
+<% end %>

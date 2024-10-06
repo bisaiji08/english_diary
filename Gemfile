@@ -17,6 +17,14 @@ gem "bootsnap", require: false
 
 gem 'sassc-rails'
 
+gem 'devise', '4.9.4'
+gem 'bcrypt', '3.1.20'
+gem 'orm_adapter', '0.5.0'
+gem 'responders', '3.1.1'
+gem 'warden', '1.2.9'
+
+gem 'simple_calendar', '3.0.4'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri ]
 end
