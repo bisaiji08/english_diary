@@ -15,7 +15,7 @@ class DiariesController < ApplicationController
     @diary = Diary.new(diary_parameter)
     @diary.start_time = Time.current # 現在の時間を設定
     if @diary.save
-      redirect_to diaries_path, notice: "日記を作成しました"
+      redirect_to diaries_path, notice: "Created"
     else
       render 'new'
     end
@@ -24,7 +24,7 @@ class DiariesController < ApplicationController
   def destroy
     @diary = Diary.find(params[:id])
     @diary.destroy
-    redirect_to diaries_path, notice: "削除しました", status: :see_other
+    redirect_to diaries_path, notice: "Deleted", status: :see_other
   end
 
   def edit
@@ -35,23 +35,12 @@ class DiariesController < ApplicationController
     @diary = Diary.find(params[:id])
     if @diary.update(diary_parameter)
       @diary.update(updated_at: Time.current)
-      redirect_to diaries_path, notice: "編集しました"
+      redirect_to diaries_path, notice: "Edited"
     else
       render 'edit'
     end
   end
 
-=begin
-  def translate
-    @diary = Diary.new(diary_parameter)
-    if @diary.content_japanese.present?
-      @diary.content_english = ja_to_en(@diary.content_japanese)
-    else
-      @diary.content_english = nil
-    end
-    render 'new' # 翻訳結果を含む新しいフォームを表示
-  end
-=end
   def translate
     content_japanese = params[:content_japanese]
     if content_japanese.present?

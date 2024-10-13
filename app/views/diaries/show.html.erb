@@ -1,32 +1,32 @@
-<%= link_to '＜日記一覧', mypages_diaries_path %>
+<%= link_to '＜Calendar', mypages_diaries_path %>
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>タイトル</strong>
+  <strong>Title</strong>
   <%= @diary.title %>
 </p>
 
 <p>
-  <strong>作成日時</strong>
+  <strong>Start time</strong>
   <%= @diary.start_time.strftime("%Y-%m-%d %H:%M") %>
 </p>
 
 <p>
-  <strong>更新日時</strong>
+  <strong>Edited at</strong>
   <%= @diary.updated_at.strftime("%Y-%m-%d %H:%M") %>
 </p>
 
 <div class="content_japanese">
-  <strong>内容（日本語）</strong>
+  <strong>Contents (Japanese)</strong>
   <div class="content-display">
-    <%= @diary.content_japanese.present? ? @diary.content_japanese : '内容はありません' %>
+    <%= @diary.content_japanese.present? ? @diary.content_japanese : 'No content' %>
   </div>
 </div>
 
 <div class="content_english">
-  <strong>内容（英語）</strong>
+  <strong>Contents (English)</strong>
   <div class="content-display">
-    <%= @diary.content_english.present? ? @diary.content_english : '内容はありません' %>
+    <%= @diary.content_english.present? ? @diary.content_english : 'No content' %>
   </div>
 </div>
 

@@ -1,4 +1,4 @@
-<%= link_to '＜マイページ', mypages_top_path %>
+<%= link_to '＜My page', mypages_top_path %>
 <%= form_with(model: @diary, local: true) do |form| %>
   <% if flash.now[:alert] %>
     <div class="alert alert-danger">
@@ -17,18 +17,18 @@
   </div>
 
   <div class="content_japanese">
-    <%= form.label :content_japanese, '日本語', for: 'content_japanese' %>
+    <%= form.label :content_japanese, 'Contents (Japanese)', for: 'content_japanese' %>
     <%= form.text_area :content_japanese, rows: 5, cols: 50, style: "width: 100%;", id: "content_japanese" %>
   </div>
 
   <div class="content_english">
-    <%= form.label :content_english, 'English', for: 'content_english' %>
+    <%= form.label :content_english, 'Contents (English)', for: 'content_english' %>
     <%= form.text_area :content_english, rows: 5, cols: 50, style: "width: 100%;", id: "content_english" %>
   </div>
 
   <div>
-    <%= form.submit "日記を作成" %>
-    <button type="button" id="translate-button">翻訳</button>
+    <%= form.submit "Create diary" %>
+    <button type="button" id="translate-button">Translate</button>
   </div>
 <% end %>
 
@@ -46,7 +46,7 @@ document.getElementById('translate-button').addEventListener('click', function()
   })
   .then(response => {
     if (!response.ok) {
-      throw new Error('翻訳に失敗しました');
+      throw new Error('Translation failed');
     }
     return response.json();
   })
