@@ -1,19 +1,28 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
-import "controllers"
+import "@hotwired/turbo-rails";
+import "controllers";
 
-document.addEventListener('DOMContentLoaded', () => {
+const setupInfoPopup = () => {
   const infoButton = document.getElementById('info-button');
   const infoPopup = document.getElementById('info-popup');
-  const closeButton = document.getElementById('close-popup');
-
-  infoButton.addEventListener('click', () => {
-    infoPopup.style.display = 'block';
-    const closeButton = document.getElementById('close-popup'); // ここで取得
-    closeButton.addEventListener('click', () => {
-        infoPopup.style.display = 'none';
+  
+  if (infoButton) {
+    infoButton.addEventListener('click', () => {
+      infoPopup.style.display = 'block';
+      
+      const closeButton = document.getElementById('close-popup'); // ここで取得
+      if (closeButton) {
+        closeButton.addEventListener('click', () => {
+          infoPopup.style.display = 'none';
+        });
+      }
     });
-});
+  }
+};
+
+// Turboの読み込みイベントをリッスン
+document.addEventListener('turbo:load', () => {
+  setupInfoPopup(); // ポップアップのセットアップ
 });
 
 document.addEventListener('DOMContentLoaded', () => {
