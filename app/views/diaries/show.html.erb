@@ -1,4 +1,4 @@
-<%= link_to '＜Calendar', mypages_diaries_path %>
+<%= link_to '＜Calendar', diaries_path %>
 
 <div class="diary-info">
   Title
@@ -36,5 +36,4 @@
 </div>
 
 <%= link_to 'Edit', edit_diary_path(@diary) %> |
-<%= link_to 'Back', diaries_path %>
 <%= link_to 'Destroy', diary_path(@diary), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>

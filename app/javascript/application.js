@@ -9,11 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   infoButton.addEventListener('click', () => {
     infoPopup.style.display = 'block';
-  });
-
-  closeButton.addEventListener('click', () => {
-    infoPopup.style.display = 'none';
-  });
+    const closeButton = document.getElementById('close-popup'); // ここで取得
+    closeButton.addEventListener('click', () => {
+        infoPopup.style.display = 'none';
+    });
+});
 });
 
 document.addEventListener('DOMContentLoaded', () => {
