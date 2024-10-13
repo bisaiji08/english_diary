@@ -41,9 +41,55 @@ class DiariesController < ApplicationController
     end
   end
 
+=begin
+  def translate
+    @diary = Diary.new(diary_parameter)
+    if @diary.content_japanese.present?
+      @diary.content_english = ja_to_en(@diary.content_japanese)
+    else
+      @diary.content_english = nil
+    end
+    render 'new' # 翻訳結果を含む新しいフォームを表示
+  end
+=end
+  def translate
+    content_japanese = params[:content_japanese]
+    if content_japanese.present?
+      translation = ja_to_en(content_japanese)
+      render json: { translation: translation }
+    else
+      render json: { translation: nil }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def diary_parameter
     params.require(:diary).permit(:title, :content_japanese, :content_english)
+  end
+  
+  def ja_to_en(text)
+    url = URI.parse('https://translation.googleapis.com/language/translate/v2')
+    params = {
+      q: text,
+      source: 'ja',
+      target: 'en',
+      key: ENV['GOOGLE_CLOUD_API_KEY']
+    }
+    url.query = URI.encode_www_form(params)
+    res = Net::HTTP.get_response(url)
+  
+    if res.is_a?(Net::HTTPSuccess)
+      parsed_response = JSON.parse(res.body)
+      if parsed_response['data'] && parsed_response['data']['translations']
+        parsed_response['data']['translations'].first['translatedText']
+      else
+        "翻訳エラー: 不正なレスポンスです"
+      end
+    else
+      "翻訳エラー: #{res.body}"
+    end
+  rescue StandardError => e
+    "翻訳エラー: #{e.message}"
   end
 end

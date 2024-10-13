@@ -1,3 +1,7 @@
+@import 'top';
+@import 'simple_calendar';
+@import 'calendar';
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,10 +14,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require simple_calendar
- *= require calendar
  *= require_tree .
  *= require_self
  */
-@import 'application.bootstrap';
-@import 'top';

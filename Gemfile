@@ -25,6 +25,10 @@ gem 'warden', '1.2.9'
 
 gem 'simple_calendar', '3.0.4'
 
+gem "google-cloud"
+gem "google-cloud-translate"
+gem 'httparty'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri ]
 end

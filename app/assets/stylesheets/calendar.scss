@@ -1,0 +1,43 @@
+.calendar-heading {
+  display: flex;
+  justify-content: space-between; /* 要素間のスペースを確保 */
+  align-items: center; /* 垂直方向に中央寄せ */
+
+  .month-number {
+    font-size: 2em; /* サイズを指定 */
+    font-weight: bold; /* 太字 */
+  }
+
+  .calendar-nav {
+    display: flex; /* Flexboxを使用 */
+    justify-content: flex-end; /* 右寄せ */
+    gap: 1em; /* リンク間のスペースを設定 */
+  }
+}
+
+.content_japanese,
+.content_english {
+  margin: 1em 0;
+}
+
+/* マウスオーバー時のセルのスタイル */
+.simple-calendar {
+  .day {
+    background: #fff9ee;
+  }
+  .wday-0 {
+    background: #ffeaea;
+    color: #ff505c;
+  }
+  .wday-6 {
+    background: #d4ebff;
+    color: #5984dc;
+  }
+  .today {
+    background: #FFA0A0;
+  }
+}
+/* マウスオーバー時のセルのスタイル */
+.simple-calendar td:hover {
+  background-color: #eaeaea; /* セルにマウスを乗せたときの背景色 */
+}

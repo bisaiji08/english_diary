@@ -15,3 +15,30 @@ document.addEventListener('DOMContentLoaded', () => {
     infoPopup.style.display = 'none';
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const logoutLink = document.getElementById('logout-link');
+
+  if (logoutLink) {
+    logoutLink.addEventListener('click', (event) => {
+      event.preventDefault(); // デフォルトの動作を防ぐ
+
+      // ログアウト処理を実行
+      fetch(logoutLink.href, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          // 成功したらstatic_pages#topに移動
+          window.location.href = '/'; // ルートパスにリダイレクト
+        } else {
+          // エラーハンドリング
+          console.error('ログアウトに失敗しました');
+        }
+      });
+    });
+  }
+});
