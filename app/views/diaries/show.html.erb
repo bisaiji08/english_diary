@@ -1,31 +1,36 @@
 <%= link_to '＜Calendar', mypages_diaries_path %>
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title</strong>
-  <%= @diary.title %>
-</p>
+<div class="diary-info">
+  Title
+  <span  class="title info_frame">
+    <%= @diary.title %>
+  </span>
+</div>
 
-<p>
-  <strong>Start time</strong>
-  <%= @diary.start_time.strftime("%Y-%m-%d %H:%M") %>
-</p>
+<div class="diary-info">
+  Start time
+  <span  class="start_time info_frame">
+    <%= @diary.start_time.strftime("%Y-%m-%d %H:%M") %>
+  </span>
+</div>
 
-<p>
-  <strong>Edited at</strong>
-  <%= @diary.updated_at.strftime("%Y-%m-%d %H:%M") %>
-</p>
+<div class="diary-info">
+  Edited at
+  <span  class="edit_time info_frame">
+    <%= @diary.updated_at.strftime("%Y-%m-%d %H:%M") %>
+  </span>
+</div>
 
 <div class="content_japanese">
-  <strong>Contents (Japanese)</strong>
-  <div class="content-display">
+  Contents (Japanese)
+  <div class="content-display content_frame">
     <%= @diary.content_japanese.present? ? @diary.content_japanese : 'No content' %>
   </div>
 </div>
 
 <div class="content_english">
-  <strong>Contents (English)</strong>
-  <div class="content-display">
+  Contents (English)
+  <div class="content-display content_frame">
     <%= @diary.content_english.present? ? @diary.content_english : 'No content' %>
   </div>
 </div>
