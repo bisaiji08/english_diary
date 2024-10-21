@@ -1,18 +1,19 @@
 class DiariesController < ApplicationController
+  before_action :authenticate_user!
   def index
-    @diaries = Diary.all
+    @diaries = current_user.diaries
   end
 
   def new
-    @diary = Diary.new
+    @diary = current_user.diaries.build
   end
 
   def show
-    @diary = Diary.find(params[:id])
+    @diary = current_user.diaries.find(params[:id])
   end
 
   def create
-    @diary = Diary.new(diary_parameter)
+    @diary = current_user.diaries.build(diary_parameter)
     @diary.start_time = Time.current # 現在の時間を設定
     if @diary.save
       redirect_to diaries_path, notice: "Created"
@@ -22,17 +23,17 @@ class DiariesController < ApplicationController
   end
 
   def destroy
-    @diary = Diary.find(params[:id])
+    @diary = current_user.diaries.find(params[:id])
     @diary.destroy
     redirect_to diaries_path, notice: "Deleted", status: :see_other
   end
 
   def edit
-    @diary = Diary.find(params[:id])
+    @diary = current_user.diaries.find(params[:id])
   end
 
   def update
-    @diary = Diary.find(params[:id])
+    @diary = current_user.diaries.find(params[:id])
     if @diary.update(diary_parameter)
       @diary.update(updated_at: Time.current)
       redirect_to diaries_path, notice: "Edited"

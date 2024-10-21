@@ -8,12 +8,12 @@
 
   <div class="time">
     <%= form.label :start_time %>
-    <%= form.text_field :start_time, value: @diary.start_time.strftime("%Y-%m-%d %H:%M"), readonly: true %>
+    <%= form.text_field :start_time, value: @diary.start_time.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M"), readonly: true %>
   </div>
 
   <div class="edit_time">
     <%= form.label :edited_at%>
-    <%= form.text_field :updated_at, value: Time.current.strftime("%Y-%m-%d %H:%M"), readonly: true %>
+    <%= form.text_field :updated_at, value: Time.current.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M"), readonly: true %>
   </div>
 
   <div class="content_japanese">

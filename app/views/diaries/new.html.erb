@@ -13,7 +13,7 @@
 
   <div class="time">
     <%= form.label :start_time %>
-    <%= form.text_field :start_time, value: Time.current.strftime("%Y-%m-%d %H:%M"), readonly: true %>
+    <%= form.text_field :start_time, value: Time.current.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M"), readonly: true %>
   </div>
 
   <div class="content_japanese">

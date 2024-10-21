@@ -14,6 +14,9 @@ module Myapp
 
     config.beginning_of_week = :sunday
 
+    config.time_zone = 'Tokyo' # 例として東京を指定
+    config.active_record.default_timezone = :local
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
