@@ -1,0 +1,39 @@
+<%= link_to '＜Calendar', diaries_path %>
+
+<div class="diary-info">
+  Title
+  <span  class="title info_frame">
+    <%= @diary.title %>
+  </span>
+</div>
+
+<div class="diary-info">
+  Start time
+  <span  class="start_time info_frame">
+    <%= @diary.start_time.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M") %>
+  </span>
+</div>
+
+<div class="diary-info">
+  Edited at
+  <span  class="edit_time info_frame">
+    <%= @diary.updated_at.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M") %>
+  </span>
+</div>
+
+<div class="content_japanese">
+  Contents (Japanese)
+  <div class="content-display content_frame">
+    <%= @diary.content_japanese.present? ? @diary.content_japanese : 'No content' %>
+  </div>
+</div>
+
+<div class="content_english">
+  Contents (English)
+  <div class="content-display content_frame">
+    <%= @diary.content_english.present? ? @diary.content_english : 'No content' %>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_diary_path(@diary) %> |
+<%= link_to 'Destroy', diary_path(@diary), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>

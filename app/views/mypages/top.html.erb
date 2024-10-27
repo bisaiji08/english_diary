@@ -1,0 +1,4 @@
+<%= link_to '＜Log out', destroy_user_session_path, data: { turbo_method: :delete, action: 'redirect' }, id: 'logout-link' %>
+<h1>My Page<h1>
+<p><%= link_to 'Write Diary', new_diary_path %></p>
+<p><%= link_to 'View Diaries', mypages_diaries_path %></p>
