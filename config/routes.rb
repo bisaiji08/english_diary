@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     post 'translate', on: :collection
   end
 
+  get 'trees', to: 'trees#index'
+  post "create_tree", to: "trees#create"
+  post "train", to: "trees#train"
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

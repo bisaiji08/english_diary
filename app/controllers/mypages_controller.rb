@@ -1,3 +1,5 @@
 class MypagesController < ApplicationController
-  def top; end
+  def top
+    @tree = current_user.tree
+  end
 end

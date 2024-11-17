@@ -15,8 +15,20 @@ class DiariesController < ApplicationController
   def create
     @diary = current_user.diaries.build(diary_parameter)
     @diary.start_time = Time.current # 現在の時間を設定
+  
     if @diary.save
-      redirect_to diaries_path, notice: "Created"
+      # 特訓処理
+      tree = current_user.tree
+      if tree.nil?
+        flash[:alert] = "Diary created, but you don't have a tree to train."
+      elsif tree.can_train?
+        tree.train!  # 特訓を実行
+        flash[:notice] = "Diary created and training completed!"
+      else
+        flash[:alert] = "Diary created, but training is already done for today."
+      end
+  
+      redirect_to diaries_path
     else
       render 'new'
     end
