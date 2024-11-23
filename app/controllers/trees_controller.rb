@@ -2,12 +2,7 @@ class TreesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tree = Tree.first
-  end
-
-  def create
-    @tree = Tree.create(name: "Tree1")
-    redirect_to mypages_top_path
+    @tree = current_user.tree
   end
 
   def train

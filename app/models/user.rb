@@ -5,5 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :diaries
-  has_one :tree
+  has_one :tree, dependent: :destroy
+
+  after_create :create_tree
+
+  private
+
+  def create_tree
+    self.create_tree!
+  end
 end

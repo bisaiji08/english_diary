@@ -3,17 +3,13 @@
 <p><%= link_to 'Write Diary', new_diary_path %></p>
 <p><%= link_to 'View Diaries', mypages_diaries_path %></p>
 
-<% if @tree %>
-  <h1>ツリー情報</h1>
-  <p>名前: <%= @tree.name %></p>
-  <p>レベル: <%= @tree.level %></p>
-  <p>ジョブ: <%= @tree.job %></p>
-  <p>ポイント: <%= @tree.points %></p>
-  <% if @tree && @tree.last_trained_at && @tree.last_trained_at.to_date == Date.today %>
-    <p>水やり<Yet/p>
-  <% else %>
-    <p>水やり:Not Yet</p>
-  <% end %>
+
+<h1>ツリー情報</h1>
+<p>レベル: <%= @tree.level %></p>
+<p>ジョブ: <%= @tree.job %></p>
+<p>ポイント: <%= @tree.points %></p>
+<% if @tree && @tree.last_trained_at && @tree.last_trained_at.to_date == Date.today %>
+  <p>水やり<Yet/p>
 <% else %>
-  <%= button_to "ツリーを作成", create_tree_path, method: :post %>
+  <p>水やり:Not Yet</p>
 <% end %>
