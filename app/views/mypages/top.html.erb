@@ -2,3 +2,14 @@
 <h1>My Page<h1>
 <p><%= link_to 'Write Diary', new_diary_path %></p>
 <p><%= link_to 'View Diaries', mypages_diaries_path %></p>
+
+<h1>ツリー情報</h1>
+<p><%= @tree.max_count %> 本目</p>
+<p>レベル: <%= @tree.level %></p>
+<p>ジョブ: <%= @tree.job %></p>
+<p>ポイント: <%= @tree.points %></p>
+<% if @tree && @tree.last_trained_at && @tree.last_trained_at.to_date == Date.today %>
+  <p>水やり<Yet/p>
+<% else %>
+  <p>水やり:Not Yet</p>
+<% end %>
