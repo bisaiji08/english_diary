@@ -3,6 +3,7 @@ class Tree < ApplicationRecord
   validates :level, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :job, presence: true
   validates :points, numericality: { greater_than_or_equal_to: 0 }
+  validates :max_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :user_id, uniqueness: true
 
   after_initialize :set_defaults, if: :new_record?
@@ -11,6 +12,7 @@ class Tree < ApplicationRecord
     self.level ||= 0
     self.job ||= "Seedlings"
     self.points ||= 0
+    self.max_count ||= 1
   end
 
   # 特訓ができるかどうかをチェック
@@ -47,5 +49,6 @@ class Tree < ApplicationRecord
     self.job = "Seedlings"
     self.level = 0
     self.points += 500
+    self.max_count += 1
   end
 end

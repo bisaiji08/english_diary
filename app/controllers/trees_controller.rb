@@ -9,15 +9,15 @@ class TreesController < ApplicationController
     @tree = current_user.tree
   
     if @tree.nil?
-      redirect_to mypages_top_path, alert: 'ツリーが作成されていません。'
+      redirect_to mypages_top_path, alert: 'ツリーが見つかりません。'
       return
     end
   
     if @tree.can_train?
       @tree.train!  # 特訓を実行
-      redirect_to mypages_top_path, notice: '特訓が完了しました。'
+      redirect_to mypages_top_path, notice: '水やりが完了しました。'
     else
-      redirect_to mypages_top_path, alert: '今日はもう特訓はできません。'
+      redirect_to mypages_top_path, alert: '今日はもう水やりはできません。'
     end
   end
 end
