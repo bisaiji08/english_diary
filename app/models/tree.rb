@@ -1,5 +1,6 @@
 class Tree < ApplicationRecord
   belongs_to :user
+  has_many :purchases, through: :user
   validates :level, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :job, presence: true
   validates :points, numericality: { greater_than_or_equal_to: 0 }
@@ -31,6 +32,17 @@ class Tree < ApplicationRecord
       increment(:level)
     end
     save
+  end
+
+  def purchase_item(item)
+    if self.points >= item.price
+      self.points -= item.price
+      self.save!
+      # アイテムの購入記録を作成（ログや所有リストに追加する場合など）
+      return "Item '#{item.name}' purchased successfully!"
+    else
+      return "Not enough points to purchase '#{item.name}'."
+    end
   end
 
   private

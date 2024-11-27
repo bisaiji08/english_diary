@@ -1,0 +1,11 @@
+<%= link_to '＜My page', mypages_top_path %>
+<h1>Shop</h1>
+<p>Your points: <%= current_user.tree.points %></p>
+
+<ul>
+  <% @items.each do |item| %>
+    <li>
+      <strong><%= link_to item.name, shop_path(item) %></strong> - <%= item.price %> points
+    </li>
+  <% end %>
+</ul>
