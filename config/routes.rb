@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   post "create_tree", to: "trees#create"
   post "train", to: "trees#train"
 
+  resources :shop, only: [:index, :show] do
+    post 'purchase', on: :member
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -9,6 +9,9 @@ class User < ApplicationRecord
 
   after_create :create_tree
 
+  has_many :purchases
+  has_many :items, through: :purchases
+
   private
 
   def create_tree

@@ -4,6 +4,7 @@ class MypagesController < ApplicationController
 
   def top
     @tree = current_user.tree
+    @purchased_items = current_user.purchases.includes(:item).map(&:item) # 購入したアイテム一覧
   end
 
   private
