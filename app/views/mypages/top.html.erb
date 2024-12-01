@@ -15,3 +15,17 @@
 <% else %>
   <p>水やり:Not Yet</p>
 <% end %>
+
+<h1>My Page</h1>
+<p>Your Points: <%= @tree.points %></p>
+
+<h2>Purchased Items</h2>
+<% if @purchased_items.any? %>
+  <ul>
+    <% @purchased_items.each do |item| %>
+      <li><strong><%= item.name %></strong>: <%= item.description %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You haven't purchased any items yet.</p>
+<% end %>
