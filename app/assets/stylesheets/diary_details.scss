@@ -18,3 +18,11 @@
   line-height: 1.2; /* 行間を調整（必要に応じて） */
   min-height: 90px; /* 最小の高さを設定（必要に応じて調整） */
 }
+
+.content-japanese {
+  font-family: var(--japanese-font, inherit);
+}
+
+.content-english {
+  font-family: var(--english-font, inherit);
+}

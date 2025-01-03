@@ -23,14 +23,14 @@
 
 <div class="content_japanese">
   Contents (Japanese)
-  <div class="content-display content_frame">
+  <div class="content-display content_frame" style="font-family: <%= @diary.japanese_font_name || 'Noto Sans JP' %>;">
     <%= @diary.content_japanese.present? ? @diary.content_japanese : 'No content' %>
   </div>
 </div>
 
 <div class="content_english">
   Contents (English)
-  <div class="content-display content_frame">
+  <div class="content-display content_frame" style="font-family: <%= @diary.english_font_name || 'Noto Sans' %>;">
     <%= @diary.content_english.present? ? @diary.content_english : 'No content' %>
   </div>
 </div>

@@ -5,9 +5,9 @@
 <p>Your points: <%= current_user.tree.points %></p>
 
 <% if current_user.tree.points >= @item.price %>
-  <%= button_to "Buy", purchase_shop_path(@item), method: :post %>
+  <%= button_to "Buy", purchase_shop_path(@item), method: :post, class: "buy-button" %>
 <% else %>
   <p><em>You do not have enough points to buy this item.</em></p>
 <% end %>
 
-<%= link_to 'Back to Shop', shop_index_path %>
+<%= link_to 'Back to Shop', shop_index_path, class: "back-link" %>
