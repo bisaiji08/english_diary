@@ -1,0 +1,90 @@
+@font-face {
+  font-family: 'Noto Sans JP';
+  src: url('/assets/NotoSansJP-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Yuji Mai';
+  src: url('/assets/YujiMai-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Potta One';
+  src: url('/assets/PottaOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('/assets/NotoSans-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cedarville Cursive';
+  src: url('/assets/CedarvilleCursive-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/assets/RobotoMono-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --japanese-font: 'Noto Sans JP'; /* デフォルト値 */
+  --english-font: 'Noto Sans';     /* デフォルト値 */
+}
+
+
+.content_japanese {
+  label {
+    font-family: inherit;
+  }
+  textarea {
+    font-family: var(--japanese-font, 'Noto Sans JP'), sans-serif;
+  }
+}
+
+.content_english {
+  label {
+    font-family: inherit;
+  }
+  textarea {
+    font-family: var(--english-font, 'Noto Sans'), sans-serif;
+  }
+}
+
+/* フォント切り替え設定 */
+.japanese-font-yuji-mai {
+  font-family: 'Yuji Mai', cursive;
+}
+
+.japanese-font-pottta {
+  font-family: 'Potta One', cursive;
+}
+
+.english-font-roboto {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.english-font-cedarville {
+  font-family: 'Cedarville Cursive', cursive;
+}
+
+//body {
+//  font-family: 'Roboto Mono', monospace;
+//}
+
+//h1 {
+//  font-family: 'Cedarville Cursive', cursive;
+//}
