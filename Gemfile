@@ -29,6 +29,8 @@ gem "google-cloud"
 gem "google-cloud-translate"
 gem 'httparty'
 
+gem 'i18n'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri ]
 end

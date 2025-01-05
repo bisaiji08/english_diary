@@ -2,6 +2,8 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 
+import './diaries';
+
 const setupInfoPopup = () => {
   const infoButton = document.getElementById('info-button');
   const infoPopup = document.getElementById('info-popup');

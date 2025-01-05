@@ -1,3 +1,4 @@
+<%= link_to 'Back to Shop', shop_index_path, class: "back-link" %>
 <h1>Item Details</h1>
 <p><strong>Name:</strong> <%= @item.name %></p>
 <p><strong>Description:</strong> <%= @item.description %></p>
@@ -10,4 +11,3 @@
   <p><em>You do not have enough points to buy this item.</em></p>
 <% end %>
 
-<%= link_to 'Back to Shop', shop_index_path, class: "back-link" %>

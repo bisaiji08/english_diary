@@ -2,10 +2,28 @@
 <h1>Shop</h1>
 <p>Your points: <%= current_user.tree.points %></p>
 
-<ul>
-  <% @items.each do |item| %>
-    <li>
-      <strong><%= link_to item.name, shop_path(item) %></strong> - <%= item.price %> points
-    </li>
-  <% end %>
-</ul>
+<h2>Japanese Fonts</h2>
+<% if @japanese_fonts.any? %>
+  <ul>
+    <% @japanese_fonts.each do |font| %>
+      <li>
+        <strong><%= link_to font.name, shop_path(font) %></strong> - <%= font.price %> points
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No Japanese fonts available for purchase.</p>
+<% end %>
+
+<h2>English Fonts</h2>
+<% if @english_fonts.any? %>
+  <ul>
+    <% @english_fonts.each do |font| %>
+      <li>
+        <strong><%= link_to font.name, shop_path(font) %></strong> - <%= font.price %> points
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No English fonts available for purchase.</p>
+<% end %>
