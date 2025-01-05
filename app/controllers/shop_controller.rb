@@ -1,7 +1,8 @@
 class ShopController < ApplicationController
   def index
-    # ショップに表示するアイテムから Noto Sans 系フォントを除外
-    @items = Item.where.not(font_name: ['Noto Sans', 'Noto Sans JP'])
+    purchased_items = current_user.purchases.pluck(:item_id)
+    @japanese_fonts = Item.where(language: 'Japanese').where.not(id: purchased_items).where.not(font_name: ['Noto Sans JP'])
+    @english_fonts = Item.where(language: 'English').where.not(id: purchased_items).where.not(font_name: ['Noto Sans'])
   end
 
   def show

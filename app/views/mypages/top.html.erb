@@ -2,30 +2,40 @@
 <h1>My Page<h1>
 <p><%= link_to 'Write Diary', new_diary_path %></p>
 <p><%= link_to 'View Diaries', mypages_diaries_path %></p>
-<h2>Shop</h2>
 <p><%= link_to 'Go to Shop', shop_index_path %></p>
 
-<h1>ツリー情報</h1>
-<p><%= @tree.max_count %> 本目</p>
-<p>レベル: <%= @tree.level %></p>
-<p>ジョブ: <%= @tree.job %></p>
-<p>ポイント: <%= @tree.points %></p>
+<h1>Tree Information</h1>
+<p>Your Points: <%= @tree.points %></p>
+<p><%= @tree.max_count %> laps</p>
+<p>Level: <%= @tree.level %></p>
 <% if @tree && @tree.last_trained_at && @tree.last_trained_at.to_date == Date.today %>
-  <p>水やり<Yet/p>
+  <p>Watering:<Yet/p>
 <% else %>
-  <p>水やり:Not Yet</p>
+  <p>Watering:Not Yet</p>
 <% end %>
 
-<h1>My Page</h1>
-<p>Your Points: <%= @tree.points %></p>
-
 <h2>Purchased Items</h2>
-<% if @purchased_items.any? %>
+
+<h3>Japanese Fonts</h3>
+<% japanese_fonts = @purchased_items.select { |item| item.language == 'Japanese' } %>
+<% if japanese_fonts.any? %>
   <ul>
-    <% @purchased_items.each do |item| %>
-      <li><strong><%= item.name %></strong>: <%= item.description %></li>
+    <% japanese_fonts.each do |font| %>
+      <li><strong><%= font.name %></strong>: <%= font.description %></li>
     <% end %>
   </ul>
 <% else %>
-  <p>You haven't purchased any items yet.</p>
+  <p>You haven't purchased any Japanese fonts yet.</p>
+<% end %>
+
+<h3>English Fonts</h3>
+<% english_fonts = @purchased_items.select { |item| item.language == 'English' } %>
+<% if english_fonts.any? %>
+  <ul>
+    <% english_fonts.each do |font| %>
+      <li><strong><%= font.name %></strong>: <%= font.description %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You haven't purchased any English fonts yet.</p>
 <% end %>

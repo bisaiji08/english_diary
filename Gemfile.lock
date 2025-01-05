@@ -607,6 +607,7 @@ DEPENDENCIES
   google-cloud
   google-cloud-translate
   httparty
+  i18n
   importmap-rails
   jbuilder
   orm_adapter (= 0.5.0)
