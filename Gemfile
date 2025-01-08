@@ -31,6 +31,9 @@ gem 'httparty'
 
 gem 'i18n'
 
+gem 'letter_opener', group: :development
+gem 'letter_opener_web', group: :development
+
 group :development, :test do
   gem "debug", platforms: %i[ mri ]
 end

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   root to: 'static_pages#top'
 
   get 'mypages/top', to: 'mypages#top', as: 'mypages_top'
+  
+  get 'mypages/settings', to: 'mypages#settings', as: 'mypages_settings'
 
   get 'mypages/diaries', to: 'diaries#index', as: 'mypages_diaries'
 
@@ -20,6 +22,10 @@ Rails.application.routes.draw do
 
   resources :shop, only: [:index, :show] do
     post 'purchase', on: :member
+  end
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

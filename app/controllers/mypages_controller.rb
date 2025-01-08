@@ -7,6 +7,10 @@ class MypagesController < ApplicationController
     @purchased_items = current_user.purchases.includes(:item).map(&:item) # 購入したアイテム一覧
   end
 
+  def settings
+    # 特別な処理は不要、ビューを表示するだけ
+  end
+
   private
 
   def ensure_tree_exists
