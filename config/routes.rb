@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   root to: 'static_pages#top'
 
   get 'mypages/top', to: 'mypages#top', as: 'mypages_top'
+  
+  get 'mypages/settings', to: 'mypages#settings', as: 'mypages_settings'
 
   get 'mypages/diaries', to: 'diaries#index', as: 'mypages_diaries'
 
