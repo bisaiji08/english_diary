@@ -69,4 +69,8 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.hosts << "english-diary.fly.dev"
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :letter_opener # 開発環境用
+  config.action_mailer.perform_deliveries = true
 end
