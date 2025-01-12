@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get '/auth/failure', to: 'users/omniauth_callbacks#failure'
+    get '/users/connect/google', to: 'users/omniauth_callbacks#connect_google', as: 'connect_google'
+    delete '/users/disconnect/google', to: 'users#disconnect_google', as: 'disconnect_google'
   end
 
   root to: 'static_pages#top'
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
   get 'mypages/top', to: 'mypages#top', as: 'mypages_top'
   
   get 'mypages/settings', to: 'mypages#settings', as: 'mypages_settings'
+
+  get 'mypages/google_account', to: 'mypages#google_account', as: 'mypages_google_account'
 
   get 'mypages/diaries', to: 'diaries#index', as: 'mypages_diaries'
 

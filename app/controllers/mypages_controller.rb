@@ -11,6 +11,10 @@ class MypagesController < ApplicationController
     # 特別な処理は不要、ビューを表示するだけ
   end
 
+  def google_account
+    # 必要ならGoogle連携に関する情報を取得
+  end
+
   private
 
   def ensure_tree_exists

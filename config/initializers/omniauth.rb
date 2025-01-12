@@ -6,3 +6,5 @@ OmniAuth.config.on_failure = Proc.new { |env|
   Rails.logger.error "OmniAuth Error: #{strategy} - #{message}"
   [302, { 'Location' => "/auth/failure?message=#{message}" }, []]
 }
+
+OmniAuth.config.allowed_request_methods = [:post, :get]

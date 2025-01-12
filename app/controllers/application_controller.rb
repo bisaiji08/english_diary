@@ -5,9 +5,6 @@ class ApplicationController < ActionController::Base
   # OmniAuth認証エラーメッセージをセット
   before_action :set_omniauth_error_message
 
-  #本番環境では削除
-  skip_before_action :verify_authenticity_token, only: [:omniauth_callbacks]
-
   private
 
   def set_omniauth_error_message

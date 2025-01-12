@@ -1,0 +1,12 @@
+<p><%= link_to '＜Settings', mypages_settings_path %></p>
+<h1>Google Account Settings</h1>
+
+<% if current_user.provider.present? && current_user.uid.present? %>
+  <p>Googleアカウントが連携されています。</p>
+  <%= form_with url: disconnect_google_path, method: :delete, class: 'inline-form' do %>
+    <%= submit_tag 'Googleアカウントの連携を解除する', class: 'btn btn-danger', data: { confirm: '本当に連携を解除しますか？' } %>
+  <% end %>
+<% else %>
+  <p>Googleアカウントは連携されていません。</p>
+  <%= link_to "Googleアカウントを連携する", user_google_oauth2_omniauth_authorize_path, method: :post %>
+<% end %>
