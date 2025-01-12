@@ -34,6 +34,10 @@ gem 'i18n'
 gem 'letter_opener', group: :development
 gem 'letter_opener_web', group: :development
 
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri ]
 end
