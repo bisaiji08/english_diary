@@ -24,9 +24,12 @@ class User < ApplicationRecord
 
     if user
       Rails.logger.info "Existing user found: #{user.inspect}"
-      # 既存ユーザーが見つかった場合、`provider` と `uid` を更新
-      user.update(provider: auth.provider, uid: auth.uid)
-      Rails.logger.info "Updated provider and UID for user: #{user.inspect}"
+
+      # プロバイダー情報が異なる場合のみ更新
+      if user.provider != auth.provider || user.uid != auth.uid
+        Rails.logger.info "Updating provider and UID for user: #{user.email}"
+        user.update(provider: auth.provider, uid: auth.uid)
+      end
     else
       Rails.logger.info "Creating new user for OmniAuth data"
       # プロバイダーとUIDで新しいユーザーを初期化
@@ -39,12 +42,12 @@ class User < ApplicationRecord
         image: auth.info.image
       )
 
-      if user.save
-        Rails.logger.info "User successfully created: #{user.inspect}"
-      else
+      unless user.save
         Rails.logger.error "User creation failed: #{user.errors.full_messages}"
         return nil
       end
+
+      Rails.logger.info "User successfully created: #{user.inspect}"
     end
 
     user

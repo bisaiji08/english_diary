@@ -25,27 +25,27 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # OmniAuthデータが存在しない場合のエラーハンドリング
     auth = request.env['omniauth.auth']
     if auth.blank? || auth.provider.blank? || auth.uid.blank?
-      redirect_to mypages_google_account_path, alert: 'Googleアカウントの連携に失敗しました。再試行してください。'
+      redirect_to mypages_google_account_path, alert: 'Failed to link Google account. Please try again.'
       return
     end
 
   # 現在のユーザーと同じGoogleアカウントが既に存在しているか確認
   existing_user = User.find_by(provider: auth.provider, uid: auth.uid)
   if existing_user && existing_user != current_user
-    redirect_to mypages_google_account_path, alert: 'このGoogleアカウントは既に別のユーザーに連携されています。'
+    redirect_to mypages_google_account_path, alert: 'This Google account is already linked to another user.'
     return
   end
 
     current_user.update(provider: auth.provider, uid: auth.uid)
     if current_user.save
-      redirect_to mypages_settings_path, notice: 'Googleアカウントの連携が完了しました。'
+      redirect_to mypages_settings_path, notice: 'Google account linking is complete.'
     else
       Rails.logger.error "Failed to save user: #{current_user.errors.full_messages}"
-      redirect_to mypages_google_account_path, alert: 'Googleアカウントの連携に失敗しました。'
+      redirect_to mypages_google_account_path, alert: 'Failed to link Google account.'
     end
   end
 
   def failure
-    redirect_to mypages_google_account_path, alert: "Googleアカウントの連携に失敗しました。"
+    redirect_to mypages_google_account_path, alert: "Failed to link Google account."
   end
 end

@@ -70,9 +70,9 @@ Rails.application.configure do
 
   config.hosts << "english-diary.fly.dev"
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :letter_opener # 開発環境用
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   config.action_dispatch.cookies_same_site_protection = :lax
 end

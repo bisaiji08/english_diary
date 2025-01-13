@@ -38,6 +38,9 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
+gem 'sidekiq'
+gem 'whenever', require: false
+
 group :development, :test do
   gem "debug", platforms: %i[ mri ]
 end
