@@ -653,6 +653,7 @@ DEPENDENCIES
   bcrypt (= 3.1.20)
   bootsnap
   capybara
+  chronic (~> 0.10.2)
   debug
   devise (= 4.9.4)
   dotenv-rails
@@ -671,6 +672,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.2)
+  redis-client (~> 0.23.1)
   responders (= 3.1.1)
   sassc-rails
   selenium-webdriver
