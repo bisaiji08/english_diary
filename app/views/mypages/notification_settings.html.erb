@@ -1,0 +1,29 @@
+<p><%= link_to '＜ Settings', mypages_settings_path %></p>
+<h1>Notification Settings</h1>
+
+<p>
+  Current Notification Status: 
+  <% if @notifications_enabled %>
+    <span style="color: green;">Enabled</span>
+  <% else %>
+    <span style="color: red;">Disabled</span>
+  <% end %>
+</p>
+
+<%= form_with model: current_user, url: update_notification_settings_path, method: :patch, local: true do |f| %>
+  <div>
+    <%= f.label :notifications_enabled, "Enable Notifications" %>
+    <%= f.radio_button :notifications_enabled, 'true', id: "enable-notifications" %>
+    <%= f.label :notifications_enabled, "Yes", for: "enable-notifications" %>
+
+    <%= f.radio_button :notifications_enabled, 'false', id: "disable-notifications" %>
+    <%= f.label :notifications_enabled, "No", for: "disable-notifications" %>
+  </div>
+  <div>
+    <%= f.label :notification_time, "Notification Time" %>
+    <%= f.time_select :notification_time, default: @notification_time || Time.now, minute_step: 5 %>
+  </div>
+  <div>
+    <%= f.submit "Save Settings" %>
+  </div>
+<% end %>

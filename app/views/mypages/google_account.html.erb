@@ -2,11 +2,11 @@
 <h1>Google Account Settings</h1>
 
 <% if current_user.provider.present? && current_user.uid.present? %>
-  <p>Googleアカウントが連携されています。</p>
+  <p>Google account is linked.</p>
   <%= form_with url: disconnect_google_path, method: :delete, class: 'inline-form' do %>
-    <%= submit_tag 'Googleアカウントの連携を解除する', class: 'btn btn-danger', data: { confirm: '本当に連携を解除しますか？' } %>
+    <%= submit_tag 'Unlink your Google account', class: 'btn btn-danger', data: { confirm: 'Are you sure you want to cancel the link?' } %>
   <% end %>
 <% else %>
-  <p>Googleアカウントは連携されていません。</p>
-  <%= link_to "Googleアカウントを連携する", user_google_oauth2_omniauth_authorize_path, method: :post %>
+  <p>Google account is not linked.</p>
+  <%= link_to "Link your Google account", user_google_oauth2_omniauth_authorize_path, method: :post %>
 <% end %>

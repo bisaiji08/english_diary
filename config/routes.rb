@@ -14,10 +14,11 @@ Rails.application.routes.draw do
   root to: 'static_pages#top'
 
   get 'mypages/top', to: 'mypages#top', as: 'mypages_top'
-  
   get 'mypages/settings', to: 'mypages#settings', as: 'mypages_settings'
-
   get 'mypages/google_account', to: 'mypages#google_account', as: 'mypages_google_account'
+
+  get 'mypages/notification_settings', to: 'mypages#notification_settings', as: 'mypages_notification_settings'
+  patch 'mypages/update_notification_settings', to: 'mypages#update_notification_settings', as: 'update_notification_settings'
 
   get 'mypages/diaries', to: 'diaries#index', as: 'mypages_diaries'
 

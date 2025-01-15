@@ -4,6 +4,8 @@ import "controllers";
 
 import './diaries';
 
+import "./controllers/notification_settings";
+
 const setupInfoPopup = () => {
   const infoButton = document.getElementById('info-button');
   const infoPopup = document.getElementById('info-popup');
