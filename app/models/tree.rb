@@ -24,15 +24,21 @@ class Tree < ApplicationRecord
 
   # 特訓処理
   def train!
-    if job == "mature tree" && level >= 10
-      reset_tree
-    elsif level >= 10
-      promote_job
+    if can_train?
+      if job == "mature tree" && level >= 10
+        reset_tree
+      elsif level >= 10
+        promote_job
+      else
+        increment(:level)
+      end
+      self.last_trained_at = Time.current # 水やりした日時を更新
+      save!
     else
-      increment(:level)
+      raise "Training not allowed. Already watered today."
     end
-    save
   end
+  
 
   def purchase_item(item)
     if self.points >= item.price

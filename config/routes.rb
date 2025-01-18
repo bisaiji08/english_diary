@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :diaries do
     post 'translate', on: :collection
+    get 'search', on: :collection
   end
 
   get 'trees', to: 'trees#index'

@@ -1,0 +1,47 @@
+#diary-header {
+  h1 {
+    margin-top: 5px;
+    font-size: 3em; /* タイトルのフォントサイズ */
+    margin-bottom: 8px; /* 下にスペースを追加 */
+  }
+
+  div {
+    text-align: left; /* Write diary ボタンを左寄せ */
+    margin-top: 8px; /* ボタンとの間隔を調整 */
+
+    .link-class {
+      font-size: 0.9em; /* ボタンのフォントサイズを小さく */
+      color: #0056b3; /* ボタンのテキスト色 */
+      text-decoration: none; /* 下線を削除 */
+      padding: 5px 10px; /* ボタンの内側余白 */
+      border: 1px solid #0056b3; /* ボタンの枠線 */
+      border-radius: 5px; /* ボタンの角を丸める */
+      display: inline-block; /* ボタンの形状を維持 */
+
+      &:hover {
+        background-color: #0056b3; /* ホバー時の背景色 */
+        color: #fff; /* ホバー時のテキスト色 */
+      }
+    }
+  }
+}
+
+
+#search-results {
+  border: 1px solid #ccc;
+  background: #fff;
+  position: absolute;
+  width: 300px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+
+  div {
+    padding: 8px;
+    cursor: pointer;
+
+    &:hover {
+      background: #f0f0f0;
+    }
+  }
+}

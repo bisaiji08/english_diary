@@ -66,6 +66,16 @@ end
     end
   end
 
+  def search
+    query = params[:query]
+    if query.present?
+      diaries = current_user.diaries.where("title ILIKE ?", "%#{query}%").limit(10)
+      render json: diaries.as_json(only: [:id, :title, :created_at])
+    else
+      render json: []
+    end
+  end
+
   private
 
   def diary_parameter
