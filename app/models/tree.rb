@@ -9,6 +9,10 @@ class Tree < ApplicationRecord
 
   after_initialize :set_defaults, if: :new_record?
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["id", "level", "points", "job", "last_trained_at", "max_count", "created_at", "updated_at", "user_id"]
+  end
+
   def set_defaults
     self.level ||= 0
     self.job ||= "Seedlings"
