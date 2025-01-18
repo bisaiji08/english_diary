@@ -10,6 +10,14 @@ class User < ApplicationRecord
 
   after_create :create_tree
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["id", "email", "name", "created_at", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["diaries", "purchases", "purchased_items", "tree"]
+  end
+
   def self.from_omniauth(auth)
     Rails.logger.info "OmniAuth Auth Data: #{auth.inspect}"
 
