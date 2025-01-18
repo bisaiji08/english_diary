@@ -1,10 +1,15 @@
 <%= link_to '＜My page', mypages_top_path %>
 <p id="notice"><%= notice %></p>
 
-<div style="display: flex; justify-content: space-between; align-items: center;">
+<div id="diary-header">
   <h1>My Diary</h1>
-  <%= link_to 'Write diary', new_diary_path, class: "link-class" %>
+  <div>
+    <%= link_to 'Write diary', new_diary_path, class: "link-class" %>
+  </div>
 </div>
+
+<input type="text" id="search-input" placeholder="Search diary titles..." />
+<div id="search-results"></div>
 
 <table>
   
@@ -19,3 +24,28 @@
     </div>
   <% end %>
 <% end %>
+
+<script>
+  document.getElementById('search-input').addEventListener('input', async (event) => {
+    const query = event.target.value;
+
+    if (query.length < 2) {
+      document.getElementById('search-results').innerHTML = '';
+      return;
+    }
+
+    const response = await fetch(`/diaries/search?query=${encodeURIComponent(query)}`);
+    const results = await response.json();
+
+    const resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = results.map(diary => {
+      const createdAt = new Date(diary.created_at).toLocaleDateString();
+      return `
+        <div>
+          <a href="/diaries/${diary.id}">${diary.title}</a>
+          <span>(${createdAt})</span>
+        </div>
+      `;
+    }).join('');
+  });
+</script>
