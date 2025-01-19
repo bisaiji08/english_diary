@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   get 'mypages/diaries', to: 'diaries#index', as: 'mypages_diaries'
 
+  get 'mypages/how_to_use', to: 'mypages#how_to_use', as: :mypages_how_to_use
+
   resources :diaries do
     post 'translate', on: :collection
     get 'search', on: :collection
