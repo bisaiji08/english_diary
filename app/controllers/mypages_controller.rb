@@ -33,6 +33,10 @@ class MypagesController < ApplicationController
       redirect_to mypages_notification_settings_path
     end
   end
+
+  def how_to_use
+    # 静的なビューを表示するだけ
+  end
   
 
   private

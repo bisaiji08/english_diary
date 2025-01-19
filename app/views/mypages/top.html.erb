@@ -4,6 +4,7 @@
 <p><%= link_to 'View Diaries', mypages_diaries_path %></p>
 <p><%= link_to 'Go to Shop', shop_index_path %></p>
 <p><%= link_to 'Settings', mypages_settings_path %></p>
+<p><%= link_to 'How to Use', mypages_how_to_use_path %></p>
 
 <h1>Tree Information</h1>
 <p>Your Points: <%= @tree.points %></p>
@@ -14,6 +15,11 @@
 <% else %>
   <p>Watering:Not Yet</p>
 <% end %>
+
+<p>
+  <strong>Important:</strong> Writing your first diary of the day is considered as watering your tree. 
+  <%= link_to 'Learn more', mypages_how_to_use_path %>
+</p>
 
 <h2>Purchased Items</h2>
 
