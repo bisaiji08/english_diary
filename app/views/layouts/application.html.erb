@@ -27,4 +27,12 @@
     
     <%= yield %>
   </body>
+
+  <footer class="site-footer">
+    <ul>
+      <li><%= link_to 'Terms of service', terms_path %></li>
+      <li><%= link_to 'Privacy Policy', privacy_path %></li>
+      <li><%= link_to 'Inquiry', contact_path %></li>
+    </ul>
+  </footer>
 </html>

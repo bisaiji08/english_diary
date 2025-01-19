@@ -1,0 +1,19 @@
+<h1>Contact Us</h1>
+
+<%= form_with url: contact_path, method: :post, local: true do |form| %>
+  <div>
+    <%= form.label :name, 'Your Name' %><br>
+    <%= form.text_field :name, required: true, placeholder: "Enter your name" %>
+  </div>
+  <div>
+    <%= form.label :email, 'Email Address' %><br>
+    <%= form.email_field :email, required: true, placeholder: "Enter your email address" %>
+  </div>
+  <div>
+    <%= form.label :message, 'Message' %><br>
+    <%= form.text_area :message, required: true, placeholder: "Enter your message" %>
+  </div>
+  <div>
+    <%= form.submit 'Send' %>
+  </div>
+<% end %>
