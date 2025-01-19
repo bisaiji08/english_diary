@@ -37,6 +37,11 @@ Rails.application.routes.draw do
     post 'purchase', on: :member
   end
 
+  get 'terms', to: 'pages#terms', as: :terms
+  get 'privacy', to: 'pages#privacy', as: :privacy
+  get 'contact', to: 'pages#contact', as: :contact
+  post 'contact', to: 'pages#contact'
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
