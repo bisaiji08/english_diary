@@ -10,6 +10,10 @@
   <% end %>
 </p>
 
+<p>
+  通知時間は <strong><%= Time.zone.name %> (JST)</strong> を基準としています。
+</p>
+
 <%= form_with model: current_user, url: update_notification_settings_path, method: :patch, local: true do |f| %>
   <div>
     <%= f.label :notifications_enabled, "Enable Notifications" %>

@@ -42,6 +42,7 @@ gem 'sidekiq'
 gem 'whenever', require: false
 gem 'redis-client', '~> 0.23.1'
 gem 'chronic', '~> 0.10.2'
+gem 'sidekiq-scheduler'
 
 gem 'activeadmin'
 

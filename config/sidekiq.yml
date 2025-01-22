@@ -1,0 +1,10 @@
+:concurrency: 5
+:queues:
+  - default
+
+:scheduler:
+  :schedule:
+    send_reminders_job:
+      cron: "*/1 * * * *"
+      class: "SendRemindersJob"
+      queue: default

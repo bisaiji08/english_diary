@@ -18,7 +18,7 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-set :output, "log/cron.log"
+set :output, "/var/log/cron.log"
 
 every 1.minute do
   runner "SendRemindersJob.perform_later"
