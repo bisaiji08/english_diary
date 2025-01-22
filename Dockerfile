@@ -1,37 +1,38 @@
-#ベースイメージの指定
+# ベースイメージ
 FROM ruby:3.2.2
 
-#環境変数
-ENV TZ Asia/Tokyo
-ENV LANG ja_JP.UTF-8
-ENV LC_ALL C.UTF-8
-ENV EDITOR=vim
+# 必要なパッケージをインストール
+RUN apt-get update && apt-get install -y \
+    postgresql-client \
+    vim \
+    cron \
+    --no-install-recommends
 
-#dbにpostgreSQLを使用するので対象のパッケージをインストール
-RUN apt-get update && apt-get install -y postgresql-client vim
-
-#appディレクトリを作成
+# 作業ディレクトリを作成
 RUN mkdir /app
-#コマンドを実行するディレクトリを/appに指定
 WORKDIR /app
 
-#ローカルのGemfileとGemfile.lockをコンテナ内にコピー
+# ローカルのGemfileとGemfile.lockをコピー
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 
-#bundle installを実行
+# 依存関係のインストール
 RUN bundle install
 
-#ローカルの現在のディレクトリをコンテナ内にコピー
+# アプリケーションコードをコピー
 COPY . /app
 
-#後述のentrypoint.shを実行するための記述
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+# start.sh をコピー
+COPY start.sh /usr/bin/start.sh
 
-#コンテナがリッスンするPORTを指定
+# start.sh に実行権限を付与
+RUN chmod +x /usr/bin/start.sh
+
+# cron のログを保存するディレクトリを作成
+RUN mkdir -p /var/log/cron
+
+# ポートを公開
 EXPOSE 3000
 
-#コンテナ作成時にサーバーを立てる
-CMD ["rails", "server", "-b", "0.0.0.0"]
+# start.sh を実行
+CMD ["/usr/bin/start.sh"]
