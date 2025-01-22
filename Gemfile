@@ -47,6 +47,9 @@ gem 'activeadmin'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri ]
+  gem 'rspec-rails', '~> 6.0.0'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -56,4 +59,7 @@ end
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'shoulda-matchers', '~> 5.0'
+  gem 'database_cleaner-active_record'
+  gem 'rails-controller-testing'
 end

@@ -20,45 +20,45 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     Rails.logger.info "OmniAuth Auth Data: #{auth.inspect}"
-
+  
     # 必須項目の検証
     if auth.info.email.blank?
       Rails.logger.error "OmniAuth Error: Email is missing for UID: #{auth.uid}"
-      return nil
+      raise StandardError, 'Failed to create user'
     end
-
-    # メールアドレスで既存ユーザーを検索
-    user = find_by(email: auth.info.email)
-
-    if user
-      Rails.logger.info "Existing user found: #{user.inspect}"
-
-      # プロバイダー情報が異なる場合のみ更新
-      if user.provider != auth.provider || user.uid != auth.uid
-        Rails.logger.info "Updating provider and UID for user: #{user.email}"
-        user.update(provider: auth.provider, uid: auth.uid)
+  
+    transaction do
+      user = find_or_initialize_by(email: auth.info.email)
+  
+      if user.persisted?
+        Rails.logger.info "Existing user found: #{user.inspect}"
+  
+        # プロバイダー情報を更新（必要な場合）
+        if user.provider != auth.provider || user.uid != auth.uid
+          Rails.logger.info "Updating provider and UID for user: #{user.email}"
+          user.update!(provider: auth.provider, uid: auth.uid)
+        end
+      else
+        Rails.logger.info "Creating new user for OmniAuth data"
+        # 新規ユーザー作成
+        user.assign_attributes(
+          provider: auth.provider,
+          uid: auth.uid,
+          password: Devise.friendly_token[0, 20],
+          name: auth.info.name || "Google User",
+          image: auth.info.image
+        )
+  
+        # 保存に失敗した場合はエラーを投げる
+        user.save!
+        Rails.logger.info "User successfully created: #{user.inspect}"
       end
-    else
-      Rails.logger.info "Creating new user for OmniAuth data"
-      # プロバイダーとUIDで新しいユーザーを初期化
-      user = new(
-        provider: auth.provider,
-        uid: auth.uid,
-        email: auth.info.email,
-        password: Devise.friendly_token[0, 20],
-        name: auth.info.name,
-        image: auth.info.image
-      )
-
-      unless user.save
-        Rails.logger.error "User creation failed: #{user.errors.full_messages}"
-        return nil
-      end
-
-      Rails.logger.info "User successfully created: #{user.inspect}"
+  
+      user
+    rescue ActiveRecord::RecordInvalid => e
+      Rails.logger.error "User creation failed: #{e.message}"
+      raise StandardError, 'Failed to create user'
     end
-
-    user
   end
 
   def purchased_fonts

@@ -1,0 +1,7 @@
+FactoryBot.define do
+  factory :item do
+    name { 'Test Item' }
+    price { 100 }
+    category { 'Font' }
+  end
+end
