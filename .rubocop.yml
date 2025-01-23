@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
   TargetRubyVersion: 3.2
   Exclude:
@@ -8,6 +10,8 @@ AllCops:
 
 Layout/LineLength:
   Max: 120 # 行の長さを120文字に制限
+  IgnoredPatterns:
+    - '^#'
 
 Style/FrozenStringLiteralComment:
   Enabled: true
@@ -18,7 +22,7 @@ Bundler/OrderedGems:
 Layout/TrailingWhitespace:
   Enabled: true
 
-Layout/TrailingBlankLines:
+Layout/TrailingEmptyLines:
   Enabled: true
 
 RSpec/ExampleLength:
@@ -30,3 +34,6 @@ RSpec/NestedGroups:
 require:
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-capybara
+  - rubocop-factory_bot
+  - rubocop-rspec_rails
