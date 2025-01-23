@@ -29,8 +29,8 @@ def create
     else
       flash[:alert] = "Diary created, but training is already done for today."
     end
-
-    redirect_to @diary, notice: "Diary was successfully created."
+  
+    redirect_to @diary # フラッシュメッセージはそのまま渡される
   else
     render 'new', status: :unprocessable_entity
   end

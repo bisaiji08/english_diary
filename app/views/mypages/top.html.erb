@@ -11,9 +11,11 @@
 <p><%= @tree.max_count %> laps</p>
 <p>Level: <%= @tree.level %></p>
 <% if @tree && @tree.last_trained_at && @tree.last_trained_at.to_date == Date.today %>
-  <p>Watering:<Yet/p>
+  <p>Watering: Yet</p>
+<% elsif @tree %>
+  <p>Watering: Not Yet</p>
 <% else %>
-  <p>Watering:Not Yet</p>
+  <p>You don't have a tree yet.</p>
 <% end %>
 
 <p>
