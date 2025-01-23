@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Tree, type: :model do
@@ -41,7 +43,7 @@ RSpec.describe Tree, type: :model do
       tree.update!(level: 10, job: 'young tree')
       tree.train!
       expect(tree.level).to eq(0)
-    expect(tree.job).to eq('mature tree')
+      expect(tree.job).to eq('mature tree')
     end
   end
 end

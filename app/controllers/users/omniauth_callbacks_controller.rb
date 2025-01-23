@@ -1,51 +1,55 @@
-class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  before_action :authenticate_user!, only: [:connect_google]
-  def google_oauth2
-    @user = User.from_omniauth(request.env['omniauth.auth'])
+# frozen_string_literal: true
 
-    if @user.nil?
-      redirect_to new_user_registration_url, alert: "Authentication failed: Missing email or invalid user data."
-      return
+module Users
+  class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+    before_action :authenticate_user!, only: [:connect_google]
+    def google_oauth2
+      @user = User.from_omniauth(request.env['omniauth.auth'])
+
+      if @user.nil?
+        redirect_to new_user_registration_url, alert: 'Authentication failed: Missing email or invalid user data.'
+        return
+      end
+
+      if @user.persisted?
+        sign_in_and_redirect @user, event: :authentication
+        set_flash_message(:notice, :success, kind: 'Google') if is_navigational_format?
+      else
+        session['devise.google_data'] = request.env['omniauth.auth'].except(:extra)
+        redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
+      end
     end
 
-    if @user.persisted?
-      sign_in_and_redirect @user, event: :authentication
-      set_flash_message(:notice, :success, kind: 'Google') if is_navigational_format?
-    else
-      session['devise.google_data'] = request.env['omniauth.auth'].except(:extra)
-      redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
-    end
-  end
-
-  def after_sign_in_path_for(resource)
-    mypages_top_path # マイページのパスにリダイレクト
-  end
-
-  def connect_google
-    # OmniAuthデータが存在しない場合のエラーハンドリング
-    auth = request.env['omniauth.auth']
-    if auth.blank? || auth.provider.blank? || auth.uid.blank?
-      redirect_to mypages_google_account_path, alert: 'Failed to link Google account. Please try again.'
-      return
+    def after_sign_in_path_for(_resource)
+      mypages_top_path # マイページのパスにリダイレクト
     end
 
-  # 現在のユーザーと同じGoogleアカウントが既に存在しているか確認
-  existing_user = User.find_by(provider: auth.provider, uid: auth.uid)
-  if existing_user && existing_user != current_user
-    redirect_to mypages_google_account_path, alert: 'This Google account is already linked to another user.'
-    return
-  end
+    def connect_google
+      # OmniAuthデータが存在しない場合のエラーハンドリング
+      auth = request.env['omniauth.auth']
+      if auth.blank? || auth.provider.blank? || auth.uid.blank?
+        redirect_to mypages_google_account_path, alert: 'Failed to link Google account. Please try again.'
+        return
+      end
 
-    current_user.update(provider: auth.provider, uid: auth.uid)
-    if current_user.save
-      redirect_to mypages_settings_path, notice: 'Google account linking is complete.'
-    else
-      Rails.logger.error "Failed to save user: #{current_user.errors.full_messages}"
+      # 現在のユーザーと同じGoogleアカウントが既に存在しているか確認
+      existing_user = User.find_by(provider: auth.provider, uid: auth.uid)
+      if existing_user && existing_user != current_user
+        redirect_to mypages_google_account_path, alert: 'This Google account is already linked to another user.'
+        return
+      end
+
+      current_user.update(provider: auth.provider, uid: auth.uid)
+      if current_user.save
+        redirect_to mypages_settings_path, notice: 'Google account linking is complete.'
+      else
+        Rails.logger.error "Failed to save user: #{current_user.errors.full_messages}"
+        redirect_to mypages_google_account_path, alert: 'Failed to link Google account.'
+      end
+    end
+
+    def failure
       redirect_to mypages_google_account_path, alert: 'Failed to link Google account.'
     end
-  end
-
-  def failure
-    redirect_to mypages_google_account_path, alert: "Failed to link Google account."
   end
 end

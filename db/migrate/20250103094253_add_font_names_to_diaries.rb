@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddFontNamesToDiaries < ActiveRecord::Migration[7.1]
   def change
     # japanese_font_nameカラムが存在しない場合のみ追加

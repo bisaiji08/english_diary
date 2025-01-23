@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tree < ApplicationRecord
   belongs_to :user
   has_many :purchases, through: :user
@@ -9,66 +11,62 @@ class Tree < ApplicationRecord
 
   after_initialize :set_defaults, if: :new_record?
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["id", "level", "points", "job", "last_trained_at", "max_count", "created_at", "updated_at", "user_id"]
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[id level points job last_trained_at max_count created_at updated_at user_id]
   end
 
   def set_defaults
     self.level ||= 0
-    self.job ||= "Seedlings"
+    self.job ||= 'Seedlings'
     self.points ||= 0
     self.max_count ||= 1
   end
 
   # 特訓ができるかどうかをチェック
   def can_train?
-    return false if self.last_trained_at && self.last_trained_at.to_date == Date.today
+    return false if last_trained_at && last_trained_at.to_date == Date.today
+
     true
   end
 
   # 特訓処理
   def train!
-    if can_train?
-      if job == "mature tree" && level >= 10
-        reset_tree
-      elsif level >= 10
-        promote_job
-      else
-        self.level += 1 # incrementではなく直接加算
-      end
-      self.last_trained_at = Time.current
-      save! # 確実に保存する
+    raise 'Training not allowed. Already watered today.' unless can_train?
+
+    if job == 'mature tree' && level >= 10
+      reset_tree
+    elsif level >= 10
+      promote_job
     else
-      raise "Training not allowed. Already watered today."
+      self.level += 1 # incrementではなく直接加算
     end
-  end  
-  
+    self.last_trained_at = Time.current
+    save! # 確実に保存する
+  end
 
   def purchase_item(item)
-    if self.points >= item.price
-      self.points -= item.price
-      self.save!
-      # アイテムの購入記録を作成（ログや所有リストに追加する場合など）
-      return "Item '#{item.name}' purchased successfully!"
-    else
-      return "Not enough points to purchase '#{item.name}'."
-    end
+    return "Not enough points to purchase '#{item.name}'." unless self.points >= item.price
+
+    self.points -= item.price
+    save!
+    # アイテムの購入記録を作成（ログや所有リストに追加する場合など）
+    "Item '#{item.name}' purchased successfully!"
   end
 
   private
 
   def promote_job
     case job
-    when "Seedlings"
-      self.job = "young tree"
-    when "young tree"
-      self.job = "mature tree"
+    when 'Seedlings'
+      self.job = 'young tree'
+    when 'young tree'
+      self.job = 'mature tree'
     end
     self.level = 0
   end
 
   def reset_tree
-    self.job = "Seedlings"
+    self.job = 'Seedlings'
     self.level = 0
     self.points += 500
     self.max_count += 1

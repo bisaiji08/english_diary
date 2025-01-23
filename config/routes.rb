@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -20,7 +22,8 @@ Rails.application.routes.draw do
   get 'mypages/google_account', to: 'mypages#google_account', as: 'mypages_google_account'
 
   get 'mypages/notification_settings', to: 'mypages#notification_settings', as: 'mypages_notification_settings'
-  patch 'mypages/update_notification_settings', to: 'mypages#update_notification_settings', as: 'update_notification_settings'
+  patch 'mypages/update_notification_settings', to: 'mypages#update_notification_settings',
+                                                as: 'update_notification_settings'
 
   get 'mypages/diaries', to: 'diaries#index', as: 'mypages_diaries'
 
@@ -32,10 +35,10 @@ Rails.application.routes.draw do
   end
 
   get 'trees', to: 'trees#index'
-  post "create_tree", to: "trees#create"
-  post "train", to: "trees#train"
+  post 'create_tree', to: 'trees#create'
+  post 'train', to: 'trees#train'
 
-  resources :shop, only: [:index, :show] do
+  resources :shop, only: %i[index show] do
     post 'purchase', on: :member
   end
 
@@ -44,9 +47,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'pages#contact', as: :contact
   post 'contact', to: 'pages#contact'
 
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'

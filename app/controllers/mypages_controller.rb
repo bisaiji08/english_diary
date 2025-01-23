@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MypagesController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_tree_exists, only: :top
@@ -14,7 +16,7 @@ class MypagesController < ApplicationController
   def google_account
     # 必要ならGoogle連携に関する情報を取得
   end
-  
+
   def notification_settings
     @notifications_enabled = current_user.notifications_enabled
     @notification_time = current_user.notification_time
@@ -37,7 +39,6 @@ class MypagesController < ApplicationController
   def how_to_use
     # 静的なビューを表示するだけ
   end
-  
 
   private
 

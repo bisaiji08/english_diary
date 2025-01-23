@@ -1,7 +1,9 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails/all"
-require "google/cloud/translate"
+require_relative 'boot'
+
+require 'rails/all'
+require 'google/cloud/translate'
 
 Bundler.require(*Rails.groups)
 

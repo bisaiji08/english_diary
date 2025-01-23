@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Diaries', type: :request do
@@ -19,9 +21,9 @@ RSpec.describe 'Diaries', type: :request do
   describe 'POST /create' do
     context 'with valid parameters' do
       it 'creates a new diary' do
-        expect {
+        expect do
           post diaries_path, params: { diary: attributes_for(:diary) }
-        }.to change(Diary, :count).by(1)
+        end.to change(Diary, :count).by(1)
         expect(response).to redirect_to(diary_path(Diary.last))
       end
     end

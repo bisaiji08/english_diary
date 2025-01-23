@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class RemoveNameFromTrees < ActiveRecord::Migration[7.1]
   def change
-    if column_exists?(:trees, :name)
-      remove_column :trees, :name, :string
-    end
+    return unless column_exists?(:trees, :name)
+
+    remove_column :trees, :name, :string
   end
 end

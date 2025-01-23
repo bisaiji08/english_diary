@@ -1,0 +1,39 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 3.2
+  Exclude:
+    - 'db/schema.rb' # 自動生成ファイルを無視
+    - 'bin/**/*'     # 自動生成ファイルを無視
+    - 'node_modules/**/*' # Node.js の依存関係を無視
+    - 'vendor/**/*'  # Bundler の依存関係を無視
+
+Layout/LineLength:
+  Max: 120 # 行の長さを120文字に制限
+  IgnoredPatterns:
+    - '^#'
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Bundler/OrderedGems:
+  Enabled: true
+
+Layout/TrailingWhitespace:
+  Enabled: true
+
+Layout/TrailingEmptyLines:
+  Enabled: true
+
+RSpec/ExampleLength:
+  Max: 10 # テストケース内の最大行数
+
+RSpec/NestedGroups:
+  Max: 3 # RSpecでのネストの深さ制限
+
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-capybara
+  - rubocop-factory_bot
+  - rubocop-rspec_rails
