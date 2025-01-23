@@ -15,5 +15,27 @@ RSpec.describe "Users::SessionsController", type: :request do
         expect(response.body).to include("Invalid Email or password.")
       end
     end
+
+    context "with valid credentials" do
+      context "when remember_me is checked" do
+        it "logs the user in and sets a remember_me cookie" do
+          post user_session_path, params: {
+            user: { email: user.email, password: user.password, remember_me: '1' }
+          }
+          expect(response).to redirect_to(mypages_top_path)
+          expect(cookies['remember_user_token']).to be_present
+        end        
+      end
+
+      context "when remember_me is not checked" do
+        it "logs the user in but does not set a remember_me cookie" do
+          post user_session_path, params: {
+            user: { email: user.email, password: user.password, remember_me: '0' }
+          }
+          expect(response).to redirect_to(mypages_top_path)
+          expect(cookies['remember_user_token']).to be_nil
+        end        
+      end
+    end
   end
 end

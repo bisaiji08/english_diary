@@ -34,14 +34,14 @@ class Tree < ApplicationRecord
       elsif level >= 10
         promote_job
       else
-        increment(:level)
+        self.level += 1 # incrementではなく直接加算
       end
-      self.last_trained_at = Time.current # 水やりした日時を更新
-      save!
+      self.last_trained_at = Time.current
+      save! # 確実に保存する
     else
       raise "Training not allowed. Already watered today."
     end
-  end
+  end  
   
 
   def purchase_item(item)
