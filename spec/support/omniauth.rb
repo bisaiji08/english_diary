@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.configure do |config|
   config.before(:each) do
     OmniAuth.config.test_mode = true

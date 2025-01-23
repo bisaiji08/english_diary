@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ModifyTreesTable < ActiveRecord::Migration[7.1]
   def change
     # 不要なカラムを削除

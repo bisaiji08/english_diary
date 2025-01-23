@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Purchase do
   permit_params :user_id, :item_id
 
@@ -22,4 +24,3 @@ ActiveAdmin.register Purchase do
     f.actions
   end
 end
-

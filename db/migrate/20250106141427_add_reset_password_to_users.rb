@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddResetPasswordToUsers < ActiveRecord::Migration[7.1]
   def change
     # カラムを一括で確認しながら追加

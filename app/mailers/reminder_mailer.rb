@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReminderMailer < ApplicationMailer
   default from: ENV['GMAIL_USERNAME']
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ShopController < ApplicationController
   def index
     purchased_items = current_user.purchases.pluck(:item_id)
@@ -15,7 +17,7 @@ class ShopController < ApplicationController
 
     # 重複購入チェック
     if current_user.purchases.exists?(item: @item)
-      redirect_to shop_index_path, alert: "You already own this item."
+      redirect_to shop_index_path, alert: 'You already own this item.'
       return
     end
 
@@ -33,10 +35,9 @@ class ShopController < ApplicationController
       redirect_to shop_index_path, notice: "You successfully purchased #{@item.name}!"
     else
       # エラーメッセージとリダイレクト
-      redirect_to shop_path(@item), alert: "Not enough points to purchase this item."
+      redirect_to shop_path(@item), alert: 'Not enough points to purchase this item.'
     end
   rescue ActiveRecord::RecordInvalid => e
     redirect_to shop_path(@item), alert: "Purchase failed: #{e.message}"
   end
 end
-

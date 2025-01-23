@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register User do
   permit_params :email, :name
 
@@ -6,11 +8,11 @@ ActiveAdmin.register User do
     id_column
     column :name
     column :email
-    column "Tree Level", sortable: false do |user|
-      user.tree&.level || "N/A"
+    column 'Tree Level', sortable: false do |user|
+      user.tree&.level || 'N/A'
     end
-    column "Tree Points", sortable: false do |user|
-      user.tree&.points || "N/A"
+    column 'Tree Points', sortable: false do |user|
+      user.tree&.points || 'N/A'
     end
     column :created_at
     actions
@@ -24,7 +26,7 @@ ActiveAdmin.register User do
       row :updated_at
     end
 
-    panel "Tree Information" do
+    panel 'Tree Information' do
       if user.tree.present?
         attributes_table_for user.tree do
           row :level
@@ -34,11 +36,11 @@ ActiveAdmin.register User do
           row :max_count
         end
       else
-        div "This user has no associated tree."
+        div 'This user has no associated tree.'
       end
     end
 
-    panel "Purchased Items" do
+    panel 'Purchased Items' do
       table_for user.purchased_items do
         column :name
         column :description
