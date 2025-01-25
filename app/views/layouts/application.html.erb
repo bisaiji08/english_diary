@@ -15,6 +15,21 @@
         --english-font: inherit;
       }
     </style>
+    <meta property="og:title" content="English Diary" />
+    <meta property="og:description" content="日記を楽しく続けながら英語力もアップ。日本語で書いた日記を英語に自動翻訳するアプリ！" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= asset_path('ogp-image.jpg') %>" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="ja_JP" />
+    
+    <!-- Twitterカード用 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="English Diary" />
+    <meta name="twitter:description" content="日記を楽しく続けながら英語力もアップ。日本語で書いた日記を英語に自動翻訳するアプリ！" />
+    <meta name="twitter:image" content="<%= asset_path('ogp-image.jpg') %>" />
+
   </head>
 
   <body>
