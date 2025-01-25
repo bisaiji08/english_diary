@@ -45,6 +45,8 @@ gem 'whenever', require: false
 
 gem 'activeadmin'
 
+gem 'mini_magick'
+
 group :development, :test do
   gem 'debug', platforms: %i[mri]
   gem 'factory_bot_rails'

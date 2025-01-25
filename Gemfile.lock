@@ -527,6 +527,7 @@ GEM
     marcel (1.0.4)
     matrix (0.4.2)
     memoist (0.16.2)
+    mini_magick (5.1.0)
     mini_mime (1.1.5)
     minitest (5.25.4)
     msgpack (1.7.5)
@@ -805,6 +806,7 @@ DEPENDENCIES
   jbuilder
   letter_opener
   letter_opener_web
+  mini_magick
   omniauth
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
