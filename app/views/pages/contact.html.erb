@@ -1,19 +1,19 @@
-<h1>Contact Us</h1>
+<h1><%= t('pages.contact.title') %></h1>
 
 <%= form_with url: contact_path, method: :post, local: true do |form| %>
   <div>
-    <%= form.label :name, 'Your Name' %><br>
-    <%= form.text_field :name, required: true, placeholder: "Enter your name" %>
+    <%= form.label :name, t('pages.contact.form.name_label') %><br>
+    <%= form.text_field :name, required: true, placeholder: t('pages.contact.form.name_placeholder') %>
   </div>
   <div>
-    <%= form.label :email, 'Email Address' %><br>
-    <%= form.email_field :email, required: true, placeholder: "Enter your email address" %>
+    <%= form.label :email, t('pages.contact.form.email_label') %><br>
+    <%= form.email_field :email, required: true, placeholder: t('pages.contact.form.email_placeholder') %>
   </div>
   <div>
-    <%= form.label :message, 'Message' %><br>
-    <%= form.text_area :message, required: true, placeholder: "Enter your message" %>
+    <%= form.label :message, t('pages.contact.form.message_label') %><br>
+    <%= form.text_area :message, required: true, placeholder: t('pages.contact.form.message_placeholder') %>
   </div>
   <div>
-    <%= form.submit 'Send' %>
+    <%= form.submit t('pages.contact.form.submit_button') %>
   </div>
 <% end %>

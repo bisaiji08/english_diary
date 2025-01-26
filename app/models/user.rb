@@ -21,45 +21,34 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    Rails.logger.info "OmniAuth Auth Data: #{auth.inspect}"
+    Rails.logger.info I18n.t('users.omniauth.log', auth: auth.inspect)
 
-    # 必須項目の検証
     if auth.info.email.blank?
-      Rails.logger.error "OmniAuth Error: Email is missing for UID: #{auth.uid}"
-      raise StandardError, 'Failed to create user'
+      Rails.logger.error I18n.t('users.omniauth.error.email_missing', uid: auth.uid)
+      raise StandardError, I18n.t('users.omniauth.error.failed_creation')
     end
 
     transaction do
       user = find_or_initialize_by(email: auth.info.email)
 
       if user.persisted?
-        Rails.logger.info "Existing user found: #{user.inspect}"
-
-        # プロバイダー情報を更新（必要な場合）
-        if user.provider != auth.provider || user.uid != auth.uid
-          Rails.logger.info "Updating provider and UID for user: #{user.email}"
-          user.update!(provider: auth.provider, uid: auth.uid)
-        end
+        Rails.logger.info I18n.t('users.omniauth.log.existing_user', user: user.inspect)
+        user.update!(provider: auth.provider, uid: auth.uid) if user.provider != auth.provider || user.uid != auth.uid
       else
-        Rails.logger.info 'Creating new user for OmniAuth data'
-        # 新規ユーザー作成
         user.assign_attributes(
           provider: auth.provider,
           uid: auth.uid,
           password: Devise.friendly_token[0, 20],
-          name: auth.info.name || 'Google User',
+          name: auth.info.name || I18n.t('users.omniauth.default_name'),
           image: auth.info.image
         )
-
-        # 保存に失敗した場合はエラーを投げる
         user.save!
-        Rails.logger.info "User successfully created: #{user.inspect}"
       end
 
       user
     rescue ActiveRecord::RecordInvalid => e
-      Rails.logger.error "User creation failed: #{e.message}"
-      raise StandardError, 'Failed to create user'
+      Rails.logger.error I18n.t('users.omniauth.error.creation_failed', error: e.message)
+      raise StandardError, I18n.t('users.omniauth.error.failed_creation')
     end
   end
 

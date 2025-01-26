@@ -1,12 +1,11 @@
-<p><%= link_to '＜Settings', mypages_settings_path %></p>
-<h1>Google Account Settings</h1>
+<h1><%= t('mypages.google_account.title') %></h1>
 
 <% if current_user.provider.present? && current_user.uid.present? %>
-  <p>Google account is linked.</p>
+  <p><%= t('mypages.google_account.linked') %></p>
   <%= form_with url: disconnect_google_path, method: :delete, class: 'inline-form' do %>
-    <%= submit_tag 'Unlink your Google account', class: 'btn btn-danger', data: { confirm: 'Are you sure you want to cancel the link?' } %>
+    <%= submit_tag t('mypages.google_account.unlink_button'), class: 'btn btn-danger', data: { confirm: t('mypages.google_account.unlink_confirm') } %>
   <% end %>
 <% else %>
-  <p>Google account is not linked.</p>
-  <%= link_to "Link your Google account", user_google_oauth2_omniauth_authorize_path, method: :post %>
+  <p><%= t('mypages.google_account.not_linked') %></p>
+  <%= link_to t('mypages.google_account.link_button'), user_google_oauth2_omniauth_authorize_path, method: :post %>
 <% end %>

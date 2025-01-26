@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Users::SessionsController', type: :request do
+RSpec.describe I18n.t('rspec.controllers.users.sessions_controller'), type: :request do
   before do
     @request = ActionDispatch::TestRequest.create
     @request.env['devise.mapping'] = Devise.mappings[:user]
@@ -14,12 +14,17 @@ RSpec.describe 'Users::SessionsController', type: :request do
     context 'with invalid credentials' do
       it 'renders the new template with errors' do
         post user_session_path, params: { user: { email: user.email, password: 'wrongpassword' } }
-        expect(response.body).to include('Invalid Email or password.')
+
+        # フラッシュメッセージの確認
+        expect(flash[:alert]).to eq(I18n.t('devise.failure.invalid', authentication_keys: 'Email'))
+
+        # レスポンスボディの確認
+        expect(response.body).to include(I18n.t('devise.failure.invalid', authentication_keys: 'Email'))
       end
     end
 
-    context 'with valid credentials and remember_me is checked' do
-      it 'logs the user in and sets a remember_me cookie' do
+    context I18n.t('rspec.contexts.valid_credentials_remember_me_checked') do
+      it I18n.t('rspec.logs_in_and_sets_remember_me_cookie') do
         post user_session_path, params: {
           user: { email: user.email, password: user.password, remember_me: '1' }
         }
@@ -28,8 +33,8 @@ RSpec.describe 'Users::SessionsController', type: :request do
       end
     end
 
-    context 'with valid credentials and remember_me is not checked' do
-      it 'logs the user in but does not set a remember_me cookie' do
+    context I18n.t('rspec.contexts.valid_credentials_remember_me_unchecked') do
+      it I18n.t('rspec.logs_in_does_not_set_remember_me_cookie') do
         post user_session_path, params: {
           user: { email: user.email, password: user.password, remember_me: '0' }
         }

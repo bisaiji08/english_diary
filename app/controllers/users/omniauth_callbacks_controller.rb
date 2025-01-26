@@ -3,11 +3,12 @@
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     before_action :authenticate_user!, only: [:connect_google]
+
     def google_oauth2
       @user = User.from_omniauth(request.env['omniauth.auth'])
 
       if @user.nil?
-        redirect_to new_user_registration_url, alert: 'Authentication failed: Missing email or invalid user data.'
+        redirect_to new_user_registration_url, alert: t('devise.omniauth_callbacks.failure', kind: 'Google')
         return
       end
 
@@ -28,28 +29,28 @@ module Users
       # OmniAuthデータが存在しない場合のエラーハンドリング
       auth = request.env['omniauth.auth']
       if auth.blank? || auth.provider.blank? || auth.uid.blank?
-        redirect_to mypages_google_account_path, alert: 'Failed to link Google account. Please try again.'
+        redirect_to mypages_google_account_path, alert: t('devise.omniauth_callbacks.link_failure')
         return
       end
 
       # 現在のユーザーと同じGoogleアカウントが既に存在しているか確認
       existing_user = User.find_by(provider: auth.provider, uid: auth.uid)
       if existing_user && existing_user != current_user
-        redirect_to mypages_google_account_path, alert: 'This Google account is already linked to another user.'
+        redirect_to mypages_google_account_path, alert: t('devise.omniauth_callbacks.already_linked')
         return
       end
 
       current_user.update(provider: auth.provider, uid: auth.uid)
       if current_user.save
-        redirect_to mypages_settings_path, notice: 'Google account linking is complete.'
+        redirect_to mypages_settings_path, notice: t('devise.omniauth_callbacks.link_success')
       else
         Rails.logger.error "Failed to save user: #{current_user.errors.full_messages}"
-        redirect_to mypages_google_account_path, alert: 'Failed to link Google account.'
+        redirect_to mypages_google_account_path, alert: t('devise.omniauth_callbacks.link_failure')
       end
     end
 
     def failure
-      redirect_to mypages_google_account_path, alert: 'Failed to link Google account.'
+      redirect_to mypages_google_account_path, alert: t('devise.omniauth_callbacks.failure')
     end
   end
 end

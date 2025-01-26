@@ -5,26 +5,45 @@
 @import 'diary_index';
 @import 'diary_fonts';
 
+
+/* 全体のレイアウト */
+.layout {
+  display: flex;
+  flex-direction: row; /* サイドバーとメインコンテンツを横並びに */
+  min-height: 100vh;
+}
+
+/* サイドバー */
+.sidebar {
+  width: 200px;
+  background-color: #f8f9fa;
+  padding: 15px;
+}
+
+/* メインコンテンツ */
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* フッター */
 .site-footer {
   background-color: #8f8f8f; /* 背景色: ダークグレー */
-  color: white;          /* テキスト色: 白 */
-  padding: 20px;         /* 上下左右の余白 */
-  text-align: center;    /* 中央揃え */
+  color: white; /* テキスト色: 白 */
+  padding: 20px; /* 上下左右の余白 */
+  text-align: center; /* 中央揃え */
+  margin-top: auto; /* フッターをページの最下部に配置 */
 }
 
 .site-footer ul {
-  list-style: none;      /* リストマーカーを削除 */
+  list-style: none; /* リストマーカーを削除 */
   padding: 0;
   margin: 0;
 }
 
 .site-footer li {
-  display: inline;       /* 横並びに配置 */
-  margin: 0 10px;        /* 各リスト項目の余白 */
-}
-
-.site-footer {
-  margin-top: auto; /* フッターをページの最下部に配置 */
+  display: inline; /* 横並びに配置 */
+  margin: 0 10px; /* 各リスト項目の余白 */
 }
 
 /*

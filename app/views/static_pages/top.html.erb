@@ -1,10 +1,9 @@
-<h1>English Diary<h1>
-<button id="info-button" class="btn btn-info">About this app</button>
+<h1><%= t('static_pages.top.title') %></h1>
+<button id="info-button" class="btn btn-info"><%= t('static_pages.top.about_button') %></button>
 
 <div id="info-popup" style="display: none;">
-  <p>This is an app to help you get into the habit of keeping an English diary.<br>
-It also has a translation function, so you can easily write an English diary even if you don't have any knowledge of English.</p>
-  <button id="close-popup">Close</button>
+  <p><%= t('static_pages.top.about_description') %></p>
+  <button id="close-popup"><%= t('static_pages.top.close_button') %></button>
 </div>
 
-<h1> <%= link_to 'Log in', new_user_session_path, class: 'login-link' %> <h1>
+<h1><%= link_to t('static_pages.top.login_link'), new_user_session_path, class: 'login-link' %></h1>

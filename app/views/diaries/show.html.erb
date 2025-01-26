@@ -1,35 +1,33 @@
-<%= link_to '＜Calendar', diaries_path %>
-
 <div class="diary-info">
-  Title
-  <span  class="title info_frame">
+  <%= t('diaries.show.title') %>
+  <span class="title info_frame">
     <%= @diary.title %>
   </span>
 </div>
 
 <div class="diary-info">
-  Start time
-  <span  class="start_time info_frame">
+  <%= t('diaries.show.start_time') %>
+  <span class="start_time info_frame">
     <%= @diary.start_time.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M") %>
   </span>
 </div>
 
 <div class="diary-info">
-  Edited time
-  <span  class="edit_time info_frame">
+  <%= t('diaries.show.edited_time') %>
+  <span class="edit_time info_frame">
     <%= @diary.updated_at.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M") %>
   </span>
 </div>
 
 <div class="content_japanese">
-  Contents (Japanese)
+  <%= t('diaries.show.contents_japanese') %>
   <div class="content-display content_frame" style="font-family: <%= @diary.japanese_font_name || 'Noto Sans JP' %>;">
     <%= @diary.content_japanese.present? ? @diary.content_japanese : 'No content' %>
   </div>
 </div>
 
 <div class="content_english">
-  Contents (English)
+  <%= t('diaries.show.contents_english') %>
   <div class="content-display content_frame" style="font-family: <%= @diary.english_font_name || 'Noto Sans' %>;">
     <%= @diary.content_english.present? ? @diary.content_english : 'No content' %>
   </div>

@@ -11,15 +11,15 @@ class TreesController < ApplicationController
     @tree = current_user.tree
 
     if @tree.nil?
-      redirect_to mypages_top_path, alert: 'ツリーが見つかりません。'
+      redirect_to mypages_top_path, alert: t('trees.train.no_tree')
       return
     end
 
     if @tree.can_train?
-      @tree.train! # 特訓を実行
-      redirect_to mypages_top_path, notice: '水やりが完了しました。'
+      @tree.train!
+      redirect_to mypages_top_path, notice: t('trees.train.success')
     else
-      redirect_to mypages_top_path, alert: '今日はもう水やりはできません。'
+      redirect_to mypages_top_path, alert: t('trees.train.already_done')
     end
   end
 end

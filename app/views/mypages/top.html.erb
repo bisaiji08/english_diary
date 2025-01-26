@@ -1,31 +1,23 @@
-<%= link_to '＜Log out', destroy_user_session_path, data: { turbo_method: :delete, action: 'redirect' }, id: 'logout-link' %>
-<h1>My Page<h1>
-<p><%= link_to 'Write Diary', new_diary_path %></p>
-<p><%= link_to 'View Diaries', mypages_diaries_path %></p>
-<p><%= link_to 'Go to Shop', shop_index_path %></p>
-<p><%= link_to 'Settings', mypages_settings_path %></p>
-<p><%= link_to 'How to Use', mypages_how_to_use_path %></p>
+<h1><%= t('mypages.top.title') %></h1>
 
-<h1>Tree Information</h1>
-<p>Your Points: <%= @tree.points %></p>
-<p><%= @tree.max_count %> laps</p>
-<p>Level: <%= @tree.level %></p>
+<h2><%= t('mypages.top.tree_information.title') %></h2>
+<p><%= t('mypages.top.tree_information.points', points: @tree.points) %></p>
+<p><%= t('mypages.top.tree_information.laps', count: @tree.max_count) %></p>
+<p><%= t('mypages.top.tree_information.level', level: @tree.level) %></p>
 <% if @tree && @tree.last_trained_at && @tree.last_trained_at.to_date == Date.today %>
-  <p>Watering: Yet</p>
+  <p><%= t('mypages.top.tree_information.watering_yet') %></p>
 <% elsif @tree %>
-  <p>Watering: Not Yet</p>
-<% else %>
-  <p>You don't have a tree yet.</p>
+  <p><%= t('mypages.top.tree_information.watering_not_yet') %></p>
 <% end %>
 
 <p>
-  <strong>Important:</strong> Writing your first diary of the day is considered as watering your tree. 
-  <%= link_to 'Learn more', mypages_how_to_use_path %>
+  <strong><%= t('mypages.top.tree_information.important') %></strong>
+  <%= link_to t('mypages.top.tree_information.learn_more'), mypages_how_to_use_path %>
 </p>
 
-<h2>Purchased Items</h2>
+<h2><%= t('mypages.top.purchased_items.title') %></h2>
 
-<h3>Japanese Fonts</h3>
+<h3><%= t('mypages.top.purchased_items.japanese_fonts') %></h3>
 <% japanese_fonts = @purchased_items.select { |item| item.language == 'Japanese' } %>
 <% if japanese_fonts.any? %>
   <ul>
@@ -34,10 +26,10 @@
     <% end %>
   </ul>
 <% else %>
-  <p>You haven't purchased any Japanese fonts yet.</p>
+  <p><%= t('mypages.top.purchased_items.no_japanese_fonts') %></p>
 <% end %>
 
-<h3>English Fonts</h3>
+<h3><%= t('mypages.top.purchased_items.english_fonts') %></h3>
 <% english_fonts = @purchased_items.select { |item| item.language == 'English' } %>
 <% if english_fonts.any? %>
   <ul>
@@ -46,5 +38,5 @@
     <% end %>
   </ul>
 <% else %>
-  <p>You haven't purchased any English fonts yet.</p>
+  <p><%= t('mypages.top.purchased_items.no_english_fonts') %></p>
 <% end %>

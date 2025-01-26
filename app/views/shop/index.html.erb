@@ -1,29 +1,29 @@
-<%= link_to '＜My page', mypages_top_path %>
-<h1>Shop</h1>
-<p>Your points: <%= current_user.tree.points %></p>
+<%= link_to t('shop.index.my_page_link'), mypages_top_path %>
+<h1><%= t('shop.index.title') %></h1>
+<p><%= t('shop.index.your_points', points: current_user.tree.points) %></p>
 
-<h2>Japanese Fonts</h2>
+<h2><%= t('shop.index.japanese_fonts_title') %></h2>
 <% if @japanese_fonts.any? %>
   <ul>
     <% @japanese_fonts.each do |font| %>
       <li>
-        <strong><%= link_to font.name, shop_path(font) %></strong> - <%= font.price %> points
+        <strong><%= link_to font.name, shop_path(font) %></strong> - <%= t('shop.index.font_price', price: font.price) %>
       </li>
     <% end %>
   </ul>
 <% else %>
-  <p>No Japanese fonts available for purchase.</p>
+  <p><%= t('shop.index.no_japanese_fonts') %></p>
 <% end %>
 
-<h2>English Fonts</h2>
+<h2><%= t('shop.index.english_fonts_title') %></h2>
 <% if @english_fonts.any? %>
   <ul>
     <% @english_fonts.each do |font| %>
       <li>
-        <strong><%= link_to font.name, shop_path(font) %></strong> - <%= font.price %> points
+        <strong><%= link_to font.name, shop_path(font) %></strong> - <%= t('shop.index.font_price', price: font.price) %>
       </li>
     <% end %>
   </ul>
 <% else %>
-  <p>No English fonts available for purchase.</p>
+  <p><%= t('shop.index.no_english_fonts') %></p>
 <% end %>

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'TreesController', type: :request do
+RSpec.describe I18n.t('rspec.controllers.trees_controller'), type: :request do
   let!(:user) { create(:user) }
   let!(:tree) { user.tree || create(:tree, user: user) }
 
@@ -10,21 +10,21 @@ RSpec.describe 'TreesController', type: :request do
     sign_in user
   end
 
-  describe 'POST #train' do
-    context 'when tree can be trained' do
-      it 'trains the tree and redirects with a notice' do
+  describe I18n.t('rspec.actions.post_train') do
+    context I18n.t('rspec.contexts.tree_can_be_trained') do
+      it I18n.t('rspec.trains_tree_redirects_with_notice') do
         tree.update(last_trained_at: 1.day.ago)
         post '/train'
-        expect(flash[:notice]).to eq('水やりが完了しました。')
+        expect(flash[:notice]).to eq(I18n.t('trees.train.success'))
         expect(response).to redirect_to(mypages_top_path)
       end
     end
 
-    context 'when tree cannot be trained' do
-      it 'redirects with an alert' do
+    context I18n.t('rspec.contexts.tree_cannot_be_trained') do
+      it I18n.t('rspec.redirects_with_alert') do
         tree.update(last_trained_at: Time.current)
         post '/train'
-        expect(flash[:alert]).to eq('今日はもう水やりはできません。')
+        expect(flash[:alert]).to eq(I18n.t('trees.train.already_done'))
         expect(response).to redirect_to(mypages_top_path)
       end
     end
