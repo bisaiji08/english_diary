@@ -1,8 +1,7 @@
-<p><%= link_to '＜My Page', mypages_top_path %></p>
-<h1>Settings</h1>
+<h1><%= t('mypages.settings.title') %></h1>
 
-<p><%= link_to 'Edit User', edit_user_registration_path %></p>
+<p><%= link_to t('mypages.settings.edit_user'), edit_user_registration_path %></p>
 
-<p><%= link_to 'Google account linkage', mypages_google_account_path %></p>
+<p><%= link_to t('mypages.settings.google_account_linkage'), mypages_google_account_path %></p>
 
-<p><%= link_to 'Notification Settings', mypages_notification_settings_path %></p>
+<p><%= link_to t('mypages.settings.notification_settings'), mypages_notification_settings_path %></p>

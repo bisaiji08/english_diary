@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe '.from_omniauth' do
+  describe I18n.t('rspec.methods.from_omniauth') do
     let(:auth_hash) do
       OmniAuth::AuthHash.new(
         provider: 'google_oauth2',
@@ -24,17 +24,17 @@ RSpec.describe User, type: :model do
       )
     end
 
-    context 'when auth data is invalid' do
-      it 'raises an error and does not save the user' do
+    context I18n.t('rspec.contexts.invalid_auth_data') do
+      it I18n.t('rspec.raises_error_does_not_save_user') do
         expect { User.from_omniauth(invalid_auth) }
-          .to raise_error(StandardError, 'Failed to create user')
+          .to raise_error(StandardError, I18n.t('rspec.errors.failed_to_create_user'))
       end
     end
 
-    context 'when user exists' do
+    context I18n.t('rspec.contexts.existing_user') do
       let!(:user) { create(:user, email: 'test@example.com') }
 
-      it 'returns the existing user and updates provider/uid if necessary' do
+      it I18n.t('rspec.returns_existing_user_updates_provider_uid') do
         result = User.from_omniauth(auth_hash)
         expect(result).to eq(user)
         expect(result.provider).to eq('google_oauth2')
@@ -42,8 +42,8 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'when user does not exist' do
-      it 'creates a new user' do
+    context I18n.t('rspec.contexts.new_user') do
+      it I18n.t('rspec.creates_new_user') do
         expect { User.from_omniauth(auth_hash) }.to change(User, :count).by(1)
         user = User.last
         expect(user.email).to eq('test@example.com')
@@ -52,10 +52,12 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'when user creation fails' do
-      it 'raises an error and does not save the user' do
-        allow(User).to receive(:new).and_raise(StandardError, 'Failed to create user')
-        expect { User.from_omniauth(auth_hash) }.to raise_error(StandardError, 'Failed to create user')
+    context I18n.t('rspec.contexts.user_creation_fails') do
+      it I18n.t('rspec.raises_error_does_not_save_user') do
+        allow(User).to receive(:new).and_raise(StandardError, I18n.t('rspec.errors.failed_to_create_user'))
+        expect do
+          User.from_omniauth(auth_hash)
+        end.to raise_error(StandardError, I18n.t('rspec.errors.failed_to_create_user'))
       end
     end
   end

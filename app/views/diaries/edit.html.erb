@@ -1,52 +1,51 @@
-<%= link_to '＜Diary details', diary_path(@diary) %>
 <%= form_with(model: @diary, local: true) do |form| %>
 
   <div class="title">
-    <%= form.label :title %>
+    <%= form.label :title, t('diaries.edit.title') %>
     <%= form.text_field :title %>
   </div>
 
   <div class="time">
-    <%= form.label :start_time %>
+    <%= form.label :start_time, t('diaries.edit.start_time') %>
     <%= form.text_field :start_time, value: @diary.start_time.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M"), readonly: true %>
   </div>
 
   <div class="edit_time">
-    <%= form.label :edited_time %>
+    <%= form.label :edited_time, t('diaries.edit.edited_time') %>
     <%= form.text_field :updated_at, value: Time.current.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M"), readonly: true %>
   </div>
 
   <div class="font-select-japanese">
-    <%= form.label :japanese_font_name, 'Select Japanese Font' %>
+    <%= form.label :japanese_font_name, t('diaries.edit.japanese_font') %>
     <%= form.select(
           :japanese_font_name,
           options_for_select(current_user.purchased_fonts.select { |f| f.language == 'Japanese' }.map { |f| [f.name, f.font_name] }, @diary.japanese_font_name),
-          prompt: 'Choose a Japanese font'
+          prompt: t('diaries.edit.choose_japanese_font')
     ) %>
   </div>
 
   <div class="content_japanese">
-    <%= form.label :content_japanese, 'Contents (Japanese)', for: 'content_japanese' %>
+    <%= form.label :content_japanese, t('diaries.edit.content_japanese') %>
     <%= form.text_area :content_japanese, rows: 5, cols: 50, style: "width: 100%;", id: "content_japanese" %>
   </div>
 
   <div class="font-select-english">
-    <%= form.label :english_font_name, 'Select English Font' %>
+    <%= form.label :english_font_name, t('diaries.edit.english_font') %>
     <%= form.select(
           :english_font_name,
           options_for_select(current_user.purchased_fonts.select { |f| f.language == 'English' }.map { |f| [f.name, f.font_name] }, @diary.english_font_name),
-          prompt: 'Choose an English font'
+          prompt: t('diaries.edit.choose_english_font')
     ) %>
   </div>
 
   <div class="content_english">
-    <%= form.label :content_english, 'Contents (English)', for: 'content_english' %>
+    <%= form.label :content_english, t('diaries.edit.content_english') %>
     <%= form.text_area :content_english, rows: 5, cols: 50, style: "width: 100%;", id: "content_english" %>
   </div>
 
   <div>
-    <%= form.submit "Update diary" %>
-    <button type="button" id="translate-button">Translate</button>
+    <%= form.submit t('diaries.edit.update_button') %>
+    <button type="button" id="translate-button"><%= t('diaries.edit.translate_button') %></button>
   </div>
 <% end %>
 

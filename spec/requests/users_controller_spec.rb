@@ -9,13 +9,13 @@ RSpec.describe UsersController, type: :controller do
     sign_in user
   end
 
-  describe 'POST #disconnect_google' do
-    it 'disconnects the Google account and redirects with a notice' do
+  describe I18n.t('rspec.actions.post_disconnect_google') do
+    it I18n.t('rspec.disconnects_google_account_redirects_with_notice') do
       post :disconnect_google
       user.reload
       expect(user.provider).to be_nil
       expect(user.uid).to be_nil
-      expect(flash[:notice]).to eq('Cancel linking your Google account.')
+      expect(flash[:notice]).to eq(I18n.t('users.google.disconnect_success'))
       expect(response).to redirect_to(mypages_top_path)
     end
   end

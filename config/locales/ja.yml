@@ -1,0 +1,384 @@
+ja:
+  layouts:
+    application:
+      title: "マイアプリ"
+      og:
+        title: "イングリッシュダイアリー"
+        description: "日記を楽しく続けながら英語力もアップ。日本語で書いた日記を英語に自動翻訳するアプリ！"
+      twitter:
+        title: "イングリッシュダイアリー"
+        description: "日記を楽しく続けながら英語力もアップ。日本語で書いた日記を英語に自動翻訳するアプリ！"
+      footer:
+        terms: "利用規約"
+        privacy: "プライバシーポリシー"
+        contact: "お問い合わせ"
+  shop:
+    index:
+      title: "ショップ"
+      your_points: "あなたのポイント: %{points}"
+      japanese_fonts_title: "日本語フォント"
+      no_japanese_fonts: "購入可能な日本語フォントはありません。"
+      english_fonts_title: "英語フォント"
+      no_english_fonts: "購入可能な英語フォントはありません。"
+      font_price: "%{price} ポイント"
+    show:
+      back_to_shop: "ショップに戻る"
+      title: "アイテム詳細"
+      name: "名前"
+      description: "説明"
+      price: "価格"
+      points: "%{points} ポイント"
+      your_points: "あなたのポイント: %{points}"
+      buy_button: "購入"
+      not_enough_points: "このアイテムを購入するポイントが不足しています。"
+  static_pages:
+    top:
+      title: "イングリッシュダイアリー"
+      about_button: "このアプリについて"
+      about_description: "英語の日記を続ける習慣を身につけるためのアプリです。\n翻訳機能も備えているので、英語の知識がなくても簡単に英語の日記を書くことができます。"
+      close_button: "閉じる"
+      login_link: "ログイン"
+  diaries:
+    edit:
+      title: "タイトル"
+      start_time: "開始時間"
+      edited_time: "編集時間"
+      japanese_font: "日本語フォントを選択"
+      choose_japanese_font: "日本語フォントを選んでください"
+      content_japanese: "内容（日本語）"
+      english_font: "英語フォントを選択"
+      choose_english_font: "英語フォントを選んでください"
+      content_english: "内容（英語）"
+      update_button: "日記を更新する"
+      translate_button: "翻訳する"
+    index:
+      my_diary: "私の日記"
+      write_diary: "日記を書く"
+      search_placeholder: "日記タイトルを検索..."
+    new:
+      title: "タイトル"
+      start_time: "開始時間"
+      select_japanese_font: "日本語フォントを選択"
+      choose_japanese_font: "日本語フォントを選んでください"
+      content_japanese: "内容（日本語）"
+      select_english_font: "英語フォントを選択"
+      choose_english_font: "英語フォントを選んでください"
+      content_english: "内容（英語）"
+      create_button: "日記を作成する"
+      translate_button: "翻訳する"
+    show:
+      title: "タイトル"
+      start_time: "開始時間"
+      edited_time: "編集時間"
+      contents_japanese: "内容（日本語）"
+      contents_english: "内容（英語）"
+    create:
+      no_tree: "日記が作成されましたが、水やりができる木がありません。"
+      training_completed: "日記が作成され、水やりが完了しました！"
+      training_done: "日記が作成されましたが、今日は水やりがすでに完了しています。"
+    destroy:
+      success: "日記を削除しました。"
+    update:
+      success: "日記が更新されました。"
+    translate:
+      error:
+        invalid_response: "翻訳エラー: 不正なレスポンスです"
+        failed: "翻訳エラー: %{error}"
+        exception: "翻訳エラー: %{error}"
+  mypages:
+    google_account:
+      title: "Googleアカウント設定"
+      linked: "Googleアカウントがリンクされています。"
+      unlink_button: "Googleアカウントのリンクを解除する"
+      unlink_confirm: "本当にリンクを解除しますか？"
+      not_linked: "Googleアカウントがリンクされていません。"
+      link_button: "Googleアカウントをリンクする"
+    how_to_use:
+      title: "English Diaryの使い方"
+      introduction: "English Diaryへようこそ！機能を最大限活用する方法はこちらです："
+      write_diary_title: "日記を書く"
+      write_diary_description: "「日記を書く」をクリックして新しい日記を始めましょう。思ったことを共有し、英語を練習してください。"
+      view_diaries_title: "日記を見る"
+      view_diaries_description: "「日記を見る」をクリックして、これまでに書いた日記を確認しましょう。必要に応じて編集や削除が可能です。"
+      shop_title: "ショップ"
+      shop_description: "ショップに訪れてフォントを購入し、日記の体験をカスタマイズしましょう。"
+      tree_title: "ツリー情報"
+      tree_description: "ツリーはEnglish Diaryの利用状況を表します。仕組みは以下の通りです："
+      watering_title: "ツリーへの水やり"
+      watering_description: "毎日最初に書いた日記が「水やり」としてカウントされます。水やりはツリーを成長させ、レベルアップさせます。"
+      frequency_title: "水やりの頻度"
+      frequency_description: "水やりは1日1回のみ可能です。日記を書かない日はツリーが水を得られず、成長が一時停止します。"
+      benefits_title: "ツリー成長の利点"
+      benefit_one: "ツリーがレベルアップし、成長します。"
+      benefit_two: "日記を書く習慣を維持する動機づけになります。"
+      benefit_three: "進捗と成果を視覚的に表します。"
+      settings_title: "設定"
+      settings_description: "「設定」からアカウント情報や設定を更新できます。"
+    notification_settings:
+      title: "通知設定"
+      current_status: "現在の通知ステータス："
+      enabled: "有効"
+      disabled: "無効"
+      time_zone: "通知は%{time_zone}時間を基準としています。"
+      enable_label: "通知を有効にする"
+      yes: "はい"
+      no: "いいえ"
+      time_label: "通知時間"
+      save_button: "設定を保存する"
+    settings:
+      title: "設定"
+      edit_user: "ユーザー編集"
+      google_account_linkage: "Googleアカウントのリンク"
+      notification_settings: "通知設定"
+    top:
+      title: "マイページ"
+      tree_information:
+        title: "ツリー情報"
+        points: "ポイント：%{points}"
+        laps: "%{count}周"
+        level: "レベル：%{level}"
+        watering_yet: "水やり：済"
+        watering_not_yet: "水やり：未"
+        no_tree: "まだツリーがありません。"
+        important: "重要：1日目の日記を書くと、ツリーに水やりされます。"
+        learn_more: "もっと詳しく"
+      purchased_items:
+        title: "購入済みアイテム"
+        japanese_fonts: "日本語フォント"
+        no_japanese_fonts: "まだ日本語フォントを購入していません。"
+        english_fonts: "英語フォント"
+        no_english_fonts: "まだ英語フォントを購入していません。"
+    notifications:
+      updated: "通知設定が更新されました。"
+      failed: "通知設定の更新に失敗しました。"
+      invalid_params: "無効なパラメーターです。"
+  pages:
+    contact:
+      log: "お問い合わせ: 名前=%{name}, メール=%{email}, メッセージ=%{message}"
+      success: "お問い合わせを送信しました。"
+  shop:
+    purchase:
+      already_owned: "このアイテムはすでに所有しています。"
+      insufficient_points: "このアイテムを購入するのに十分なポイントがありません。"
+      success: "%{name}の購入に成功しました！"
+      failed: "購入に失敗しました: %{error}"
+  trees:
+    purchase:
+      not_enough_points: "'%{item_name}' を購入するのにポイントが足りません。"
+      success: "アイテム '%{item_name}' を正常に購入しました！"
+    train:
+      no_tree: "ツリーが見つかりません。"
+      success: "水やりが完了しました。"
+      already_done: "今日はもう水やりはできません。"
+      not_allowed: "水やりできません。今日はすでに水やり済みです。"
+  users:
+    google:
+      disconnect_success: "Googleアカウントの連携解除に成功しました。"
+    omniauth:
+      error:
+        failed_creation: "ユーザーの作成に失敗しました"
+  date:
+    day_names: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"]
+    abbr_day_names: ["日", "月", "火", "水", "木", "金", "土"]
+    month_names: [nil, "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+    abbr_month_names: [nil, "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+  simple_calendar:
+    previous: "前へ"
+    next: "次へ"
+    today: "今日"
+    week: "第%{week_number}週"
+
+  pages:
+    contact:
+      title: "お問い合わせ"
+      form:
+        name_label: "お名前"
+        name_placeholder: "お名前を入力してください"
+        email_label: "メールアドレス"
+        email_placeholder: "メールアドレスを入力してください"
+        message_label: "メッセージ"
+        message_placeholder: "メッセージを入力してください"
+        submit_button: "送信する"
+    privacy:
+      title: "プライバシーポリシー"
+      content: |
+        English Diary（以下「本サービス」といいます）は、ユーザーのプライバシーを尊重し、個人情報を保護することに努めます。このプライバシーポリシーでは、データの収集、使用、保護方法について説明します。
+
+        ### 1. 収集する情報
+        - アカウント登録時に提供された個人情報（例: 氏名、メールアドレス）
+        - サービス利用中に自動的に収集される使用データ（例: IPアドレス、クッキー）
+
+        ### 2. 利用目的
+        - 本サービスの提供と運営
+        - ユーザーからのお問い合わせへの対応
+        - サービスの改善と拡張
+
+        ### 3. データ共有
+        以下の場合を除き、第三者に個人情報を共有することはありません：
+        - ユーザーの明示的な同意がある場合
+        - 法律で要求される場合
+
+        ### 4. セキュリティ
+        ユーザーの個人情報を不正アクセスや改ざんから保護するために合理的な対策を講じます。
+
+        ### 5. ユーザーの権利
+        ユーザーは、個人情報へのアクセス、修正、削除を行う権利を有します。これらの権利を行使するには、以下のメールアドレスまでご連絡ください。
+
+        ### 6. 本ポリシーの更新
+        必要に応じて本プライバシーポリシーを更新する権利を有します。更新内容はこのページに掲載されます。
+
+        最終更新日: 2025年1月19日
+    terms:
+      title: "利用規約"
+      content: |
+        この利用規約（以下「本規約」といいます）は、English Diaryサービス（以下「本サービス」といいます）の利用条件を定めるものです。本サービスを利用することで、本規約に同意したものとみなされます。
+
+        ### 1. 適用範囲
+        本規約は、本サービスに関するユーザーと運営者とのすべての関係に適用されます。
+
+        ### 2. 登録
+        ユーザーは、運営者が指定する手順に従い、本サービスに登録するものとします。運営者は、不適切と判断した登録を拒否する権利を有します。
+
+        ### 3. 禁止事項
+        ユーザーは以下の行為を行ってはなりません：
+        - 法令または公序良俗に違反する行為
+        - 他のユーザーまたは第三者への嫌がらせや害を及ぼす行為
+        - 本サービスの運営を妨害する行為
+
+        ### 4. 免責事項
+        運営者は、故意または重大な過失がある場合を除き、本サービスの利用によって生じた損害について責任を負いません。
+
+        ### 5. 準拠法および管轄
+        本規約は日本法に準拠します。本規約に関連する紛争は、群馬県前橋地方裁判所を専属的合意管轄とします。
+
+        最終更新日: 2025年1月19日
+  reminder_mailer:
+    daily_reminder:
+      greeting: "%{name}さん、こんにちは！"
+      intro: "毎日の習慣を少しずつ積み重ねるのは素晴らしいことです。"
+      encouragement: "今日も、あなたの大切なひとときを日記に記してみませんか？"
+      reminder_time: "🕒 あなたの記録タイム：いつも通りこの時間です！"
+      theme_hint: "📖 今日のテーマのヒント（例）："
+      theme_examples:
+        - "今日一番心に残ったことは？"
+        - "小さな幸せを見つけた瞬間は？"
+        - "明日への抱負やアイデアは？"
+      call_to_action: "クリックするだけで、すぐに書き始められます👇"
+      write_link: "日記を書く"
+      closing_message: "少しでも日記を書く時間が、あなたの日々を豊かにしますように！"
+      support_message: "いつも応援しています 🌟"
+      team_signature: "English Diary チームより"
+
+  alerts:
+    omniauth:
+      failed: "認証に失敗しました: %{reason}"
+
+  factories:
+    diary:
+      title: "テスト日記"
+      content_japanese: "こんにちは"
+      content_english: "Hello"
+      japanese_font_name: "Noto Sans JP"
+      english_font_name: "Noto Sans"
+    item:
+      name: "テストアイテム"
+      price: 100
+      category: "フォント"
+    tree:
+      level: 0
+      job: "苗木"
+      points: 0
+      max_count: 1
+    user:
+      name: "テストユーザー %{n}"
+      email: "user%{n}@example.com"
+      password: "password"
+  rspec:
+    validations: "バリデーション"
+    associations: "アソシエーション"
+    methods:
+      japanese_font_name: "Japanese Font Name メソッド"
+      can_train: "特訓可能かのメソッド"
+      train: "特訓メソッド"
+      from_omniauth: "From Omniauth メソッド"
+    controllers:
+      diaries: "日記コントローラー"
+      trees_controller: "ツリーコントローラー"
+    actions:
+      get_index: "GET /index"
+      post_create: "POST /create"
+      post_purchase: "POST /purchase"
+      get_terms: "GET #terms"
+      get_privacy: "GET #privacy"
+      post_contact: "POST #contact"
+      post_train: "POST #train"
+      post_disconnect_google: "POST #disconnect_google"
+    contexts:
+      valid_parameters: "有効なパラメーターの場合"
+      invalid_auth_data: "認証データが無効な場合"
+      existing_user: "ユーザーが存在する場合"
+      new_user: "ユーザーが存在しない場合"
+      user_creation_fails: "ユーザー作成に失敗する場合"
+      invalid_parameters: "無効なパラメーターの場合"
+      sufficient_points: "十分なポイントがある場合"
+      insufficient_points: "ポイントが不足している場合"
+      tree_can_be_trained: "ツリーが特訓可能な場合"
+      tree_cannot_be_trained: "ツリーが特訓できない場合"
+      invalid_credentials: "無効な認証情報の場合"
+      valid_credentials_remember_me_checked: "有効な認証情報とremember_meが有効の場合"
+      valid_credentials_remember_me_unchecked: "有効な認証情報とremember_meが無効の場合"
+    actions:
+      post_create: "POST #create"
+    controllers:
+      users:
+        registrations_controller: "Users::RegistrationsController"
+        sessions_controller: "Users::SessionsController"
+    class_methods:
+      shop_items: "販売可能アイテムのクラスメソッド"
+      fonts_for_user: "ユーザーのフォントを返すクラスメソッド"
+    returns_default_value: "デフォルト値を返す"
+    returns_shop_items: "販売可能なアイテムを返す"
+    returns_user_fonts: "ユーザーのフォントを返す"
+    returns_searchable_attributes: "検索可能な属性を返す"
+    renders_new_template_with_errors: "エラーメッセージとともに新しいテンプレートをレンダリングする"
+    logs_in_and_sets_remember_me_cookie: "ログインし、remember_meクッキーを設定する"
+    logs_in_does_not_set_remember_me_cookie: "ログインするが、remember_meクッキーを設定しない"
+    returns_existing_user_updates_provider_uid: "既存のユーザーを返し、プロバイダー/UIDを更新する"
+    raises_error_does_not_save_user: "エラーをスローし、ユーザーを保存しない"
+    creates_new_user: "新しいユーザーを作成する"
+    returns_existing_user: "既存のユーザーを返す"
+    auto_create_valid_tree: "有効なTreeが自動的に作成される"
+    unique_user_id: "user_idが一意であることを検証する"
+    trainable_returns_true: "特訓可能な場合はtrueを返す"
+    untrainable_returns_false: "特訓不可能な場合はfalseを返す"
+    training_increases_level: "特訓が実行され、レベルが増加する"
+    training_resets_level_and_promotes: "特訓が実行され、レベルがリセットされる場合"
+    can_create_valid_user: "有効なユーザーが作成できる"
+    invalid_without_email: "メールアドレスが空の場合、無効である"
+    unique_email: "メールアドレスが一意であること"
+    renders_new_template: "新しいテンプレートをレンダリングする"
+    creates_new_diary: "新しい日記を作成する"
+    returns_user_diaries: "現在のユーザーの日記リストを返す"
+    assigns_items_available: "購入可能なアイテムを割り当てる"
+    processes_purchase_redirects: "購入を処理してリダイレクトする"
+    does_not_process_purchase_redirects_with_alert: "購入を処理せず、アラートでリダイレクトする"
+    trains_tree_redirects_with_notice: "ツリーを特訓し、通知でリダイレクトする"
+    redirects_with_alert: "アラートでリダイレクトする"
+    logs_inquiry_redirects_with_notice: "お問い合わせを記録し、通知でリダイレクトする"
+    renders_terms_template: "利用規約のテンプレートをレンダリングする"
+    renders_privacy_template: "プライバシーポリシーのテンプレートをレンダリングする"
+    disconnects_google_account_redirects_with_notice: "Googleアカウントのリンクを解除し、通知でリダイレクトする"
+    errors:
+      failed_to_create_user: "ユーザーの作成に失敗しました"
+  omniauth:
+    mock_auth:
+      email: "test@example.com"
+      name: "テストユーザー"
+
+  activerecord:
+    errors:
+      models:
+        tree:
+          attributes:
+            user_id:
+              taken: "このユーザーには既にツリーがあります。"

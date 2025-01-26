@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def set_omniauth_error_message
     return unless params[:message].present?
 
-    flash[:alert] = "Authentication failed: #{params[:message]}"
+    flash[:alert] = I18n.t('alerts.omniauth.failed', reason: params[:message])
   end
 
   def log_session_details

@@ -6,16 +6,12 @@ class MypagesController < ApplicationController
 
   def top
     @tree = current_user.tree
-    @purchased_items = current_user.purchases.includes(:item).map(&:item) # 購入したアイテム一覧
+    @purchased_items = current_user.purchases.includes(:item).map(&:item)
   end
 
-  def settings
-    # 特別な処理は不要、ビューを表示するだけ
-  end
+  def settings; end
 
-  def google_account
-    # 必要ならGoogle連携に関する情報を取得
-  end
+  def google_account; end
 
   def notification_settings
     @notifications_enabled = current_user.notifications_enabled
@@ -25,20 +21,18 @@ class MypagesController < ApplicationController
   def update_notification_settings
     if params[:user].present?
       if current_user.update(notification_params)
-        redirect_to mypages_notification_settings_path, notice: 'Notification settings updated successfully.'
+        redirect_to mypages_notification_settings_path, notice: t('mypages.notifications.updated')
       else
-        flash[:alert] = 'Failed to update notification settings.'
+        flash[:alert] = t('mypages.notifications.failed')
         render :notification_settings
       end
     else
-      flash[:alert] = 'Invalid parameters. Please try again.'
+      flash[:alert] = t('mypages.notifications.invalid_params')
       redirect_to mypages_notification_settings_path
     end
   end
 
-  def how_to_use
-    # 静的なビューを表示するだけ
-  end
+  def how_to_use; end
 
   private
 

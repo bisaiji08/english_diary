@@ -22,29 +22,24 @@ class ShopController < ApplicationController
     @item = Item.find(params[:id])
     @tree = current_user.tree
 
-    # 重複購入チェック
     if current_user.purchases.exists?(item: @item)
-      redirect_to shop_index_path, alert: 'You already own this item.'
+      redirect_to shop_index_path, alert: t('shop.purchase.already_owned')
       return
     end
 
     if @tree.points >= @item.price
       ActiveRecord::Base.transaction do
-        # ポイントを減らす
         @tree.points -= @item.price
         @tree.save!
 
-        # 購入記録を作成
         Purchase.create!(user: current_user, item: @item)
       end
 
-      # 成功メッセージとリダイレクト
-      redirect_to shop_index_path, notice: "You successfully purchased #{@item.name}!"
+      redirect_to shop_index_path, notice: t('shop.purchase.success', name: @item.name)
     else
-      # エラーメッセージとリダイレクト
-      redirect_to shop_path(@item), alert: 'Not enough points to purchase this item.'
+      redirect_to shop_path(@item), alert: t('shop.purchase.insufficient_points')
     end
   rescue ActiveRecord::RecordInvalid => e
-    redirect_to shop_path(@item), alert: "Purchase failed: #{e.message}"
+    redirect_to shop_path(@item), alert: t('shop.purchase.failed', error: e.message)
   end
 end

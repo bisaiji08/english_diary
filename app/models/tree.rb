@@ -22,35 +22,33 @@ class Tree < ApplicationRecord
     self.max_count ||= 1
   end
 
-  # 特訓ができるかどうかをチェック
   def can_train?
     return false if last_trained_at && last_trained_at.to_date == Date.today
 
     true
   end
 
-  # 特訓処理
   def train!
-    raise 'Training not allowed. Already watered today.' unless can_train?
+    raise I18n.t('trees.train.not_allowed') unless can_train?
 
     if job == 'mature tree' && level >= 10
       reset_tree
     elsif level >= 10
       promote_job
     else
-      self.level += 1 # incrementではなく直接加算
+      self.level += 1
     end
     self.last_trained_at = Time.current
     save! # 確実に保存する
   end
 
   def purchase_item(item)
-    return "Not enough points to purchase '#{item.name}'." unless self.points >= item.price
+    return I18n.t('trees.purchase.not_enough_points', item_name: item.name) unless self.points >= item.price
 
     self.points -= item.price
     save!
     # アイテムの購入記録を作成（ログや所有リストに追加する場合など）
-    "Item '#{item.name}' purchased successfully!"
+    I18n.t('trees.purchase.success', item_name: item.name)
   end
 
   private

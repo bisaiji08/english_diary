@@ -1,4 +1,3 @@
-<%= link_to '＜My page', mypages_top_path %>
 <%= form_with(model: @diary, local: true) do |form| %>
   <% if flash.now[:alert] %>
     <div class="alert alert-danger">
@@ -7,46 +6,46 @@
   <% end %>
 
   <div class="title">
-    <%= form.label :title %>
+    <%= form.label :title, t('diaries.new.title') %>
     <%= form.text_field :title %>
   </div>
 
   <div class="time">
-    <%= form.label :start_time %>
+    <%= form.label :start_time, t('diaries.new.start_time') %>
     <%= form.text_field :start_time, value: Time.current.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M"), readonly: true %>
   </div>
 
   <div class="font-select-japanese">
-    <%= form.label :japanese_font_name, 'Select Japanese Font' %>
+    <%= form.label :japanese_font_name, t('diaries.new.select_japanese_font') %>
     <%= form.select(
           :japanese_font_name,
           options_for_select(current_user.purchased_fonts.select { |f| f.language == 'Japanese' }.map { |f| [f.name, f.font_name] }, @diary.japanese_font_name),
-          prompt: 'Choose a Japanese font'
+          prompt: t('diaries.new.choose_japanese_font')
     ) %>
   </div>
 
   <div class="content_japanese">
-    <%= form.label :content_japanese, 'Contents (Japanese)', for: 'content_japanese' %>
+    <%= form.label :content_japanese, t('diaries.new.content_japanese') %>
     <%= form.text_area :content_japanese, rows: 5, cols: 50, style: "width: 100%;", id: "content_japanese" %>
   </div>
 
   <div class="font-select-english">
-    <%= form.label :english_font_name, 'Select English Font' %>
+    <%= form.label :english_font_name, t('diaries.new.select_english_font') %>
     <%= form.select(
           :english_font_name,
           options_for_select(current_user.purchased_fonts.select { |f| f.language == 'English' }.map { |f| [f.name, f.font_name] }, @diary.english_font_name),
-          prompt: 'Choose an English font'
+          prompt: t('diaries.new.choose_english_font')
     ) %>
   </div>
-  
+
   <div class="content_english">
-    <%= form.label :content_english, 'Contents (English)', for: 'content_english' %>
+    <%= form.label :content_english, t('diaries.new.content_english') %>
     <%= form.text_area :content_english, rows: 5, cols: 50, style: "width: 100%;", id: "content_english" %>
   </div>
 
   <div>
-    <%= form.submit "Create diary" %>
-    <button type="button" id="translate-button">Translate</button>
+    <%= form.submit t('diaries.new.create_button') %>
+    <button type="button" id="translate-button"><%= t('diaries.new.translate_button') %></button>
   </div>
 <% end %>
 

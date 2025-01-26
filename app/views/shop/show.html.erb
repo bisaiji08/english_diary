@@ -1,13 +1,13 @@
-<%= link_to 'Back to Shop', shop_index_path, class: "back-link" %>
-<h1>Item Details</h1>
-<p><strong>Name:</strong> <%= @item.name %></p>
-<p><strong>Description:</strong> <%= @item.description %></p>
-<p><strong>Price:</strong> <%= @item.price %> points</p>
-<p>Your points: <%= current_user.tree.points %></p>
+<%= link_to t('shop.show.back_to_shop'), shop_index_path, class: "back-link" %>
+<h1><%= t('shop.show.title') %></h1>
+<p><strong><%= t('shop.show.name') %>:</strong> <%= @item.name %></p>
+<p><strong><%= t('shop.show.description') %>:</strong> <%= @item.description %></p>
+<p><strong><%= t('shop.show.price') %>:</strong> <%= t('shop.show.points', points: @item.price) %></p>
+<p><%= t('shop.show.your_points', points: current_user.tree.points) %></p>
 
 <% if current_user.tree.points >= @item.price %>
-  <%= button_to "Buy", purchase_shop_path(@item), method: :post, class: "buy-button" %>
+  <%= button_to t('shop.show.buy_button'), purchase_shop_path(@item), method: :post, class: "buy-button" %>
 <% else %>
-  <p><em>You do not have enough points to buy this item.</em></p>
+  <p><em><%= t('shop.show.not_enough_points') %></em></p>
 <% end %>
 

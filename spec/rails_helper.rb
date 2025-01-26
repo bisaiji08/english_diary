@@ -85,4 +85,8 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :request
+
+  I18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml')]
+  I18n.locale = :en
+  I18n.reload!
 end

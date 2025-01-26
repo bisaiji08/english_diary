@@ -1,33 +1,384 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   "true": "foo"
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      title: "Myapp"
+      og:
+        title: "English Diary"
+        description: "Improve your English while keeping a diary! This app automatically translates your diary from Japanese to English."
+      twitter:
+        title: "English Diary"
+        description: "Improve your English while keeping a diary! This app automatically translates your diary from Japanese to English."
+      footer:
+        terms: "Terms of service"
+        privacy: "Privacy Policy"
+        contact: "Inquiry"
+  shop:
+    index:
+      title: "Shop"
+      your_points: "Your points: %{points}"
+      japanese_fonts_title: "Japanese Fonts"
+      no_japanese_fonts: "No Japanese fonts available for purchase."
+      english_fonts_title: "English Fonts"
+      no_english_fonts: "No English fonts available for purchase."
+      font_price: "%{price} points"
+    show:
+      back_to_shop: "Back to Shop"
+      title: "Item Details"
+      name: "Name"
+      description: "Description"
+      price: "Price"
+      points: "%{points} points"
+      your_points: "Your points: %{points}"
+      buy_button: "Buy"
+      not_enough_points: "You do not have enough points to buy this item."
+  static_pages:
+    top:
+      title: "English Diary"
+      about_button: "About this app"
+      about_description: "This is an app to help you get into the habit of keeping an English diary.\nIt also has a translation function, so you can easily write an English diary even if you don't have any knowledge of English."
+      close_button: "Close"
+      login_link: "Log in"
+  diaries:
+    edit:
+      title: "Title"
+      start_time: "Start time"
+      edited_time: "Edited time"
+      japanese_font: "Select Japanese Font"
+      choose_japanese_font: "Choose a Japanese font"
+      content_japanese: "Contents (Japanese)"
+      english_font: "Select English Font"
+      choose_english_font: "Choose an English font"
+      content_english: "Contents (English)"
+      update_button: "Update diary"
+      translate_button: "Translate"
+    index:
+      my_diary: "My Diary"
+      write_diary: "Write diary"
+      search_placeholder: "Search diary titles..."
+    new:
+      title: "Title"
+      start_time: "Start time"
+      select_japanese_font: "Select Japanese Font"
+      choose_japanese_font: "Choose a Japanese font"
+      content_japanese: "Contents (Japanese)"
+      select_english_font: "Select English Font"
+      choose_english_font: "Choose an English font"
+      content_english: "Contents (English)"
+      create_button: "Create diary"
+      translate_button: "Translate"
+    show:
+      title: "Title"
+      start_time: "Start time"
+      edited_time: "Edited time"
+      contents_japanese: "Contents (Japanese)"
+      contents_english: "Contents (English)"
+    create:
+      no_tree: "Diary has been created, but there are no trees to water."
+      training_completed: "Diary created and watering completed!"
+      training_done: "Diary created, but watering is already done for today."
+    destroy:
+      success: "Diary deleted."
+    update:
+      success: "Diary was successfully updated."
+    translate:
+      error:
+        invalid_response: "Translation error: Invalid response."
+        failed: "Translation error: %{error}"
+        exception: "Translation error: %{error}"
+  mypages:
+    google_account:
+      title: "Google Account Settings"
+      linked: "Google account is linked."
+      unlink_button: "Unlink your Google account"
+      unlink_confirm: "Are you sure you want to cancel the link?"
+      not_linked: "Google account is not linked."
+      link_button: "Link your Google account"
+    how_to_use:
+      title: "How to Use English Diary"
+      introduction: "Welcome to English Diary! Here's how to make the most of our features:"
+      write_diary_title: "Write a Diary"
+      write_diary_description: "Click 'Write Diary' on your My Page to start a new diary entry. Share your thoughts and practice your English."
+      view_diaries_title: "View Diaries"
+      view_diaries_description: "Click 'View Diaries' to see all your diary entries. You can edit or delete entries as needed."
+      shop_title: "Shop"
+      shop_description: "Visit the shop to purchase fonts and customize your diary experience."
+      tree_title: "Tree Information"
+      tree_description: "Your tree represents your progress in using English Diary. Here's how it works:"
+      watering_title: "Watering Your Tree"
+      watering_description: "The first diary you write each day is considered as 'watering' your tree. Watering helps your tree grow and level up, encouraging consistent daily engagement."
+      frequency_title: "Watering Frequency"
+      frequency_description: "Watering can only be done once per day. If you skip a day without writing a diary, your tree won't receive water for that day, and its growth will pause."
+      benefits_title: "Benefits of Tree Growth"
+      benefit_one: "Helps your tree level up and grow bigger."
+      benefit_two: "Motivates you to maintain a consistent writing habit."
+      benefit_three: "Visually represents your progress and achievements."
+      settings_title: "Settings"
+      settings_description: "Update your account information and preferences under 'Settings.'"
+    notification_settings:
+      title: "Notification Settings"
+      current_status: "Current Notification Status:"
+      enabled: "Enabled"
+      disabled: "Disabled"
+      time_zone: "Notifications are based on the %{time_zone} time zone."
+      enable_label: "Enable Notifications"
+      yes: "Yes"
+      no: "No"
+      time_label: "Notification Time"
+      save_button: "Save Settings"
+    settings:
+      title: "Settings"
+      edit_user: "Edit User"
+      google_account_linkage: "Google account linkage"
+      notification_settings: "Notification Settings"
+    top:
+      title: "My Page"
+      tree_information:
+        title: "Tree Information"
+        points: "Your Points: %{points}"
+        laps: "%{count} laps"
+        level: "Level: %{level}"
+        watering_yet: "Watering: Yet"
+        watering_not_yet: "Watering: Not Yet"
+        no_tree: "You don't have a tree yet."
+        important: "Important: Writing your first diary of the day is considered as watering your tree."
+        learn_more: "Learn more"
+      purchased_items:
+        title: "Purchased Items"
+        japanese_fonts: "Japanese Fonts"
+        no_japanese_fonts: "You haven't purchased any Japanese fonts yet."
+        english_fonts: "English Fonts"
+        no_english_fonts: "You haven't purchased any English fonts yet."
+    notifications:
+      updated: "Notification settings updated successfully."
+      failed: "Failed to update notification settings."
+      invalid_params: "Invalid parameters."
+  pages:
+    contact:
+      log: "Inquiry: Name=%{name}, Email=%{email}, Message=%{message}"
+      success: "Your inquiry has been sent."
+  shop:
+    purchase:
+      already_owned: "You already own this item."
+      insufficient_points: "Not enough points to purchase this item."
+      success: "You successfully purchased %{name}!"
+      failed: "Purchase failed: %{error}"
+  trees:
+    purchase:
+      not_enough_points: "Not enough points to purchase '%{item_name}'."
+      success: "Item '%{item_name}' purchased successfully!"
+    train:
+      no_tree: "No tree found."
+      success: "Watering completed."
+      already_done: "Watering already completed for today."
+      not_allowed: "Cannot watering. Watering is already done for today."
+  users:
+    google:
+      disconnect_success: "Google account unlinking successful."
+    omniauth:
+      error:
+        failed_creation: "User creation failed"
+  date:
+    day_names: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    abbr_day_names: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    month_names: [nil, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    abbr_month_names: [nil, "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  simple_calendar:
+    previous: "Previous"
+    next: "Next"
+    today: "Today"
+    week: "Week %{week_number}"
+
+  pages:
+    contact:
+      title: "Contact Us"
+      form:
+        name_label: "Your Name"
+        name_placeholder: "Enter your name"
+        email_label: "Email Address"
+        email_placeholder: "Enter your email address"
+        message_label: "Message"
+        message_placeholder: "Enter your message"
+        submit_button: "Send"
+    privacy:
+      title: "Privacy Policy"
+      content: |
+        English Diary (hereinafter referred to as "the Service") respects the privacy of its users and is committed to protecting their personal information. This Privacy Policy explains how we collect, use, and safeguard your data.
+
+        ### 1. Information We Collect
+        - Personal information provided during account registration (e.g., name, email address)
+        - Usage data automatically collected during your interaction with the Service (e.g., IP address, cookies)
+
+        ### 2. Purpose of Use
+        - To provide and operate the Service
+        - To respond to user inquiries
+        - To improve and enhance the Service
+
+        ### 3. Data Sharing
+        We will not share your personal information with third parties except in the following cases:
+        - With your explicit consent
+        - When required by law
+
+        ### 4. Security
+        We take reasonable measures to protect your personal information from unauthorized access, disclosure, or alteration.
+
+        ### 5. User Rights
+        You have the right to access, correct, or delete your personal information. To exercise these rights, please contact us at the email address below.
+
+        ### 6. Updates to This Policy
+        We reserve the right to update this Privacy Policy as necessary. Updates will be posted on this page.
+
+        Effective Date: January 19, 2025
+    terms:
+      title: "Terms of Service"
+      content: |
+        These Terms of Service (hereinafter referred to as "the Agreement") set forth the conditions of use for the English Diary service (hereinafter referred to as "the Service"). By using the Service, users agree to comply with these terms.
+
+        ### 1. Application
+        This Agreement applies to all relationships between users and the operator regarding the use of the Service.
+
+        ### 2. Registration
+        Users must register for the Service by following the procedures specified by the operator. The operator reserves the right to reject registrations that are deemed inappropriate.
+
+        ### 3. Prohibited Activities
+        Users are prohibited from engaging in the following activities:
+        - Acts that violate laws or public order and morals
+        - Harassment or harm directed at other users or third parties
+        - Disrupting the operation of the Service
+
+        ### 4. Disclaimer
+        The operator assumes no responsibility for damages arising from the use of the Service, except in cases of intentional or gross negligence.
+
+        ### 5. Governing Law and Jurisdiction
+        This Agreement shall be governed by the laws of Japan. Any disputes arising in connection with this Agreement shall be under the exclusive jurisdiction of the Maebashi District Court in Gunma Prefecture.
+
+        Effective Date: January 19, 2025
+  reminder_mailer:
+    daily_reminder:
+      greeting: "Hello, %{name}!"
+      intro: "It's wonderful to build daily habits step by step."
+      encouragement: "Why not take a moment today to write in your diary?"
+      reminder_time: "🕒 Your usual recording time: It's this time as always!"
+      theme_hint: "📖 Here are some hints for today's theme:"
+      theme_examples:
+        - "What was the most memorable moment of your day?"
+        - "When did you find a little happiness?"
+        - "What are your hopes or ideas for tomorrow?"
+      call_to_action: "Just click and start writing right away 👇"
+      write_link: "Write in your diary"
+      closing_message: "We hope spending time writing in your diary enriches your days!"
+      support_message: "We’re always cheering you on 🌟"
+      team_signature: "From the English Diary Team"
+
+  alerts:
+    omniauth:
+      failed: "Authentication failed: %{reason}"
+
+  factories:
+    diary:
+      title: "Test Diary"
+      content_japanese: "こんにちは"
+      content_english: "Hello"
+      japanese_font_name: "Noto Sans JP"
+      english_font_name: "Noto Sans"
+    item:
+      name: "Test Item"
+      price: 100
+      category: "Font"
+    tree:
+      level: 0
+      job: "Seedlings"
+      points: 0
+      max_count: 1
+    user:
+      name: "Test User %{n}"
+      email: "user%{n}@example.com"
+      password: "password"
+  rspec:
+    validations: "Validations"
+    associations: "Associations"
+    methods:
+      japanese_font_name: "Japanese Font Name Method"
+      can_train: "Can Train Method"
+      train: "Train Method"
+      from_omniauth: "From Omniauth Method"
+    controllers:
+      diaries: "Diaries Controller"
+      trees_controller: "Trees Controller"
+    actions:
+      get_index: "GET /index"
+      post_create: "POST /create"
+      post_purchase: "POST /purchase"
+      get_terms: "GET #terms"
+      get_privacy: "GET #privacy"
+      post_contact: "POST #contact"
+      post_train: "POST #train"
+      post_disconnect_google: "POST #disconnect_google"
+    contexts:
+      valid_parameters: "with valid parameters"
+      invalid_auth_data: "when auth data is invalid"
+      existing_user: "when user exists"
+      new_user: "when user does not exist"
+      user_creation_fails: "when user creation fails"
+      invalid_parameters: "with invalid parameters"
+      sufficient_points: "with sufficient points"
+      insufficient_points: "with insufficient points"
+      tree_can_be_trained: "when tree can be trained"
+      tree_cannot_be_trained: "when tree cannot be trained"
+      invalid_credentials: "with invalid credentials"
+      valid_credentials_remember_me_checked: "with valid credentials and remember_me is checked"
+      valid_credentials_remember_me_unchecked: "with valid credentials and remember_me is not checked"
+    actions:
+      post_create: "POST #create"
+    controllers:
+      users:
+        registrations_controller: "Users::RegistrationsController"
+        sessions_controller: "Users::SessionsController"
+    class_methods:
+      shop_items: "Shop Items Class Method"
+      fonts_for_user: "Fonts for User Class Method"
+    returns_default_value: "returns the default value"
+    returns_shop_items: "returns shop items"
+    returns_user_fonts: "returns the user's fonts"
+    returns_searchable_attributes: "returns searchable attributes"
+    renders_new_template_with_errors: "renders the new template with errors"
+    logs_in_and_sets_remember_me_cookie: "logs the user in and sets a remember_me cookie"
+    logs_in_does_not_set_remember_me_cookie: "logs the user in but does not set a remember_me cookie"
+    returns_existing_user_updates_provider_uid: "returns the existing user and updates provider/uid if necessary"
+    raises_error_does_not_save_user: "raises an error and does not save the user"
+    creates_new_user: "creates a new user"
+    returns_existing_user: "returns an existing user"
+    auto_create_valid_tree: "auto-creates a valid Tree"
+    unique_user_id: "ensures user_id is unique"
+    trainable_returns_true: "returns true when trainable"
+    untrainable_returns_false: "returns false when untrainable"
+    training_increases_level: "increases level after training"
+    training_resets_level_and_promotes: "resets level and promotes after training"
+    can_create_valid_user: "can create a valid user"
+    invalid_without_email: "is invalid without an email"
+    unique_email: "ensures email is unique"
+    renders_new_template: "renders the new template"
+    creates_new_diary: "creates a new diary"
+    returns_user_diaries: "returns a list of diaries for the current user"
+    assigns_items_available: "assigns items available for purchase"
+    processes_purchase_redirects: "processes the purchase and redirects"
+    does_not_process_purchase_redirects_with_alert: "does not process the purchase and redirects with alert"
+    trains_tree_redirects_with_notice: "trains the tree and redirects with a notice"
+    redirects_with_alert: "redirects with an alert"
+    logs_inquiry_redirects_with_notice: "logs the inquiry and redirects with a notice"
+    renders_terms_template: "renders the terms template"
+    renders_privacy_template: "renders the privacy template"
+    disconnects_google_account_redirects_with_notice: "disconnects the Google account and redirects with a notice"
+    errors:
+      failed_to_create_user: "User creation failed"
+  omniauth:
+    mock_auth:
+      email: "test@example.com"
+      name: "Test User"
+
+  activerecord:
+    errors:
+      models:
+        tree:
+          attributes:
+            user_id:
+              taken: "User has already been taken"

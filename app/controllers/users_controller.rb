@@ -5,6 +5,6 @@ class UsersController < ApplicationController
 
   def disconnect_google
     current_user.update(provider: nil, uid: nil)
-    redirect_to mypages_top_path, notice: 'Cancel linking your Google account.'
+    redirect_to mypages_top_path, notice: t('users.google.disconnect_success')
   end
 end

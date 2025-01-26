@@ -6,7 +6,10 @@ RSpec.configure do |config|
     OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
       provider: 'google_oauth2',
       uid: '12345',
-      info: { email: 'test@example.com', name: 'Test User' }
+      info: {
+        email: I18n.t('omniauth.mock_auth.email', default: 'test@example.com'),
+        name: I18n.t('omniauth.mock_auth.name', default: 'Test User')
+      }
     )
   end
 
