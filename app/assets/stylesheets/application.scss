@@ -15,7 +15,7 @@
 
 /* サイドバー */
 .sidebar {
-  width: 200px;
+  width: 170px;
   background-color: #f8f9fa;
   padding: 15px;
 }
@@ -24,6 +24,20 @@
 .main-content {
   flex: 1;
   padding: 20px;
+}
+
+/* ヘッダー */
+header {
+  background-color: #87CEFA;
+  color: #228B22;
+  padding: 1rem;
+}
+
+header h1 {
+  font-size: 2rem; /* 大きめの文字サイズ */
+  font-weight: bold;
+  text-align: left;
+  margin: 0;
 }
 
 /* フッター */
@@ -44,6 +58,13 @@
 .site-footer li {
   display: inline; /* 横並びに配置 */
   margin: 0 10px; /* 各リスト項目の余白 */
+}
+
+.tree-image {
+  max-width: 100%; /* 親要素に合わせてサイズを調整 */
+  height: auto;    /* アスペクト比を維持 */
+  width: 250px;    /* 固定幅にしたい場合 */
+  border-radius: 8px; /* オプション: 角を丸める */
 }
 
 /*

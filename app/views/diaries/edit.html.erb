@@ -19,7 +19,7 @@
     <%= form.label :japanese_font_name, t('diaries.edit.japanese_font') %>
     <%= form.select(
           :japanese_font_name,
-          options_for_select(current_user.purchased_fonts.select { |f| f.language == 'Japanese' }.map { |f| [f.name, f.font_name] }, @diary.japanese_font_name),
+          options_for_select(current_user.send(:available_fonts).select { |f| f.language == 'Japanese' }.map { |f| [f.name, f.font_name] }, @diary.japanese_font_name),
           prompt: t('diaries.edit.choose_japanese_font')
     ) %>
   </div>
@@ -33,7 +33,7 @@
     <%= form.label :english_font_name, t('diaries.edit.english_font') %>
     <%= form.select(
           :english_font_name,
-          options_for_select(current_user.purchased_fonts.select { |f| f.language == 'English' }.map { |f| [f.name, f.font_name] }, @diary.english_font_name),
+          options_for_select(current_user.send(:available_fonts).select { |f| f.language == 'English' }.map { |f| [f.name, f.font_name] }, @diary.english_font_name),
           prompt: t('diaries.edit.choose_english_font')
     ) %>
   </div>

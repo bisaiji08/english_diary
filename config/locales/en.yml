@@ -31,9 +31,13 @@ en:
       your_points: "Your points: %{points}"
       buy_button: "Buy"
       not_enough_points: "You do not have enough points to buy this item."
+    purchase:
+      already_owned: "You already own this item."
+      insufficient_points: "Not enough points to purchase this item."
+      success: "You successfully purchased %{name}!"
+      failed: "Purchase failed: %{error}"
   static_pages:
     top:
-      title: "English Diary"
       about_button: "About this app"
       about_description: "This is an app to help you get into the habit of keeping an English diary.\nIt also has a translation function, so you can easily write an English diary even if you don't have any knowledge of English."
       close_button: "Close"
@@ -105,11 +109,11 @@ en:
       tree_title: "Tree Information"
       tree_description: "Your tree represents your progress in using English Diary. Here's how it works:"
       watering_title: "Watering Your Tree"
-      watering_description: "The first diary you write each day is considered as 'watering' your tree. Watering helps your tree grow and level up, encouraging consistent daily engagement."
+      watering_description: "The first diary entry each day is counted as 'watering.' Watering will level up the tree."
       frequency_title: "Watering Frequency"
       frequency_description: "Watering can only be done once per day. If you skip a day without writing a diary, your tree won't receive water for that day, and its growth will pause."
       benefits_title: "Benefits of Tree Growth"
-      benefit_one: "Helps your tree level up and grow bigger."
+      benefit_one: "When the tree levels up and reaches level 10, it will become the 2nd form, and after reaching the 3rd form, you will receive points when you raise the level to 10."
       benefit_two: "Motivates you to maintain a consistent writing habit."
       benefit_three: "Visually represents your progress and achievements."
       settings_title: "Settings"
@@ -156,12 +160,6 @@ en:
     contact:
       log: "Inquiry: Name=%{name}, Email=%{email}, Message=%{message}"
       success: "Your inquiry has been sent."
-  shop:
-    purchase:
-      already_owned: "You already own this item."
-      insufficient_points: "Not enough points to purchase this item."
-      success: "You successfully purchased %{name}!"
-      failed: "Purchase failed: %{error}"
   trees:
     purchase:
       not_enough_points: "Not enough points to purchase '%{item_name}'."

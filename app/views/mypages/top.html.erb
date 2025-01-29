@@ -4,6 +4,7 @@
 <p><%= t('mypages.top.tree_information.points', points: @tree.points) %></p>
 <p><%= t('mypages.top.tree_information.laps', count: @tree.max_count) %></p>
 <p><%= t('mypages.top.tree_information.level', level: @tree.level) %></p>
+<%= image_tag tree_image_path(@tree.job), alt: @tree.job, class: 'tree-image' %>
 <% if @tree && @tree.last_trained_at && @tree.last_trained_at.to_date == Date.today %>
   <p><%= t('mypages.top.tree_information.watering_yet') %></p>
 <% elsif @tree %>
@@ -18,7 +19,7 @@
 <h2><%= t('mypages.top.purchased_items.title') %></h2>
 
 <h3><%= t('mypages.top.purchased_items.japanese_fonts') %></h3>
-<% japanese_fonts = @purchased_items.select { |item| item.language == 'Japanese' } %>
+<% japanese_fonts = current_user.send(:available_fonts).select { |item| item.language == 'Japanese' } %>
 <% if japanese_fonts.any? %>
   <ul>
     <% japanese_fonts.each do |font| %>
@@ -30,7 +31,7 @@
 <% end %>
 
 <h3><%= t('mypages.top.purchased_items.english_fonts') %></h3>
-<% english_fonts = @purchased_items.select { |item| item.language == 'English' } %>
+<% english_fonts = current_user.send(:available_fonts).select { |item| item.language == 'English' } %>
 <% if english_fonts.any? %>
   <ul>
     <% english_fonts.each do |font| %>
