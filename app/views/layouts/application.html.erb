@@ -43,9 +43,11 @@
     <% end %>
     
     <div class="layout">
-      <aside class="sidebar">
-        <%= render 'shared/sidebar' %>
-      </aside>
+      <% if controller_name != 'static_pages' || action_name != 'top' %>
+        <aside class="sidebar">
+          <%= render 'shared/sidebar' %>
+        </aside>
+      <% end %>
 
       <main class="main-content">
         <%= yield %>

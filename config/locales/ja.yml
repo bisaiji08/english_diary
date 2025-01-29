@@ -31,9 +31,13 @@ ja:
       your_points: "あなたのポイント: %{points}"
       buy_button: "購入"
       not_enough_points: "このアイテムを購入するポイントが不足しています。"
+    purchase:
+      already_owned: "このアイテムはすでに所有しています。"
+      insufficient_points: "このアイテムを購入するのに十分なポイントがありません。"
+      success: "%{name}の購入に成功しました！"
+      failed: "購入に失敗しました: %{error}"
   static_pages:
     top:
-      title: "イングリッシュダイアリー"
       about_button: "このアプリについて"
       about_description: "英語の日記を続ける習慣を身につけるためのアプリです。\n翻訳機能も備えているので、英語の知識がなくても簡単に英語の日記を書くことができます。"
       close_button: "閉じる"
@@ -105,11 +109,11 @@ ja:
       tree_title: "ツリー情報"
       tree_description: "ツリーはEnglish Diaryの利用状況を表します。仕組みは以下の通りです："
       watering_title: "ツリーへの水やり"
-      watering_description: "毎日最初に書いた日記が「水やり」としてカウントされます。水やりはツリーを成長させ、レベルアップさせます。"
+      watering_description: "毎日最初に書いた日記が「水やり」としてカウントされます。水やりはツリーをレベルアップさせます。"
       frequency_title: "水やりの頻度"
       frequency_description: "水やりは1日1回のみ可能です。日記を書かない日はツリーが水を得られず、成長が一時停止します。"
       benefits_title: "ツリー成長の利点"
-      benefit_one: "ツリーがレベルアップし、成長します。"
+      benefit_one: "ツリーがレベルアップし、レベルが10に達すると第2形態になり、第3形態になった後レベルを10まであげるとポイントがもらえます。"
       benefit_two: "日記を書く習慣を維持する動機づけになります。"
       benefit_three: "進捗と成果を視覚的に表します。"
       settings_title: "設定"
@@ -156,12 +160,6 @@ ja:
     contact:
       log: "お問い合わせ: 名前=%{name}, メール=%{email}, メッセージ=%{message}"
       success: "お問い合わせを送信しました。"
-  shop:
-    purchase:
-      already_owned: "このアイテムはすでに所有しています。"
-      insufficient_points: "このアイテムを購入するのに十分なポイントがありません。"
-      success: "%{name}の購入に成功しました！"
-      failed: "購入に失敗しました: %{error}"
   trees:
     purchase:
       not_enough_points: "'%{item_name}' を購入するのにポイントが足りません。"

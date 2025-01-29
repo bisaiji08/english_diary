@@ -1,17 +1,20 @@
-<div class="sidebar">
-  <% if user_signed_in? %>
-    <h1><%= link_to 'My page', mypages_top_path %></h1>
-    <h1><%= link_to 'Write Diary', new_diary_path %></h1>
-    <h1><%= link_to 'View Diaries', mypages_diaries_path %></h1>
-    <h1><%= link_to 'Go to Shop', shop_index_path %></h1>
-    <h1><%= link_to 'Settings', mypages_settings_path %></h1>
-    <h1><%= link_to 'How to Use', mypages_how_to_use_path %></h1>
-    <h1><%= link_to 'Log out', destroy_user_session_path, data: { turbo_method: :delete, action: 'redirect' }, id: 'logout-link' %></h1>
-  <% else %>
-    <h1><%= link_to t('devise.shared.links.log_in'), new_session_path(resource_name) %><br /></h1>
-    <h1><%= link_to t('devise.shared.links.sign_up'), new_registration_path(:user) %></h1>
-    <%- resource_class.omniauth_providers.each do |provider| %>
-      <h1><%= link_to "Sign in with Google", omniauth_authorize_path(:user, provider), method: :post, data: { turbo: false } %></h1>
+<% unless controller_name == 'static_pages' && action_name == 'top' %>
+  <div class="sidebar">
+    <% if user_signed_in? %>
+      <h1><%= link_to 'My page', mypages_top_path %></h1>
+      <h1><%= link_to 'Write Diary', new_diary_path %></h1>
+      <h1><%= link_to 'View Diaries', mypages_diaries_path %></h1>
+      <h1><%= link_to 'Go to Shop', shop_index_path %></h1>
+      <h1><%= link_to 'Settings', mypages_settings_path %></h1>
+      <h1><%= link_to 'How to Use', mypages_how_to_use_path %></h1>
+      <h1><%= link_to 'Log out', destroy_user_session_path, data: { turbo_method: :delete, action: 'redirect' }, id: 'logout-link' %></h1>
+    <% else %>
+      <h1><%= link_to 'Top page', root_path %></h1>
+      <h1><%= link_to t('devise.shared.links.log_in'), new_session_path(:user) %></h1>
+      <h1><%= link_to t('devise.shared.links.sign_up'), new_registration_path(:user) %></h1>
+      <% resource_class.omniauth_providers.each do |provider| %>
+        <h1><%= link_to "Sign in with Google", omniauth_authorize_path(:user, provider), method: :post, data: { turbo: false } %></h1>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>

@@ -38,7 +38,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
 gem 'chronic', '~> 0.10.2'
-gem 'redis-client', '~> 0.23.1'
+gem 'redis', '~> 4.8'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'whenever', require: false
