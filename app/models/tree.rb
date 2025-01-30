@@ -23,7 +23,7 @@ class Tree < ApplicationRecord
   end
 
   def can_train?
-    return false if last_trained_at&.to_date == Time.zone.today
+    return false if last_trained_at&.between?(Time.zone.today.beginning_of_day, Time.zone.today.end_of_day)
 
     true
   end

@@ -21,22 +21,16 @@ class DiariesController < ApplicationController
   def create
     @diary = current_user.diaries.build(diary_parameter)
     @diary.start_time = Time.current
-
     if @diary.save
       tree = current_user.tree
       if tree.nil?
         flash[:alert] = t('diaries.create.no_tree')
+      elsif tree.can_train?
+        tree.train!
+        flash[:notice] = t('diaries.create.training_completed')
       else
-        Rails.logger.debug "Tree Training Check - Level: #{tree.level}, Last Trained At: #{tree.last_trained_at}, Can Train?: #{tree.can_train?}"
-    
-        if tree.can_train?
-          tree.train!
-          flash[:notice] = t('diaries.create.training_completed')
-        else
-          flash[:alert] = t('diaries.create.training_done')
-        end
+        flash[:alert] = t('diaries.create.training_done')
       end
-
       redirect_to @diary
     else
       render 'new', status: :unprocessable_entity
@@ -100,7 +94,6 @@ class DiariesController < ApplicationController
     }
     url.query = URI.encode_www_form(params)
     res = Net::HTTP.get_response(url)
-
     if res.is_a?(Net::HTTPSuccess)
       parsed_response = JSON.parse(res.body)
       if parsed_response['data'] && parsed_response['data']['translations']
