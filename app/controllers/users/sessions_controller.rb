@@ -15,6 +15,28 @@ module Users
     # end
 
     # DELETE /resource/sign_out
+    def new
+      self.resource = User.new
+      super
+    end
+
+    def create
+      user = User.find_by(email: params[:user][:email])
+      if user&.valid_password?(params[:user][:password])
+        remember_me = params[:user][:remember_me] == '1' # 明示的に変数に格納
+        sign_in(user, remember_me: remember_me)
+
+        if remember_me
+          cookies.permanent.signed[:remember_user_token] = user.rememberable_value # 追加
+        end
+
+        redirect_to mypages_top_path
+      else
+        self.resource = User.new
+        flash[:alert] = I18n.t('devise.failure.invalid', authentication_keys: 'Email') # 追加
+        render :new
+      end
+    end
 
     protected
 
