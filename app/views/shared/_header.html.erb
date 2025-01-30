@@ -1,7 +1,16 @@
 <header class="bg-gray-800 text-white p-4">
-  <div class="container mx-auto">
-    <h1 class="text-3xl font-bold text-left">
+  <div class="container mx-auto header-container">
+    <h1>
       English Diary
     </h1>
+    <div class="share-container">
+      <span class="share-text">このアプリが気に入ったらXで友達におすすめして！</span>
+      <a href="https://twitter.com/intent/tweet?text=<%= CGI.escape('英語日記を習慣化！シンプルで続けやすいEnglish Diary、試してみませんか？📖✍️ #英語学習 #EnglishDiary') %>&url=<%= CGI.escape(root_url) %>"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="x-share-button">
+        Xでシェア
+      </a>
+    </div>
   </div>
 </header>
