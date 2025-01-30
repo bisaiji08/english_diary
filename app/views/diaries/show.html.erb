@@ -1,21 +1,18 @@
 <div class="diary-info">
-  <%= t('diaries.show.title') %>
-  <span class="title info_frame">
-    <%= @diary.title %>
+  <span class="underline">
+    <%= t('diaries.show.title') %> <%= @diary.title %>
   </span>
 </div>
 
 <div class="diary-info">
-  <%= t('diaries.show.start_time') %>
-  <span class="start_time info_frame">
-    <%= @diary.start_time.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M") %>
+  <span class="underline">
+    <%= t('diaries.show.start_time') %> <%= @diary.start_time.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M") %>
   </span>
 </div>
 
 <div class="diary-info">
-  <%= t('diaries.show.edited_time') %>
-  <span class="edit_time info_frame">
-    <%= @diary.updated_at.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M") %>
+  <span class="underline">
+    <%= t('diaries.show.edited_time') %> <%= @diary.updated_at.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M") %>
   </span>
 </div>
 

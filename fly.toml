@@ -17,6 +17,24 @@ primary_region = 'nrt'
   min_machines_running = 1
   processes = ['app']
 
+[[services]]
+  internal_port = 3000
+  protocol = "tcp"
+  processes = ["app"]
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+[[services]]
+  internal_port = 3000
+  protocol = "tcp"
+  processes = ["worker"]
+
 [[vm]]
   memory = '1gb'
   cpu_kind = 'shared'

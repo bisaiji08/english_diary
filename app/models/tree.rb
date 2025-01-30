@@ -23,13 +23,15 @@ class Tree < ApplicationRecord
   end
 
   def can_train?
-    return false if last_trained_at && last_trained_at.to_date == Date.today
+    return false if last_trained_at&.between?(Time.zone.today.beginning_of_day, Time.zone.today.end_of_day)
 
     true
   end
 
   def train!
     raise I18n.t('trees.train.not_allowed') unless can_train?
+
+    Rails.logger.debug "Before Training - Level: #{level}, Job: #{job}, Last Trained At: #{last_trained_at}"
 
     if job == 'mature tree' && level >= 10
       reset_tree
@@ -39,6 +41,9 @@ class Tree < ApplicationRecord
       self.level += 1
     end
     self.last_trained_at = Time.current
+
+    Rails.logger.debug "Before Training - Level: #{level}, Job: #{job}, Last Trained At: #{last_trained_at}"
+
     save! # 確実に保存する
   end
 

@@ -71,9 +71,9 @@ ja:
       create_button: "日記を作成する"
       translate_button: "翻訳する"
     show:
-      title: "タイトル"
-      start_time: "開始時間"
-      edited_time: "編集時間"
+      title: "タイトル："
+      start_time: "開始時間："
+      edited_time: "編集時間："
       contents_japanese: "内容（日本語）"
       contents_english: "内容（英語）"
     create:
