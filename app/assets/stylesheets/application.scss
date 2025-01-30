@@ -33,11 +33,39 @@ header {
   padding: 1rem;
 }
 
-header h1 {
-  font-size: 2rem; /* 大きめの文字サイズ */
+/* ヘッダー内のコンテンツを左右に配置 */
+.header-container {
+  display: flex;
+  justify-content: space-between; /* 左右に要素を配置 */
+  align-items: center; /* 垂直方向の中央揃え */
+}
+
+/* シェアボタンと説明のレイアウト */
+.share-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* テキストとボタンの間の余白 */
+}
+
+/* シェア用テキスト */
+.share-text {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Xでシェアボタン */
+.x-share-button {
+  background-color: #1DA1F2; /* Xのブランドカラー */
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
   font-weight: bold;
-  text-align: left;
-  margin: 0;
+  transition: background-color 0.3s;
+}
+
+.x-share-button:hover {
+  background-color: #0d8ddb;
 }
 
 /* フッター */
