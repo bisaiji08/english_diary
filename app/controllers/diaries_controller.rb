@@ -26,11 +26,15 @@ class DiariesController < ApplicationController
       tree = current_user.tree
       if tree.nil?
         flash[:alert] = t('diaries.create.no_tree')
-      elsif tree.can_train?
-        tree.train!
-        flash[:notice] = t('diaries.create.training_completed')
       else
-        flash[:alert] = t('diaries.create.training_done')
+        Rails.logger.debug "Tree Training Check - Level: #{tree.level}, Last Trained At: #{tree.last_trained_at}, Can Train?: #{tree.can_train?}"
+    
+        if tree.can_train?
+          tree.train!
+          flash[:notice] = t('diaries.create.training_completed')
+        else
+          flash[:alert] = t('diaries.create.training_done')
+        end
       end
 
       redirect_to @diary

@@ -5,7 +5,7 @@
 <p><%= t('mypages.top.tree_information.laps', count: @tree.max_count) %></p>
 <p><%= t('mypages.top.tree_information.level', level: @tree.level) %></p>
 <%= image_tag tree_image_path(@tree.job), alt: @tree.job, class: 'tree-image' %>
-<% if @tree && @tree.last_trained_at && @tree.last_trained_at.to_date == Date.today %>
+<% if @tree && @tree.last_trained_at && @tree.last_trained_at.to_date == Time.zone.today %>
   <p><%= t('mypages.top.tree_information.watering_yet') %></p>
 <% elsif @tree %>
   <p><%= t('mypages.top.tree_information.watering_not_yet') %></p>

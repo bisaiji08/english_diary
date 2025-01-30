@@ -303,6 +303,14 @@ en:
       diaries: "Diaries Controller"
       trees_controller: "Trees Controller"
     actions:
+      post_train: "POST /train"
+    contexts:
+      tree_can_be_trained: "when tree can be trained"
+      tree_cannot_be_trained: "when tree cannot be trained"
+    trains_tree_redirects_with_notice: "trains the tree and redirects with a notice"
+    redirects_with_alert: "redirects with an alert"
+
+    actions:
       get_index: "GET /index"
       post_create: "POST /create"
       post_purchase: "POST /purchase"
