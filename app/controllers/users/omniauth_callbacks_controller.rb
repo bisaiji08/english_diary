@@ -5,13 +5,13 @@ module Users
     before_action :authenticate_user!, only: [:connect_google]
 
     def google_oauth2
-      Rails.logger.info "Google OAuth Callback Received"
+      Rails.logger.info 'Google OAuth Callback Received'
       Rails.logger.info "OmniAuth Auth Hash: #{request.env['omniauth.auth'].inspect}"
 
       @user = User.from_omniauth(request.env['omniauth.auth'])
 
       if @user.nil?
-        Rails.logger.error "User creation failed: No user returned from from_omniauth"
+        Rails.logger.error 'User creation failed: No user returned from from_omniauth'
         redirect_to new_user_registration_url, alert: t('devise.omniauth_callbacks.failure', kind: 'Google')
         return
       end

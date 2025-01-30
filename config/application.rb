@@ -26,7 +26,7 @@ module Myapp
     end
 
     config.i18n.default_locale = :ja
-    config.i18n.available_locales = [:ja, :en]
+    config.i18n.available_locales = %i[ja en]
     config.i18n.fallbacks = [:en]
 
     config.active_job.queue_adapter = :sidekiq

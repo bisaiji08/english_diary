@@ -1,12 +1,13 @@
 services:
   web:
-    build: . #現在のディレクトリのDockerfileを指定
+    build: .
     command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/app
+      - bundle_data:/app/vendor/bundle
     ports:
       - "3000:3000"
-    depends_on: #先にdbから起動させる
+    depends_on:
       - db
       - redis
     tty: true
@@ -17,7 +18,7 @@ services:
   db:
     image: postgres:16
     volumes:
-      - db-store:/var/lib/postgresql/data # データを永続化するための設定
+      - db-store:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
@@ -35,3 +36,4 @@ services:
 
 volumes:
   db-store:
+  bundle_data:

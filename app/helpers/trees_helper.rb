@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TreesHelper
   def tree_image_path(job)
     image_name = case job
