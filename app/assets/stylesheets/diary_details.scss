@@ -1,12 +1,14 @@
 .diary-info {
   margin: 7px 0; /* 段落の上下の余白 */
-  line-height: 1; /* 行間を狭く（必要に応じて調整） */
+  display: flex; /* タイトルと内容を横並びに */
+  align-items: center; /* 垂直方向の中央揃え */
+  gap: 5px; /* タイトルと値の間隔 */
 }
 
-.info_frame {
-  border: 1px solid #000; /* 枠線の色と太さ */
-  padding: 1.5px; /* 内側の余白 */
-  margin: 1px; /* 外側の余白 */
+.underline {
+  display: inline-block; /* テキストの長さに合わせる */
+  border-bottom: 2px solid #000; /* 下線を追加 */
+  padding-bottom: 3px; /* 下線とテキストの間隔 */
 }
 
 .content_frame {

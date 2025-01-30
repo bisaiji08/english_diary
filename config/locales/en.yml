@@ -71,9 +71,9 @@ en:
       create_button: "Create diary"
       translate_button: "Translate"
     show:
-      title: "Title"
-      start_time: "Start time"
-      edited_time: "Edited time"
+      title: "Title:"
+      start_time: "Start time:"
+      edited_time: "Edited time:"
       contents_japanese: "Contents (Japanese)"
       contents_english: "Contents (English)"
     create:
