@@ -1,33 +1,39 @@
-<h2><%= t('devise.registrations.edit.title') %></h2>
+<h2 class="settings-title"><%= t('devise.registrations.edit.title') %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="settings-card">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "user-form" }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email, t('devise.registrations.edit.email') %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :email, t('devise.registrations.edit.email'), class: "form-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password, t('devise.registrations.edit.password') %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em>(<%= @minimum_password_length %> <%= t('devise.shared.characters_minimum') %>)</em>
-    <% end %>
-  </div>
+    <div class="password-section">
+      <h3 class="section-title"><%= t('devise.registrations.edit.password_change') %></h3>
 
-  <div class="field">
-    <%= f.label :password_confirmation, t('devise.registrations.edit.password_confirmation') %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div class="form-group">
+        <%= f.label :password, t('devise.registrations.edit.password'), class: "form-label" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-input" %>
+        <% if @minimum_password_length %>
+          <em class="password-hint">(<%= @minimum_password_length %> <%= t('devise.shared.characters_minimum') %>)</em>
+        <% end %>
+      </div>
 
-  <div class="field">
-    <%= f.label :current_password, t('devise.registrations.edit.current_password') %><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, t('devise.registrations.edit.password_confirmation'), class: "form-label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input" %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit t('devise.registrations.edit.submit') %>
-  </div>
-<% end %>
+    <div class="form-group">
+      <%= f.label :current_password, t('devise.registrations.edit.current_password'), class: "form-label" %>
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "form-input" %>
+    </div>
+
+    <!-- 送信ボタン -->
+    <div class="form-actions">
+      <%= f.submit t('devise.registrations.edit.submit'), class: "save-button" %>
+    </div>
+  <% end %>
+</div>

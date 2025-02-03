@@ -1,11 +1,13 @@
-<h1><%= t('mypages.google_account.title') %></h1>
+<h1 class="settings-title"><%= t('mypages.google_account.title') %></h1>
 
-<% if current_user.provider.present? && current_user.uid.present? %>
-  <p><%= t('mypages.google_account.linked') %></p>
-  <%= form_with url: disconnect_google_path, method: :delete, class: 'inline-form' do %>
-    <%= submit_tag t('mypages.google_account.unlink_button'), class: 'btn btn-danger', data: { confirm: t('mypages.google_account.unlink_confirm') } %>
+<div class="settings-card">
+  <% if current_user.provider.present? && current_user.uid.present? %>
+    <p class="account-status success"><%= t('mypages.google_account.linked') %></p>
+    <%= form_with url: disconnect_google_path, method: :delete, class: 'unlink-form' do %>
+      <%= submit_tag t('mypages.google_account.unlink_button'), class: 'btn-danger', data: { confirm: t('mypages.google_account.unlink_confirm') } %>
+    <% end %>
+  <% else %>
+    <p class="account-status warning"><%= t('mypages.google_account.not_linked') %></p>
+    <%= link_to t('mypages.google_account.link_button'), user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn-primary" %>
   <% end %>
-<% else %>
-  <p><%= t('mypages.google_account.not_linked') %></p>
-  <%= link_to t('mypages.google_account.link_button'), user_google_oauth2_omniauth_authorize_path, method: :post %>
-<% end %>
+</div>

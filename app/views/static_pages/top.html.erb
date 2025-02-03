@@ -1,8 +1,20 @@
-<button id="info-button" class="btn btn-info"><%= t('static_pages.top.about_button') %></button>
+<!-- ログインリンク（中央配置） -->
+<h1 class="top-login">
+  <%= link_to t('static_pages.top.login_link'), new_user_session_path, class: 'login-link' %>
+</h1>
 
-<div id="info-popup" style="display: none;">
-  <p><%= t('static_pages.top.about_description') %></p>
-  <button id="close-popup"><%= t('static_pages.top.close_button') %></button>
+<!-- OGP画像（背景として画面いっぱいに表示） -->
+<div class="ogp-container">
+  <img src="<%= asset_path('ogp-image.jpg') %>" alt="OGP Image" class="ogp-image">
 </div>
 
-<h1><%= link_to t('static_pages.top.login_link'), new_user_session_path, class: 'login-link' %></h1>
+<!-- 「アプリについて」ボタン -->
+<div class="info-container">
+  <button id="info-button" class="btn btn-info"><%= t('static_pages.top.about_button') %></button>
+</div>
+
+<!-- ポップアップ情報 -->
+<div id="info-popup" class="info-popup">
+  <p><%= t('static_pages.top.about_description') %></p>
+  <button id="close-popup" class="btn btn-close"><%= t('static_pages.top.close_button') %></button>
+</div>

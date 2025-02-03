@@ -1,0 +1,385 @@
+/* タイトル（ページ上部・中央表示） */
+.mypage-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* レイアウト全体 */
+.mypage-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 0 10px;
+}
+
+/* === ツリー情報（絵日記風） === */
+.tree-diary {
+  flex: 1;
+  max-width: 50%;
+  background: #fffaf0; /* クリーム色の背景（ノート風） */
+  padding: 20px;
+  border: 3px solid #d4a373; /* 手書き風の枠 */
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  font-family: 'Patrick Hand', cursive;
+}
+
+/* 木の画像（絵日記風） */
+.tree-image-container {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background: #fff;
+  border: 2px dashed #d4a373; /* 手書き風の罫線 */
+  border-radius: 8px;
+}
+
+.tree-image {
+  width: 100px;
+  height: auto;
+  filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.3)); /* 手書き風の影 */
+}
+
+/* === 購入済みアイテム（レシート風） === */
+.receipt {
+  flex: 1;
+  max-width: 50%;
+  background: white;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  font-family: 'Courier New', monospace;
+  position: relative;
+}
+
+/* レシートの端のデザイン（点線） */
+.receipt::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 80%;
+  height: 10px;
+  border-top: 2px dashed black;
+  transform: translateX(-50%);
+}
+
+.receipt::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 80%;
+  height: 10px;
+  border-bottom: 2px dashed black;
+  transform: translateX(-50%);
+}
+
+/* レシートのリスト */
+.receipt ul {
+  list-style: none;
+  padding: 0;
+}
+
+.receipt li {
+  border-bottom: 1px dashed black;
+  padding: 5px 0;
+  font-size: 14px;
+}
+
+.receipt li:last-child {
+  border-bottom: none;
+}
+
+/* レシートの合計（太字） */
+.receipt strong {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* === 設定タイトル === */
+.settings-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* === 設定ページのコンテナ === */
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* === 設定項目（カードデザイン） === */
+.settings-card {
+  width: 100%;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.settings-card:hover {
+  background: #e9e9e9;
+  transform: translateY(-2px);
+}
+
+/* === 設定リンク（アイコン付き） === */
+.settings-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.settings-link i {
+  font-size: 20px;
+  margin-right: 10px;
+  color: #007bff;
+}
+
+/* === レスポンシブ対応 === */
+@media (max-width: 600px) {
+  .settings-container {
+    max-width: 90%;
+  }
+}
+
+/* === 設定カードデザイン === */
+.settings-card {
+  max-width: 400px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* === 通知の現在の状態 === */
+.notification-status {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.status-enabled {
+  color: green;
+  font-weight: bold;
+}
+
+.status-disabled {
+  color: red;
+  font-weight: bold;
+}
+
+/* === タイムゾーン表示 === */
+.time-zone-info {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+/* === トグルスイッチ === */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+}
+
+.toggle-input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.toggle-input:checked + .slider {
+  background-color: #28a745;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 3.5px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.toggle-input:checked + .slider::before {
+  transform: translateX(24px);
+}
+
+/* === 送信時間選択 === */
+.time-select-container {
+  margin: 15px 0;
+}
+
+/* === 保存ボタン === */
+.save-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.save-button:hover {
+  background: #0056b3;
+}
+
+/* === Googleアカウントのステータス表示 === */
+.account-status {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.success {
+  color: green;
+  font-weight: bold;
+}
+
+.warning {
+  color: orange;
+  font-weight: bold;
+}
+
+/* === ボタンデザイン === */
+.btn-primary {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  background: #4285F4;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.btn-primary:hover {
+  background: #357ae8;
+}
+
+.btn-danger {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-danger:hover {
+  background: #c9302c;
+}
+
+/* === タイトルのデザイン === */
+.how-to-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* === 説明の導入部分 === */
+.how-to-introduction {
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* === 全体のコンテナ（中央配置） === */
+.how-to-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* === 各セクション（カード型） === */
+.how-to-section {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+/* === 見出しデザイン（番号付き） === */
+.how-to-section h2 {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.step-number {
+  display: inline-block;
+  background: #007bff;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+/* === 小見出し（ツリー機能の説明） === */
+.sub-section {
+  margin-top: 10px;
+  padding-left: 15px;
+  border-left: 3px solid #007bff;
+}
+
+/* === リストのデザイン === */
+.how-to-section ul {
+  padding-left: 20px;
+}
+
+.how-to-section li {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* === レスポンシブ対応（スマホ用） === */
+@media (max-width: 600px) {
+  .how-to-container {
+    max-width: 90%;
+  }
+}

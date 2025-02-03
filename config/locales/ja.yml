@@ -109,7 +109,7 @@ ja:
       tree_title: "ツリー情報"
       tree_description: "ツリーはEnglish Diaryの利用状況を表します。仕組みは以下の通りです："
       watering_title: "ツリーへの水やり"
-      watering_description: "毎日最初に書いた日記が「水やり」としてカウントされます。水やりはツリーをレベルアップさせます。"
+      watering_description: "毎日最初に書いた日記が「水やり」としてカウントされます。「水やり」はツリーをレベルアップさせます。"
       frequency_title: "水やりの頻度"
       frequency_description: "水やりは1日1回のみ可能です。日記を書かない日はツリーが水を得られず、成長が一時停止します。"
       benefits_title: "ツリー成長の利点"
@@ -144,7 +144,7 @@ ja:
         watering_yet: "水やり：済"
         watering_not_yet: "水やり：未"
         no_tree: "まだツリーがありません。"
-        important: "重要：1日目の日記を書くと、ツリーに水やりされます。"
+        important: "重要：1日1回、最初の日記作成が「水やり」としてカウントされます。"
         learn_more: "もっと詳しく"
       purchased_items:
         title: "購入済みアイテム"
