@@ -1,28 +1,37 @@
-<h1><%= t('shop.index.title') %></h1>
-<p><%= t('shop.index.your_points', points: current_user.tree.points) %></p>
+<h1 class="shop-title"><%= t('shop.index.title') %></h1>
+<p class="shop-points"><%= t('shop.index.your_points', points: current_user.tree.points) %></p>
 
-<h2><%= t('shop.index.japanese_fonts_title') %></h2>
-<% if @japanese_fonts.any? %>
-  <ul>
-    <% @japanese_fonts.each do |font| %>
-      <li>
-        <strong><%= link_to font.name, shop_path(font) %></strong> - <%= t('shop.index.font_price', price: font.price) %>
-      </li>
+<div class="shop-container">
+  <div class="font-panel">
+    <h2><%= t('shop.index.japanese_fonts_title') %></h2>
+    <% if @japanese_fonts.any? %>
+      <div class="font-grid">
+        <% @japanese_fonts.each do |font| %>
+          <div class="font-card">
+            <strong><%= link_to font.name, shop_path(font) %></strong>
+            <p><%= t('shop.index.font_price', price: font.price) %></p>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p><%= t('shop.index.no_japanese_fonts') %></p>
     <% end %>
-  </ul>
-<% else %>
-  <p><%= t('shop.index.no_japanese_fonts') %></p>
-<% end %>
+  </div>
 
-<h2><%= t('shop.index.english_fonts_title') %></h2>
-<% if @english_fonts.any? %>
-  <ul>
-    <% @english_fonts.each do |font| %>
-      <li>
-        <strong><%= link_to font.name, shop_path(font) %></strong> - <%= t('shop.index.font_price', price: font.price) %>
-      </li>
+  <div class="font-panel">
+    <h2><%= t('shop.index.english_fonts_title') %></h2>
+    <% if @english_fonts.any? %>
+      <div class="font-grid">
+        <% @english_fonts.each do |font| %>
+          <div class="font-card">
+            <strong><%= link_to font.name, shop_path(font) %></strong>
+            <p><%= t('shop.index.font_price', price: font.price) %></p>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p><%= t('shop.index.no_english_fonts') %></p>
     <% end %>
-  </ul>
-<% else %>
-  <p><%= t('shop.index.no_english_fonts') %></p>
-<% end %>
+  </div>
+</div>
+

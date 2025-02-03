@@ -1,13 +1,21 @@
-<%= link_to t('shop.show.back_to_shop'), shop_index_path, class: "back-link" %>
-<h1><%= t('shop.show.title') %></h1>
-<p><strong><%= t('shop.show.name') %>:</strong> <%= @item.name %></p>
-<p><strong><%= t('shop.show.description') %>:</strong> <%= @item.description %></p>
-<p><strong><%= t('shop.show.price') %>:</strong> <%= t('shop.show.points', points: @item.price) %></p>
-<p><%= t('shop.show.your_points', points: current_user.tree.points) %></p>
+<div class="back-container">
+  <%= link_to t('shop.show.back_to_shop'), shop_index_path, class: "back-link" %>
+</div>
 
-<% if current_user.tree.points >= @item.price %>
-  <%= button_to t('shop.show.buy_button'), purchase_shop_path(@item), method: :post, class: "buy-button" %>
-<% else %>
-  <p><em><%= t('shop.show.not_enough_points') %></em></p>
-<% end %>
+<div class="product-card">
+  <h1 class="product-title"><%= @item.name %></h1>
+  <p class="product-description"><%= @item.description %></p>
 
+  <div class="product-info">
+    <p><strong><%= t('shop.show.price') %>:</strong> <span class="product-price"><%= t('shop.show.points', points: @item.price) %></span></p>
+    <p><%= t('shop.show.your_points', points: current_user.tree.points) %></p>
+  </div>
+
+  <div class="purchase-section">
+    <% if current_user.tree.points >= @item.price %>
+      <%= button_to t('shop.show.buy_button'), purchase_shop_path(@item), method: :post, class: "buy-button" %>
+    <% else %>
+      <p class="not-enough"><em><%= t('shop.show.not_enough_points') %></em></p>
+    <% end %>
+  </div>
+</div>

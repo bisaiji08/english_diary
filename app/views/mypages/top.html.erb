@@ -1,43 +1,51 @@
-<h1><%= t('mypages.top.title') %></h1>
+<h1 class="mypage-title"><%= t('mypages.top.title') %></h1>
 
-<h2><%= t('mypages.top.tree_information.title') %></h2>
-<p><%= t('mypages.top.tree_information.points', points: @tree.points) %></p>
-<p><%= t('mypages.top.tree_information.laps', count: @tree.max_count) %></p>
-<p><%= t('mypages.top.tree_information.level', level: @tree.level) %></p>
-<%= image_tag tree_image_path(@tree.job), alt: @tree.job, class: 'tree-image' %>
-<% if @tree && @tree.last_trained_at && @tree.last_trained_at.to_date == Time.zone.today %>
-  <p><%= t('mypages.top.tree_information.watering_yet') %></p>
-<% elsif @tree %>
-  <p><%= t('mypages.top.tree_information.watering_not_yet') %></p>
-<% end %>
-
-<p>
-  <strong><%= t('mypages.top.tree_information.important') %></strong>
-  <%= link_to t('mypages.top.tree_information.learn_more'), mypages_how_to_use_path %>
-</p>
-
-<h2><%= t('mypages.top.purchased_items.title') %></h2>
-
-<h3><%= t('mypages.top.purchased_items.japanese_fonts') %></h3>
-<% japanese_fonts = current_user.send(:available_fonts).select { |item| item.language == 'Japanese' } %>
-<% if japanese_fonts.any? %>
-  <ul>
-    <% japanese_fonts.each do |font| %>
-      <li><strong><%= font.name %></strong>: <%= font.description %></li>
+<div class="mypage-container">
+  <div class="tree-diary">
+    <h2><%= t('mypages.top.tree_information.title') %></h2>
+    <div class="tree-image-container">
+      <%= image_tag tree_image_path(@tree.job), alt: @tree.job, class: 'tree-image' %>
+    </div>
+    <p><%= t('mypages.top.tree_information.points', points: @tree.points) %></p>
+    <p><%= t('mypages.top.tree_information.laps', count: @tree.max_count) %></p>
+    <p><%= t('mypages.top.tree_information.level', level: @tree.level) %></p>
+    <% if @tree && @tree.last_trained_at && @tree.last_trained_at.to_date == Time.zone.today %>
+      <p><%= t('mypages.top.tree_information.watering_yet') %></p>
+    <% elsif @tree %>
+      <p><%= t('mypages.top.tree_information.watering_not_yet') %></p>
     <% end %>
-  </ul>
-<% else %>
-  <p><%= t('mypages.top.purchased_items.no_japanese_fonts') %></p>
-<% end %>
 
-<h3><%= t('mypages.top.purchased_items.english_fonts') %></h3>
-<% english_fonts = current_user.send(:available_fonts).select { |item| item.language == 'English' } %>
-<% if english_fonts.any? %>
-  <ul>
-    <% english_fonts.each do |font| %>
-      <li><strong><%= font.name %></strong>: <%= font.description %></li>
+    <p>
+      <strong><%= t('mypages.top.tree_information.important') %></strong>
+      <%= link_to t('mypages.top.tree_information.learn_more'), mypages_how_to_use_path %>
+    </p>
+  </div>
+
+  <div class="receipt">
+    <h2><%= t('mypages.top.purchased_items.title') %></h2>
+
+    <h3><%= t('mypages.top.purchased_items.japanese_fonts') %></h3>
+    <% japanese_fonts = current_user.send(:available_fonts).select { |item| item.language == 'Japanese' } %>
+    <% if japanese_fonts.any? %>
+      <ul>
+        <% japanese_fonts.each do |font| %>
+          <li><strong><%= font.name %></strong>: <%= font.description %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p><%= t('mypages.top.purchased_items.no_japanese_fonts') %></p>
     <% end %>
-  </ul>
-<% else %>
-  <p><%= t('mypages.top.purchased_items.no_english_fonts') %></p>
-<% end %>
+
+    <h3><%= t('mypages.top.purchased_items.english_fonts') %></h3>
+    <% english_fonts = current_user.send(:available_fonts).select { |item| item.language == 'English' } %>
+    <% if english_fonts.any? %>
+      <ul>
+        <% english_fonts.each do |font| %>
+          <li><strong><%= font.name %></strong>: <%= font.description %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p><%= t('mypages.top.purchased_items.no_english_fonts') %></p>
+    <% end %>
+  </div>
+</div>

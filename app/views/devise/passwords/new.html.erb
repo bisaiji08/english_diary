@@ -1,16 +1,24 @@
-<h2><%= t('devise.passwords.new.title') %></h2>
+<h2 class="password-reset-title"><%= t('devise.passwords.new.title') %></h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="password-reset-card">
+  <p class="password-reset-instruction">
+    <%= t('devise.passwords.new.instructions') %>
+  </p>
 
-  <div class="field">
-    <%= f.label :email, t('devise.passwords.new.email') %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "password-reset-form" }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="form-group">
+      <%= f.label :email, t('devise.passwords.new.email'), class: "form-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input" %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit t('devise.passwords.new.submit'), class: "password-reset-button" %>
+    </div>
+  <% end %>
+
+  <div class="password-reset-links">
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit t('devise.passwords.new.submit') %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

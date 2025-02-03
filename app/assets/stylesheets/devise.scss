@@ -1,0 +1,399 @@
+/* === タイトルのデザイン === */
+.settings-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* === フォームの基本スタイル === */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* === パスワード変更セクション === */
+.password-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* パスワードのヒント */
+.password-hint {
+  font-size: 12px;
+  color: #777;
+}
+
+/* === 送信ボタン === */
+.form-actions {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.save-button {
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.save-button:hover {
+  background: #0056b3;
+}
+
+/* === ログインページタイトル === */
+.login-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* === フォーム入力欄 === */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* === 記憶するチェックボックス === */
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.remember-checkbox {
+  transform: scale(1.2);
+}
+
+/* === ログインボタン === */
+.form-actions {
+  margin-top: 20px;
+}
+
+.login-button {
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.login-button:hover {
+  background: #0056b3;
+}
+
+/* === ログイン関連リンク === */
+.login-links {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.login-links a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-links a:hover {
+  text-decoration: underline;
+}
+
+/* === エラーメッセージ === */
+.alert-danger {
+  background: #ffdddd;
+  color: #d9534f;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* === タイトルのデザイン === */
+.signup-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* === フォーム入力欄 === */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* === パスワードのヒント === */
+.password-hint {
+  font-size: 12px;
+  color: #777;
+}
+
+/* === 登録ボタン === */
+.form-actions {
+  margin-top: 20px;
+}
+
+.signup-button {
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.signup-button:hover {
+  background: #218838;
+}
+
+/* === エラーメッセージ === */
+.alert-danger {
+  background: #ffdddd;
+  color: #d9534f;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* === ログインリンク === */
+.signup-links {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.signup-links a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signup-links a:hover {
+  text-decoration: underline;
+}
+
+/* === タイトルのデザイン === */
+.password-reset-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* === フォーム全体をカードデザインに === */
+.password-reset-card {
+  max-width: 400px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+/* === フォーム入力欄 === */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* === パスワードのヒント === */
+.password-hint {
+  font-size: 12px;
+  color: #777;
+}
+
+/* === 送信ボタン === */
+.form-actions {
+  margin-top: 20px;
+}
+
+.password-reset-button {
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.password-reset-button:hover {
+  background: #218838;
+}
+
+/* === エラーメッセージ === */
+.alert-danger {
+  background: #ffdddd;
+  color: #d9534f;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* === タイトルのデザイン === */
+.password-reset-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* === メッセージのデザイン === */
+.password-reset-instruction {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* === フォーム全体をカードデザインに === */
+.password-reset-card {
+  max-width: 400px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+/* === フォーム入力欄 === */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* === 送信ボタン === */
+.form-actions {
+  margin-top: 20px;
+}
+
+.password-reset-button {
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.password-reset-button:hover {
+  background: #0056b3;
+}
+
+/* === エラーメッセージ === */
+.alert-danger {
+  background: #ffdddd;
+  color: #d9534f;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* === リンクエリア === */
+.password-reset-links {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.password-reset-links a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.password-reset-links a:hover {
+  text-decoration: underline;
+}
+
+/* === フォーム入力欄の修正 === */
+.form-input {
+  width: 100%;
+  max-width: 100%; /* 親要素を超えないようにする */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box; /* パディングを含めて幅を計算 */
+}
+
+/* === 設定カードの幅を調整 === */
+.settings-card,
+.login-card,
+.signup-card,
+.password-reset-card {
+  max-width: 400px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  box-sizing: border-box; /* パディングを含めて幅を計算 */
+  overflow: hidden; /* はみ出し防止 */
+}
+
+@media (max-width: 480px) {
+  .settings-card,
+  .login-card,
+  .signup-card,
+  .password-reset-card {
+    width: 90%; /* スマホでは幅を90%に */
+  }
+}

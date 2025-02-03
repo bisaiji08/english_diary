@@ -1,7 +1,24 @@
-<h1><%= t('mypages.settings.title') %></h1>
+<h1 class="settings-title"><%= t('mypages.settings.title') %></h1>
 
-<p><%= link_to t('mypages.settings.edit_user'), edit_user_registration_path %></p>
+<div class="settings-container">
+  <div class="settings-card">
+    <%= link_to edit_user_registration_path, class: "settings-link" do %>
+      <i class="fas fa-user-edit"></i>
+      <span><%= t('mypages.settings.edit_user') %></span>
+    <% end %>
+  </div>
 
-<p><%= link_to t('mypages.settings.google_account_linkage'), mypages_google_account_path %></p>
+  <div class="settings-card">
+    <%= link_to mypages_google_account_path, class: "settings-link" do %>
+      <i class="fab fa-google"></i>
+      <span><%= t('mypages.settings.google_account_linkage') %></span>
+    <% end %>
+  </div>
 
-<p><%= link_to t('mypages.settings.notification_settings'), mypages_notification_settings_path %></p>
+  <div class="settings-card">
+    <%= link_to mypages_notification_settings_path, class: "settings-link" do %>
+      <i class="fas fa-bell"></i>
+      <span><%= t('mypages.settings.notification_settings') %></span>
+    <% end %>
+  </div>
+</div>
