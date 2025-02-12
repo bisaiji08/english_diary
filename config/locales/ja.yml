@@ -44,6 +44,7 @@ ja:
       login_link: "ログイン"
   diaries:
     edit:
+      page_title: "日記編集"
       title: "タイトル"
       start_time: "開始時間"
       edited_time: "編集時間"
@@ -60,6 +61,7 @@ ja:
       write_diary: "日記を書く"
       search_placeholder: "日記タイトルを検索..."
     new:
+      page_title: "日記作成"
       title: "タイトル"
       start_time: "開始時間"
       select_japanese_font: "日本語フォントを選択"
@@ -71,6 +73,7 @@ ja:
       create_button: "日記を作成する"
       translate_button: "翻訳する"
     show:
+      page_title: "日記詳細"
       title: "タイトル："
       start_time: "開始時間："
       edited_time: "編集時間："

@@ -44,6 +44,7 @@ en:
       login_link: "Log in"
   diaries:
     edit:
+      page_title: "Diary editing"
       title: "Title"
       start_time: "Start time"
       edited_time: "Edited time"
@@ -60,6 +61,7 @@ en:
       write_diary: "Write diary"
       search_placeholder: "Search diary titles..."
     new:
+      page_title: "Write diary"
       title: "Title"
       start_time: "Start time"
       select_japanese_font: "Select Japanese Font"
@@ -71,6 +73,7 @@ en:
       create_button: "Create diary"
       translate_button: "Translate"
     show:
+      page_title: "Diary details"
       title: "Title:"
       start_time: "Start time:"
       edited_time: "Edited time:"
