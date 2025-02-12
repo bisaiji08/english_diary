@@ -1,52 +1,71 @@
-<%= form_with(model: @diary, local: true) do |form| %>
+<div class="diary-container">
+  <h2 class="diary-title"><%= t('diaries.edit.page_title') %></h2>
 
-  <div class="title">
-    <%= form.label :title, t('diaries.edit.title') %>
-    <%= form.text_field :title %>
+  <div class="diary-paper">
+    <%= form_with(model: @diary, local: true, html: { class: "diary-form" }) do |form| %>
+
+      <!-- タイトル入力 -->
+      <div class="form-group title-group">
+        <%= form.label :title, t('diaries.edit.title'), class: "form-label" %>
+        <%= form.text_field :title, class: "form-input title-input" %>
+      </div>
+
+      <!-- 作成日時 -->
+      <div class="form-group">
+        <%= form.label :start_time, t('diaries.edit.start_time'), class: "form-label" %>
+        <%= form.text_field :start_time, value: @diary.start_time.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M"), readonly: true, class: "form-input readonly-input" %>
+      </div>
+
+      <!-- 編集日時 -->
+      <div class="form-group">
+        <%= form.label :edited_time, t('diaries.edit.edited_time'), class: "form-label" %>
+        <%= form.text_field :updated_at, value: Time.current.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M"), readonly: true, class: "form-input readonly-input" %>
+      </div>
+
+      <!-- 日記の横並びエリア -->
+      <div class="diary-columns">
+        
+        <!-- 日本語エリア -->
+        <div class="diary-section">
+          <div class="form-group">
+            <%= form.label :japanese_font_name, t('diaries.edit.japanese_font'), class: "form-label" %>
+            <%= form.select(
+                  :japanese_font_name,
+                  options_for_select(current_user.send(:available_fonts).select { |f| f.language == 'Japanese' }.map { |f| [f.name, f.font_name] }, @diary.japanese_font_name),
+                  { prompt: t('diaries.edit.choose_japanese_font') },
+                  { class: "form-input font-select" }
+            ) %>
+          </div>
+          <%= form.label :content_japanese, t('diaries.edit.content_japanese'), class: "diary-label" %>
+          <div class="diary-textarea-container">
+            <%= form.text_area :content_japanese, rows: 5, class: "diary-textarea", id: "content_japanese" %>
+          </div>
+        </div>
+
+        <!-- 英語エリア -->
+        <div class="diary-section">
+          <div class="form-group">
+            <%= form.label :english_font_name, t('diaries.edit.english_font'), class: "form-label" %>
+            <%= form.select(
+                  :english_font_name,
+                  options_for_select(current_user.send(:available_fonts).select { |f| f.language == 'English' }.map { |f| [f.name, f.font_name] }, @diary.english_font_name),
+                  { prompt: t('diaries.edit.choose_english_font') },
+                  { class: "form-input font-select" }
+            ) %>
+          </div>
+          <%= form.label :content_english, t('diaries.edit.content_english'), class: "diary-label" %>
+          <div class="diary-textarea-container">
+            <%= form.text_area :content_english, rows: 5, class: "diary-textarea", id: "content_english" %>
+          </div>
+        </div>
+      </div>
+
+      <!-- ボタン -->
+      <div class="form-actions">
+        <%= form.submit t('diaries.edit.update_button'), class: "submit-button" %>
+        <button type="button" id="translate-button" class="translate-button"><%= t('diaries.edit.translate_button') %></button>
+      </div>
+
+    <% end %>
   </div>
-
-  <div class="time">
-    <%= form.label :start_time, t('diaries.edit.start_time') %>
-    <%= form.text_field :start_time, value: @diary.start_time.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M"), readonly: true %>
-  </div>
-
-  <div class="edit_time">
-    <%= form.label :edited_time, t('diaries.edit.edited_time') %>
-    <%= form.text_field :updated_at, value: Time.current.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M"), readonly: true %>
-  </div>
-
-  <div class="font-select-japanese">
-    <%= form.label :japanese_font_name, t('diaries.edit.japanese_font') %>
-    <%= form.select(
-          :japanese_font_name,
-          options_for_select(current_user.send(:available_fonts).select { |f| f.language == 'Japanese' }.map { |f| [f.name, f.font_name] }, @diary.japanese_font_name),
-          prompt: t('diaries.edit.choose_japanese_font')
-    ) %>
-  </div>
-
-  <div class="content_japanese">
-    <%= form.label :content_japanese, t('diaries.edit.content_japanese') %>
-    <%= form.text_area :content_japanese, rows: 5, cols: 50, style: "width: 100%;", id: "content_japanese" %>
-  </div>
-
-  <div class="font-select-english">
-    <%= form.label :english_font_name, t('diaries.edit.english_font') %>
-    <%= form.select(
-          :english_font_name,
-          options_for_select(current_user.send(:available_fonts).select { |f| f.language == 'English' }.map { |f| [f.name, f.font_name] }, @diary.english_font_name),
-          prompt: t('diaries.edit.choose_english_font')
-    ) %>
-  </div>
-
-  <div class="content_english">
-    <%= form.label :content_english, t('diaries.edit.content_english') %>
-    <%= form.text_area :content_english, rows: 5, cols: 50, style: "width: 100%;", id: "content_english" %>
-  </div>
-
-  <div>
-    <%= form.submit t('diaries.edit.update_button') %>
-    <button type="button" id="translate-button"><%= t('diaries.edit.translate_button') %></button>
-  </div>
-<% end %>
-
-
+</div>

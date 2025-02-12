@@ -1,14 +1,53 @@
-.diary-info {
-  margin: 7px 0; /* 段落の上下の余白 */
-  display: flex; /* タイトルと内容を横並びに */
-  align-items: center; /* 垂直方向の中央揃え */
-  gap: 5px; /* タイトルと値の間隔 */
+//show,new,edit共通
+/* === 全体を日記帳風にする === */
+.diary-container {
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: center;
 }
 
-.underline {
-  display: inline-block; /* テキストの長さに合わせる */
-  border-bottom: 2px solid #000; /* 下線を追加 */
-  padding-bottom: 3px; /* 下線とテキストの間隔 */
+/* === 日記のタイトル === */
+.diary-title {
+  font-family: "Georgia", serif;
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #5a3e1b;
+}
+
+/* === ノート風の背景 === */
+.diary-paper {
+  background: #fffdfa;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  border: 2px solid #c0392b;
+  position: relative;
+}
+
+/* === 日本語・英語のエリアを横並びにする === */
+.diary-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.diary-section {
+  flex: 1;
+  min-width: 45%;
+}
+/* === 送信ボタン & 翻訳ボタン === */
+.form-actions {
+  margin-top: 20px;
+  text-align: center;
+}
+
+//show
+.diary-info {
+  margin: 10px 0;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #000;
+  font-size: 18px;
 }
 
 .content_frame {
@@ -16,15 +55,140 @@
   padding: 10px; /* 内側の余白 */
   margin: 1px; /* 外側の余白 */
   box-sizing: border-box; /* パディングとボーダーを含むサイズ調整 */
-  text-align: left; /* 左寄せ */
-  line-height: 1.2; /* 行間を調整（必要に応じて） */
-  min-height: 90px; /* 最小の高さを設定（必要に応じて調整） */
+  text-align: left;
+  line-height: 1.4;
+  min-height: 120px;
+  background: #fdfdfd;
 }
 
-.content-japanese {
-  font-family: var(--japanese-font, inherit);
+.edit-button, .delete-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-.content-english {
-  font-family: var(--english-font, inherit);
+.edit-button {
+  background: #2980b9;
+  color: white;
+}
+
+.edit-button:hover {
+  background: #216a99;
+}
+
+.delete-button {
+  background: #c0392b;
+  color: white;
+  margin-left: 10px;
+}
+
+.delete-button:hover {
+  background: #a32e24;
+}
+
+//new,edit
+/* === フォーム入力スタイル（タイトル） === */
+.title-group {
+  text-align: left;
+}
+
+.title-input {
+  font-family: "Georgia", serif;
+  font-size: 22px;
+  font-weight: bold;
+  color: #5a3e1b;
+  border: 1px solid #ccc;
+  background: #fdfdfd;
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* === 日本語・英語フォント選択 === */
+.font-select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* === 日記の記入エリア === */
+.diary-textarea-container {
+  background: #fdfdfd;
+  border: 1px solid #ccc;
+  padding: 8px; /* 内側の余白を少し狭くする */
+  border-radius: 5px;
+}
+
+/* === 日記の見出し（ラベル） === */
+.diary-label {
+  font-size: 20px;
+  font-weight: bold;
+  color: #5a3e1b;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* === 日記の入力エリア === */
+.diary-textarea {
+  width: 100%;
+  padding: 8px;
+  font-family: "Georgia", serif;
+  font-size: 18px; /* 文字を少し小さく */
+  line-height: 1.8; /* 行間を少し詰める */
+  background: transparent;
+  border: none;
+  resize: none;
+  box-sizing: border-box;
+  outline: none;
+  caret-color: #c0392b;
+  min-height: 90px;
+}
+
+.submit-button, .translate-button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submit-button {
+  background: #c0392b;
+  color: white;
+}
+
+.submit-button:hover {
+  background: #a32e24;
+}
+
+.translate-button {
+  background: #2980b9;
+  color: white;
+  margin-left: 10px;
+}
+
+.translate-button:hover {
+  background: #216a99;
+}
+
+/* === スマホ対応 === */
+@media (max-width: 768px) {
+  .diary-columns {
+    flex-direction: column;
+  }
+
+  .diary-section {
+    min-width: 100%;
+  }
+
+  .title-input {
+    text-align: left;
+  }
 }
