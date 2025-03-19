@@ -95,3 +95,6 @@ Googleアカウントを使ってユーザーを作成することも可能で�
   * sidekiq
   * letter opener web
   * SCSS
+
+# ER図
+![ER図](english_diary_erd.png)
