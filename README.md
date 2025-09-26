@@ -1,5 +1,6 @@
 # English Diary
 サービスURL:https://englishdiary.jp/
+
 *現在はサービスを終了しています。
 
 英語日記を習慣化するために日記アプリと育成ゲームをミックスしたアプリです。
